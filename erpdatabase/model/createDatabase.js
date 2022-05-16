@@ -30,7 +30,7 @@ function createAdminTable(){
        ad_email varchar(255), 
        password varchar(255), 
        primary key(ad_email))`;
-org
+       
        db.query(admin, (err) => {
         if (err) {
           throw err;
