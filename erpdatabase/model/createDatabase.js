@@ -24,14 +24,14 @@ let db = mysql.createConnection({
 
 
 function createAdminTable(){
-    let sql =
+    let admin =
       `CREATE TABLE admin(admin_id varchar(255),
        username varchar(255), 
        ad_email varchar(255), 
        password varchar(255), 
        primary key(ad_email))`;
-
-       db.query(sql, (err) => {
+org
+       db.query(admin, (err) => {
         if (err) {
           throw err;
         }
@@ -39,14 +39,14 @@ function createAdminTable(){
 }
 
 function createOrganizationTable(){
-    let sql1 =
+    let org =
       `CREATE TABLE organisation(org_name varchar(255),
        ad_email varchar(255), 
        location varchar(255), 
        contact_number varchar(255), 
        paid_leave_limit int, encashed_leave_limit int,
         primary key(org_name)) `;
-    db.query(sql1, (err) => {
+    db.query(org, (err) => {
       if (err) {
         throw err;
       }
@@ -54,13 +54,13 @@ function createOrganizationTable(){
 }
 
 function createDepartmentTable(){
-    let sql2 =
+    let dep =
         `CREATE TABLE department(dept_id varchar(255),
          dept_name varchar(255), 
          org_name varchar(255), 
          primary key (dept_id), foreign key (org_name)
           references organisation(org_name) on delete set null)`;
-      db.query(sql2, (err) => {
+      db.query(dep, (err) => {
         if (err) {
           throw err;
         }
@@ -68,14 +68,14 @@ function createDepartmentTable(){
 }
 
 function createGradePayTable(){
-    let sql3 =
+    let gradepay =
         `CREATE TABLE gradepay(grade_id varchar(255),
          grade_name varchar(255), basic_pay int, 
          grade_pf varchar(255), grade_bonus int, 
          grade_ta varchar(255), grade_da varchar(255), 
          primary key (grade_id))`;
     
-      db.query(sql3, (err) => {
+      db.query(gradepay, (err) => {
         if (err) {
           throw err;
         }
@@ -83,7 +83,7 @@ function createGradePayTable(){
 }
 
 function createEmployeTable(){
-    let sql4 =
+    let employe =
         `CREATE TABLE employe(present int,  e_id varchar(255),
           paid_leave_taken int, 
           encashed_leave_this_month int,
@@ -100,7 +100,7 @@ function createEmployeTable(){
                department(dept_id) on delete set null, 
                foreign key (grade_id) references gradepay(grade_id) 
                on delete set null)`;
-      db.query(sql4, (err) => {
+      db.query(employe, (err) => {
         if (err) {
           throw err;
         }
@@ -109,10 +109,10 @@ function createEmployeTable(){
 
 
 function createExtrasTable(){
-    let sql5 =
+    let extra =
       `CREATE TABLE extras(ex_type varchar(255),
        ex_id varchar(255), primary key (ex_id))`;
-    db.query(sql5, (err) => {
+    db.query(extra, (err) => {
       if (err) {
     
         throw err;
@@ -122,13 +122,13 @@ function createExtrasTable(){
 
 
 function createIsGivenTable(){
-    let sql6 =
+    let given =
         `CREATE TABLE is_given( ex_id varchar(255)
         , amount int, ep_email varchar(255), 
         primary key (ex_id, ep_email), foreign key(ep_email)
          references employe(ep_email) on delete cascade, 
          foreign key (ex_id) references extras(ex_id) on delete cascade)`;
-      db.query(sql6, (err) => {
+      db.query(given, (err) => {
         if (err) {
           throw err;
         }
@@ -137,13 +137,13 @@ function createIsGivenTable(){
 
 
 function createPayrollTable(){
-    let sql7 =
+    let payrol =
     `CREATE TABLE payroll( transaction_id SERIAL, 
       month int, year int, gross_pay int, income_tax int, 
       ep_email varchar(255), ad_email varchar(255), primary key (transaction_id),
        foreign key(ep_email) references employe(ep_email) on delete set null, 
        foreign key(ad_email) references admin(ad_email) on delete set null)`;
-    db.query(sql7, (err) => {
+    db.query(payrol, (err) => {
     if (err) {
       throw err;
     }
