@@ -21,6 +21,11 @@ const app=express()
       throw err;
   
     }
+    let sql = "SHOW DATABASES LIKE 'ERPdatabase';"
+    db.query(sql, (err, result) => {
+      if(err) throw err;
+      console.log(result ? "exists": "empty")
+    })
   
     console.log("MySql Connected");
   
