@@ -189,10 +189,11 @@ app.get("/table", (req, res) => {
     expire_date datetime, 
     category int(11), 
     brand int(11), 
-    added_by int(11), 
+    added_by varchar(255), 
     primary key(id), 
     FOREIGN KEY (category) REFERENCES category(id) ON DELETE SET NULL, 
-    FOREIGN KEY (brand) REFERENCES brand(id) on DELETE SET NULL)`;
+    FOREIGN KEY (brand) REFERENCES brand(id) ON DELETE SET NULL,
+    FOREIGN KEY (added_by) REFERENCES employe(ep_email) ON DELETE SET NULL)`;
   
   let sqlSales = 
     `CREATE TABLE sales
@@ -204,10 +205,11 @@ app.get("/table", (req, res) => {
     vat double, 
     witholding_tax double, 
     created_at datetime,
-    sold_by int(11),
+    sold_by varchar(255),
     primary key(id),
     FOREIGN KEY (product_id) REFERENCES inventory(id) ON DELETE SET NULL, 
-    FOREIGN KEY (warranty) REFERENCES warranty(id) ON DELETE SET NULL);`;
+    FOREIGN KEY (warranty) REFERENCES warranty(id) ON DELETE SET NULL,
+    FOREIGN KEY (sold_by) REFERENCES employe(ep_email) ON DELETE SET NULL);`;
 
 
     let sqlDamagedGood =
