@@ -367,6 +367,8 @@ function createTables(){
     createLiabilityTable()
     createAssetTable()
     createExpenseTable()
+
+    db.end(err => {if(err) throw err})
 }
 const createDatabase = () => {
 
@@ -379,6 +381,7 @@ const createDatabase = () => {
             throw err;
           }
           console.log("created the database")
+          db.end(err => {if(err) throw err})
           db = connectOnce;
           createTables()
       
