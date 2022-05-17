@@ -5,7 +5,6 @@ const inventoryRoute = require('./routes/inventoryRoutes')
 
   dbCreator.createDatabase()
 
-
   app.use('/inventory', inventoryRoute)
 
   app.listen('3000', () => {
