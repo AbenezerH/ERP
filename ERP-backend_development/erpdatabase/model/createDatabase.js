@@ -251,7 +251,6 @@ function createSalesTable(){
       FOREIGN KEY (warranty) REFERENCES warranty(id) ON DELETE SET NULL,
       FOREIGN KEY (sold_by) REFERENCES employe(ep_email) ON DELETE SET NULL);`;
     
-    
       db.query(sqlSales, (err) => {
         if (err) {
           throw err;
@@ -309,7 +308,6 @@ function createLiabilityTable(){
       }
     });
 }
-
 function createAssetTable(){
   let sqlAsset =
     `CREATE TABLE asset
@@ -370,9 +368,6 @@ function createTables(){
     createAssetTable()
     createExpenseTable()
 }
-
-
-
 const createDatabase = () => {
 
     function createDatabase(){
