@@ -85,6 +85,8 @@ const dbInventory = {
         })
     },
 
+
+    // delete an inventory item
     deleteItem: deleteItem = (req, res) => {
         let sql = `DELETE FROM inventory WHERE id = ${req.params.id}`
 
