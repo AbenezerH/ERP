@@ -12,7 +12,6 @@ const inventoryCon = mysql.createConnection({
 
 function sqlConn(){
     
-    console.log("in ")
     inventoryCon.connect(conErr => {
         if(conErr) throw conErr
     })
