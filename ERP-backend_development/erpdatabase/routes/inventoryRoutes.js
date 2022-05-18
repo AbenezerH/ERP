@@ -10,6 +10,8 @@ router.post('/add', inventoryController.dbInventory.addInventory)
 
 router.get('/:id', inventoryController.dbInventory.getInventory)
 
+router.put('/update/:id', inventoryController.dbInventory.updateItem)
+
 router.delete('/delete/:id', inventoryController.dbInventory.deleteItem)
 
 module.exports = router;

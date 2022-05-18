@@ -97,6 +97,32 @@ const dbInventory = {
         })
     },
 
+
+    // update an inventory item
+    updateItem: updateItem = (req, res) => {
+        let sql = 
+        `UPDATE inventory SET 
+        product_name = "${req.body.product_name}", 
+        product_description = "${req.body.product_description}", 
+        product_unit = "${req.body.product_unit}", 
+        product_quantity = "${req.body.product_quantity}", 
+        unit_cost = "${req.body.unit_cost}", 
+        price = "${req.body.price}", 
+        least_critical_amount = "${req.body.least_critical_amount}",
+        high_amount = "${req.body.high_amount}",
+        created_at = "${req.body.created_at}",
+        updated_at = "${req.body.updated_at}",
+        expire_date = "${req.body.expire_date}"
+        WHERE id = "${req.params.id}"
+        `
+
+        inventoryCon.query(sql, (sqlErr, results) => {
+            if(sqlErr) console.log(sqlErr.message)
+
+            res.send(results)
+        })
+    },
+
 }
 
 module.exports = {
