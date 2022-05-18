@@ -29,7 +29,7 @@ const dbInventory = {
         inventoryCon.query(sql, (sqlErr, results) => {
             if(sqlErr) throw sqlErr
 
-            res.send(JSON.stringify(results))
+            res.send(results)
         })   
     },
 
@@ -68,7 +68,7 @@ const dbInventory = {
             inventoryCon.query(sql, (sqlErr, results) => {
                 if(sqlErr) throw sqlErr
 
-                res.send(JSON.stringify(results))
+                res.send(results)
             })
     },
 
