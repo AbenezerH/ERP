@@ -25,13 +25,13 @@ let db = mysql.createConnection({
 
 function createAdminTable(){
     let admin =
-      `CREATE TABLE admin(admin_id varchar(255),
+      `CREATE TABLE IF NOT EXISTS admin(admin_id varchar(255),
        username varchar(255), 
        ad_email varchar(255), 
        password varchar(255), 
        primary key(ad_email))`;
        
-       db.query(admin, (err) => {
+       connectOnce.query(admin, (err) => {
         if (err) {
           throw err;
         }
@@ -40,13 +40,13 @@ function createAdminTable(){
 
 function createOrganizationTable(){
     let org =
-      `CREATE TABLE organisation(org_name varchar(255),
+      `CREATE TABLE IF NOT EXISTS organisation(org_name varchar(255),
        ad_email varchar(255), 
        location varchar(255), 
        contact_number varchar(255), 
        paid_leave_limit int, encashed_leave_limit int,
         primary key(org_name)) `;
-    db.query(org, (err) => {
+    connectOnce.query(org, (err) => {
       if (err) {
         throw err;
       }
@@ -55,12 +55,12 @@ function createOrganizationTable(){
 
 function createDepartmentTable(){
     let dep =
-        `CREATE TABLE department(dept_id varchar(255),
+        `CREATE TABLE IF NOT EXISTS department(dept_id varchar(255),
          dept_name varchar(255), 
          org_name varchar(255), 
          primary key (dept_id), foreign key (org_name)
           references organisation(org_name) on delete set null)`;
-      db.query(dep, (err) => {
+      connectOnce.query(dep, (err) => {
         if (err) {
           throw err;
         }
@@ -69,13 +69,13 @@ function createDepartmentTable(){
 
 function createGradePayTable(){
     let gradepay =
-        `CREATE TABLE gradepay(grade_id varchar(255),
+        `CREATE TABLE IF NOT EXISTS gradepay(grade_id varchar(255),
          grade_name varchar(255), basic_pay int, 
          grade_pf varchar(255), grade_bonus int, 
          grade_ta varchar(255), grade_da varchar(255), 
          primary key (grade_id))`;
     
-      db.query(gradepay, (err) => {
+      connectOnce.query(gradepay, (err) => {
         if (err) {
           throw err;
         }
@@ -84,7 +84,7 @@ function createGradePayTable(){
 
 function createEmployeTable(){
     let employe =
-        `CREATE TABLE employe(present int,  e_id varchar(255),
+        `CREATE TABLE IF NOT EXISTS employe(present int,  e_id varchar(255),
           paid_leave_taken int, 
           encashed_leave_this_month int,
            encashed_leave_till_date int,
@@ -100,7 +100,7 @@ function createEmployeTable(){
                department(dept_id) on delete set null, 
                foreign key (grade_id) references gradepay(grade_id) 
                on delete set null)`;
-      db.query(employe, (err) => {
+      connectOnce.query(employe, (err) => {
         if (err) {
           throw err;
         }
@@ -110,9 +110,9 @@ function createEmployeTable(){
 
 function createExtrasTable(){
     let extra =
-      `CREATE TABLE extras(ex_type varchar(255),
+      `CREATE TABLE IF NOT EXISTS extras(ex_type varchar(255),
        ex_id varchar(255), primary key (ex_id))`;
-    db.query(extra, (err) => {
+    connectOnce.query(extra, (err) => {
       if (err) {
     
         throw err;
@@ -123,12 +123,12 @@ function createExtrasTable(){
 
 function createIsGivenTable(){
     let given =
-        `CREATE TABLE is_given( ex_id varchar(255)
+        `CREATE TABLE IF NOT EXISTS is_given( ex_id varchar(255)
         , amount int, ep_email varchar(255), 
         primary key (ex_id, ep_email), foreign key(ep_email)
          references employe(ep_email) on delete cascade, 
          foreign key (ex_id) references extras(ex_id) on delete cascade)`;
-      db.query(given, (err) => {
+      connectOnce.query(given, (err) => {
         if (err) {
           throw err;
         }
@@ -138,12 +138,12 @@ function createIsGivenTable(){
 
 function createPayrollTable(){
     let payrol =
-    `CREATE TABLE payroll( transaction_id SERIAL, 
+    `CREATE TABLE IF NOT EXISTS payroll( transaction_id SERIAL, 
       month int, year int, gross_pay int, income_tax int, 
       ep_email varchar(255), ad_email varchar(255), primary key (transaction_id),
        foreign key(ep_email) references employe(ep_email) on delete set null, 
        foreign key(ad_email) references admin(ad_email) on delete set null)`;
-    db.query(payrol, (err) => {
+    connectOnce.query(payrol, (err) => {
     if (err) {
       throw err;
     }
@@ -154,13 +154,13 @@ function createPayrollTable(){
 
 function createBrandTable(){
     let sqlBrand = 
-    `CREATE TABLE brand
+    `CREATE TABLE IF NOT EXISTS brand
     (id int(11) AUTO_INCREMENT,
     name varchar(50),
     PRIMARY KEY(id))
     `
           
-    db.query(sqlBrand, (err) => {
+    connectOnce.query(sqlBrand, (err) => {
         if (err) {
           throw err;
         }
@@ -170,13 +170,13 @@ function createBrandTable(){
 
 function createCategoryTable(){
     let sqlCategory =
-    `CREATE TABLE category
+    `CREATE TABLE IF NOT EXISTS category
     (id int(11) AUTO_INCREMENT,
     name varchar(50),
     PRIMARY KEY(id))
     `
     
-    db.query(sqlCategory, (err) => {
+    connectOnce.query(sqlCategory, (err) => {
       if (err) {
         throw err;
       }
@@ -187,7 +187,7 @@ function createCategoryTable(){
 
 function createWarrantyTable(){
     let sqlWarranty =
-    `CREATE TABLE warranty
+    `CREATE TABLE IF NOT EXISTS warranty
     (id int(11) AUTO_INCREMENT,
     full_name varchar(50),
     phone_number int(11),
@@ -196,7 +196,7 @@ function createWarrantyTable(){
     PRIMARY KEY(id))
     `      
         
-    db.query(sqlWarranty, (err) => {
+    connectOnce.query(sqlWarranty, (err) => {
       if (err) {
         throw err;
       }
@@ -206,7 +206,7 @@ function createWarrantyTable(){
 
 function createInventoryTable(){
     let sqlInventory =
-      `CREATE TABLE inventory
+      `CREATE TABLE IF NOT EXISTS inventory
       (id int(11) AUTO_INCREMENT,
       product_name varchar(50), 
       product_description varchar(1024), 
@@ -227,7 +227,7 @@ function createInventoryTable(){
       FOREIGN KEY (added_by) REFERENCES employe(ep_email) ON DELETE SET NULL)`;
       
     
-      db.query(sqlInventory, (err) => {
+      connectOnce.query(sqlInventory, (err) => {
         if (err) {
           throw err;
         }
@@ -236,7 +236,7 @@ function createInventoryTable(){
 
 function createSalesTable(){
     let sqlSales = 
-      `CREATE TABLE sales
+      `CREATE TABLE IF NOT EXISTS sales
       (id int(11) AUTO_INCREMENT, 
       product_id int(11), 
       number_of_items double, 
@@ -252,7 +252,7 @@ function createSalesTable(){
       FOREIGN KEY (sold_by) REFERENCES employe(ep_email) ON DELETE SET NULL);`;
     
     
-      db.query(sqlSales, (err) => {
+      connectOnce.query(sqlSales, (err) => {
         if (err) {
           throw err;
         }
@@ -263,14 +263,14 @@ function createSalesTable(){
 
 function createDamagedGoodTable(){
     let sqlDamagedGood =
-      `CREATE TABLE damaged_good
+      `CREATE TABLE IF NOT EXISTS damaged_good
       (id int(11) AUTO_INCREMENT,
       product_id int(11),
       quantity double,
       PRIMARY KEY (id),
       FOREIGN KEY(product_id) REFERENCES inventory(id) ON DELETE SET NULL)`
           
-      db.query(sqlDamagedGood, (err) => {
+      connectOnce.query(sqlDamagedGood, (err) => {
         if (err) {
           throw err;
         }
@@ -279,7 +279,7 @@ function createDamagedGoodTable(){
 }
 function createIncomeTable(){
   let sqlincome =
-    `CREATE TABLE income
+    `CREATE TABLE IF NOT EXISTS income
     (id int(11) AUTO_INCREMENT,
     type varchar(255),
     quantity double,
@@ -287,7 +287,7 @@ function createIncomeTable(){
     registered_by varchar(255),
     PRIMARY KEY (id),
     FOREIGN KEY(registered_by) REFERENCES employe(ep_email) ON DELETE SET NULL)`
-    db.query(sqlincome, (err) => {
+    connectOnce.query(sqlincome, (err) => {
       if (err) {
         throw err;
       }
@@ -296,14 +296,14 @@ function createIncomeTable(){
 }
 function createLiabilityTable(){
   let sqlLiability =
-    `CREATE TABLE liability
+    `CREATE TABLE IF NOT EXISTS liability
     (id int(11) AUTO_INCREMENT,
     name varchar(255),
     created_at datetime,
     type varchar(255),
     amount double,
     PRIMARY KEY (id))`
-    db.query(sqlLiability, (err) => {
+    connectOnce.query(sqlLiability, (err) => {
       if (err) {
         throw err;
       }
@@ -312,7 +312,7 @@ function createLiabilityTable(){
 
 function createAssetTable(){
   let sqlAsset =
-    `CREATE TABLE asset
+    `CREATE TABLE IF NOT EXISTS asset
     (id int(11) AUTO_INCREMENT,
     name varchar(255),
     value double,
@@ -320,7 +320,7 @@ function createAssetTable(){
     asset_type varchar(255),
     depreciation_cost double,
     PRIMARY KEY (id))`
-    db.query(sqlAsset, (err) => {
+    connectOnce.query(sqlAsset, (err) => {
       if (err) {
         throw err;
       }
@@ -329,14 +329,14 @@ function createAssetTable(){
 
 function createExpenseTable(){
    let sqlExpense =
-  `CREATE TABLE expense
+  `CREATE TABLE IF NOT EXISTS expense
   (id int(11) AUTO_INCREMENT,
   name varchar(255),
   created_at datetime,
   ex_type varchar(255),
   ex_amount double,
   PRIMARY KEY (id))`
-  db.query( sqlExpense, (err) => {
+  connectOnce.query( sqlExpense, (err) => {
     if (err) {
       throw err;
     }
@@ -369,13 +369,15 @@ function createTables(){
     createLiabilityTable()
     createAssetTable()
     createExpenseTable()
+
+    db.end(err => {if(err) throw err})
 }
 
 
 
 const createDatabase = () => {
 
-    function createDatabase(){
+    function createTheDatabase(){
         let sql = "CREATE DATABASE ERPdatabase";
       
         db.query(sql, (err) => {
@@ -384,7 +386,12 @@ const createDatabase = () => {
             throw err;
           }
           console.log("created the database")
-          db = connectOnce;
+
+          connectOnce.connect(err => {
+            if(err) console.log(err.message)
+
+            console.log("ConnectOnce connected")
+          })
           createTables()
       
         });
@@ -400,7 +407,15 @@ const createDatabase = () => {
     
         db.query(sql, (err, result) => {
           if(err) throw err;
-          result.length === 0 ? createDatabase(): console.log("database exists")
+
+          if(result.length === 0){
+            createTheDatabase()
+          } 
+          else{
+            console.log("database exists")
+            createTables();
+          }
+
         })
       
         console.log("MySql Connected");
