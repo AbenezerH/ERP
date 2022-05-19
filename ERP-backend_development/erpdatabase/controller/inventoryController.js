@@ -19,7 +19,7 @@ function sqlConn(){
 
 const dbInventory = {
 
-    conn: sqlConn,
+    sqlConn: sqlConn,
 
     // to get all rows
     getAllInventory: getAllInventory = (req, res) => {
