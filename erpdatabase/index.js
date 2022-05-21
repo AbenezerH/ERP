@@ -20,7 +20,7 @@ app.use('/erpdatabase/warranty', warrantyRoute)
 app.use('/erpdatabase/sales', salesRoute)
 app.use('/erpdatabase/liability', liabilityRoute)
 app.use('/erpdatabase/admin/', adminRoute)
-app.use('/erpdatabase/categoryRoute', categoryRoute)
+app.use('/erpdatabase/category', categoryRoute)
 
 app.listen('3000', () => {
     console.log('server started at 3000')
