@@ -8,17 +8,19 @@ const warrantyRoute = require('./routes/warrantyRoutes')
 const salesRoute = require('./routes/salesRoutes')
 const liabilityRoute = require('./routes/liabilityRoutes')
 const adminRoute = require('./routes/adminRoutes')
+const categoryRoute = require('./routes/categoryRoutes')
 
 dbCreator.createDatabase()
 
 app.use(express.json())
 
-app.use('/inventory', inventoryRoute)
-app.use('/brand', brandRoute)
-app.use('/warranty', warrantyRoute)
-app.use('/sales', salesRoute)
-app.use('/liability', liabilityRoute)
-app.use('/admin/', adminRoute)
+app.use('/erpdatabase/inventory', inventoryRoute)
+app.use('/erpdatabase/brand', brandRoute)
+app.use('/erpdatabase/warranty', warrantyRoute)
+app.use('/erpdatabase/sales', salesRoute)
+app.use('/erpdatabase/liability', liabilityRoute)
+app.use('/erpdatabase/admin/', adminRoute)
+app.use('/erpdatabase/categoryRoute', categoryRoute)
 
 app.listen('3000', () => {
     console.log('server started at 3000')
