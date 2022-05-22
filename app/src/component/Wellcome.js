@@ -8,7 +8,7 @@ const Welcome = () => {
   return (
     <div className="App">
       <header>
-        <h1>Payroll Management System</h1>
+        <h1>Wellcome to ERP Management System</h1>
         <hr className="Underline" />
       </header>
       <div className="Login">
