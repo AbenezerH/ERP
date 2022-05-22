@@ -1,0 +1,30 @@
+body{
+    margin:0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url(https://images.unsplash.com/photo-1435164205788-305635a36ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmxhY2slMjBhbmQlMjB3aGl0ZSUyMHBhcmlzfGVufDB8fDB8fA%3D%3D&w=1000&q=80);
+    background-size: cover;
+}
+.Login-box{
+width: 280px;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+color: white;
+}
+.login-box h1{
+    float: left;
+    font-size: 40px;
+    border-bottom: 6px solid #4caf4c;
+    margin-bottom: 50px;
+    padding: 13px 0px;
+}
+.text-box{
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom: 1px solid;
+}
