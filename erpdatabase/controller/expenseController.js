@@ -90,5 +90,5 @@ const dbexpense = {
 
 
 module.exports = {
-    dbexpense,
+    dbExpense,
 }
