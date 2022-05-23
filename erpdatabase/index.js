@@ -1,7 +1,11 @@
 const express = require('express')
 const app=express()
 const dbCreator = require('./model/createDatabase')
+<<<<<<< HEAD
+const hrRoute=require('./routes/employee')
+=======
 
+>>>>>>> 1fe3724820f1ef9957aca0183ccb2b2193a05165
 const inventoryRoute = require('./routes/inventoryRoutes')
 const brandRoute = require('./routes/brandRoutes')
 const warrantyRoute = require('./routes/warrantyRoutes')
@@ -13,10 +17,18 @@ const incomeRoute = require('./routes/incomeRoutes')
 const expenseRoute = require('./routes/expenseRoutes')
 const assetRoute = require('./routes/assetRoutes')
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1fe3724820f1ef9957aca0183ccb2b2193a05165
 dbCreator.createDatabase()
 
 app.use(express.json())
 
+<<<<<<< HEAD
+app.use('/erpdatabase/hr', hrRoute)
+=======
+>>>>>>> 1fe3724820f1ef9957aca0183ccb2b2193a05165
 app.use('/erpdatabase/inventory', inventoryRoute)
 app.use('/erpdatabase/brand', brandRoute)
 app.use('/erpdatabase/warranty', warrantyRoute)
@@ -32,6 +44,10 @@ app.use('/erpdatabase/expense', expenseRoute)
 app.use('/erpdatabase/asset', assetRoute)
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1fe3724820f1ef9957aca0183ccb2b2193a05165
 app.listen('3000', () => {
     console.log('server started at 3000')
 })

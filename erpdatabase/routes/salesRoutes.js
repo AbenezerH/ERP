@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const salesController = require('../controller/salesController')
+const salesController = require('../../ERPbackend/controller/salesController')
 
 router.get('/', salesController.dbSales.getAllSales)
 
