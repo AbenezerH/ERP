@@ -12,6 +12,7 @@ const categoryRoute = require('./routes/categoryRoutes')
 const incomeRoute = require('./routes/incomeRoutes')
 const expenseRoute = require('./routes/expenseRoutes')
 const assetRoute = require('./routes/assetRoutes')
+const damagedGoodRoute = require('./routes/damagedGoodRoutes')
 
 dbCreator.createDatabase()
 
@@ -31,6 +32,7 @@ app.use('/erpdatabase/income', incomeRoute)
 app.use('/erpdatabase/expense', expenseRoute)
 
 app.use('/erpdatabase/asset', assetRoute)
+app.use('/erpdatabase/damagedgood', damagedGoodRoute)
 
 
 app.listen('3000', () => {
