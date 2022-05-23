@@ -1,6 +1,8 @@
 const express = require('express')
 const app=express()
+
 const dbCreator = require('./model/createDatabase')
+
 const hrRoute=require('./routes/employee')
 const inventoryRoute = require('./routes/inventoryRoutes')
 const brandRoute = require('./routes/brandRoutes')
@@ -13,6 +15,7 @@ const incomeRoute = require('./routes/incomeRoutes')
 const expenseRoute = require('./routes/expenseRoutes')
 const assetRoute = require('./routes/assetRoutes')
 const damagedGoodRoute = require('./routes/damagedGoodRoutes')
+const payrollRoute = require('./routes/payrollRoutes')
 
 dbCreator.createDatabase()
 
@@ -33,6 +36,7 @@ app.use('/erpdatabase/expense', expenseRoute)
 
 app.use('/erpdatabase/asset', assetRoute)
 app.use('/erpdatabase/damagedgood', damagedGoodRoute)
+app.use('/erpdatabase/payroll', payrollRoute)
 
 
 app.listen('3000', () => {
