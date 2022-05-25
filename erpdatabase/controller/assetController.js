@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 
-const expenseCon = mysql.createConnection({
+const assetCon = mysql.createConnection({
     host: "localhost",
   
     user: "root",
@@ -12,83 +12,87 @@ const expenseCon = mysql.createConnection({
 
 function sqlConn(){
     
-    expenseCon.connect(conErr => {
+    assetCon.connect(conErr => {
         if(conErr) throw conErr
     })
 }
 
-const dbexpense = {
+const dbAsset = {
 
     sqlConn: sqlConn,
 
-    getAllExpense: getAllExpense = (req, res) => {
-        let sql = `SELECT * FROM expense`
+    getAllAsset: getAllAsset = (req, res) => {
+        let sql = `SELECT * FROM asset`
 
-        expenseCon.query(sql, (sqlErr, results) => {
+        assetCon.query(sql, (sqlErr, results) => {
+            if(sqlErr) console.log(sqlErr.message)
+
+            res.send(results)
+        })
+    },
+
+    getAsset: getAsset = (req, res) => {
+        let sql = `SELECT * FROM asset WHERE id = "${req.params.id}"`
+
+        assetCon.query(sql, (sqlErr, results) => {
             if(sqlErr) console.log(sqlErr.message)
 
             res.send(results)
         })
     },
     
-    getExpense: getExpense = (req, res) => {
-        let sql = `SELECT * FROM expense WHERE id = "${req.params.id}"`
-
-        expenseCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
-    },
-
-    addExpense: addExpense = (req, res) => {
+    addAsset: addAsset = (req, res) => {
         let sql = 
-        `INSERT INTO expense
+        `INSERT INTO asset
         (name,
+        value,
         created_at,
-        ex_type,
-        ex_amount) VALUES
+        asset_type,
+        depreciation_cost) VALUES
         ("${req.body.name}",
+        "${req.body.value}",
         "${req.body.created_at}",
-        "${req.body.ex_type}",
-        "${req.body.ex_amount}")`
+        "${req.body.asset_type}",
+        "${req.body.depreciation_cost}")`
 
-        expenseCon.query(sql, (sqlErr, results) => {
+        assetCon.query(sql, (sqlErr, results) => {
             if(sqlErr) console.log(sqlErr.message)
 
             res.send(results)
         })
     },
-
+    
     updateItem: updateItem = (req, res) => {
         let sql = 
-        `UPDATE expense SET
+        `UPDATE asset SET
         name = "${req.body.name}",
+        value = "${req.body.value}",
         created_at = "${req.body.created_at}",
-        ex_type = "${req.body.ex_type}",
-        ex_amount = "${req.body.ex_amount}"
+        asset_type = "${req.body.asset_type }",
+        depreciation_cost = "${req.body.depreciation_cost}"
         WHERE id = "${req.params.id}"`
 
-        expenseCon.query(sql, (sqlErr, results) => {
+        assetCon.query(sql, (sqlErr, results) => {
             if(sqlErr) console.log(sqlErr.message)
 
             res.send(results)
         })
     },
-
+    
     deleteItem: deleteItem = (req, res) => {
-        let sql = `DELETE FROM expense WHERE id = "${req.params.id}"`
+        let sql = `DELETE FROM asset WHERE id = "${req.params.id}"`
 
-        expenseCon.query(sql, (sqlErr, results) => {
+        assetCon.query(sql, (sqlErr, results) => {
             if(sqlErr) console.log(sqlErr.message)
 
             res.send(results)
         })
     },
+    
 
 }
 
 
 module.exports = {
-    dbExpense,
+    dbAsset,
 }
