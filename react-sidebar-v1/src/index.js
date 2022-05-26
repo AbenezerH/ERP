@@ -6,6 +6,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Inventory from './components/inventory/Inventory';
 import Hrnavbar from './components/Hr/Hrnavbar'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,6 +14,7 @@ root.render(
   <Routes>
     <Route path="/" element= {<App />} />
     <Route path="human-Resource" element= {<Hrnavbar />} />
+    <Route path="/inventory" element={<Inventory />} />
   </Routes>
   </BrowserRouter>
 );
