@@ -17,7 +17,7 @@ function sqlConn(){
     })
 }
 
-const dbexpense = {
+const dbExpense = {
 
     sqlConn: sqlConn,
 
