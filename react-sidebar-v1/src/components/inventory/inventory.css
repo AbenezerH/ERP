@@ -1,4 +1,10 @@
 .add {
     display: flex;
+
     justify-content: space-between;
+}
+
+.lbl {
+    padding: 5px;
+    margin: 10px;
 }

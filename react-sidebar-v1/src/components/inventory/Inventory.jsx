@@ -5,17 +5,17 @@ export default function Inventory() {
 
     const [data, setData] = React.useState({
         id: "",
-        name: "",
-        desc: "",
-        unit: "",
-        quantity: "",
+        product_name: "",
+        product_description: "",
+        product_unit: "",
+        product_quantity: "",
         unit_cost: "",
         price: "",
-        critical: "",
-        high: "",
-        created: "",
-        updated: "",
-        expire: "",
+        least_critical_amount: "",
+        high_amount: "",
+        created_at: "",
+        updated_at: "",
+        expire_date: "",
         category: "",
         brand: "",
         by: ""
@@ -23,7 +23,7 @@ export default function Inventory() {
 
 
     React.useEffect(() => {
-        fetch("http://localhost:3000/erpdatabase/inventory/2")
+        fetch("http://localhost:3000/erpdatabase/inventory")
             .then(res => res.json())
                 .then(data => console.log(data))
             .catch(error => console.log(error))
@@ -45,19 +45,26 @@ export default function Inventory() {
     }
 
 
+    function addInventory(event) {
+        fetch("http://localhost:3000/erpdatabase/inventory/add", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then(res => res.json())
+            .then(data => console.log(data))
+        .catch(err => console.log("error " + err))
+
+        console.log("Add Inventory")
+
+    }
+
+
     return(
         <div className="inventory">
 
             <div className="add">
-                <div className="lbl">
-                    <label>ID</label>
-                    <input 
-                        type="text" 
-                        placeholder="add" 
-                        onChange={fieldChangeHandler}
-                        value={data.id}
-                        name="id"/>
-                </div>
 
                 <div className="lbl">
                     <label>Name</label>
@@ -65,8 +72,8 @@ export default function Inventory() {
                         type="text" 
                         placeholder="add" 
                         onChange={fieldChangeHandler}
-                        value={data.name}
-                        name="name"/>
+                        value={data.product_name}
+                        name="product_name"/>
                 </div>
 
                 <div className="lbl">
@@ -75,8 +82,8 @@ export default function Inventory() {
                         type="text" 
                         placeholder="add" 
                         onChange={fieldChangeHandler}
-                        value={data.desc}
-                        name="desc"/>
+                        value={data.product_description}
+                        name="product_description"/>
                 </div>
 
                 <div className="lbl">
@@ -85,8 +92,8 @@ export default function Inventory() {
                         type="text" 
                         placeholder="add" 
                         onChange={fieldChangeHandler}
-                        value={data.unit}
-                        name="unit"/>
+                        value={data.product_unit}
+                        name="product_unit"/>
                 </div>
 
                 <div className="lbl">
@@ -95,8 +102,8 @@ export default function Inventory() {
                         type="text" 
                         placeholder="add" 
                         onChange={fieldChangeHandler}
-                        value={data.quantity}
-                        name="quantity"/>
+                        value={data.product_quantity}
+                        name="product_quantity"/>
                 </div>
 
                 <div className="lbl">
@@ -125,8 +132,8 @@ export default function Inventory() {
                         type="text" 
                         placeholder="add" 
                         onChange={fieldChangeHandler}
-                        value={data.critical}
-                        name="critical"/>
+                        value={data.least_critical_amount}
+                        name="least_critical_amount"/>
                 </div>
 
                 <div className="lbl">
@@ -135,28 +142,8 @@ export default function Inventory() {
                         type="text" 
                         placeholder="add" 
                         onChange={fieldChangeHandler}
-                        value={data.high}
-                        name="high"/>
-                </div>
-
-                <div className="lbl">
-                    <label>Created At</label>
-                    <input 
-                        type="text" 
-                        placeholder="add" 
-                        onChange={fieldChangeHandler}
-                        value={data.created}
-                        name="created"/>
-                </div>
-
-                <div className="lbl">
-                    <label>Updated At</label>
-                    <input 
-                        type="text" 
-                        placeholder="add" 
-                        onChange={fieldChangeHandler}
-                        value={data.updated}
-                        name="updated"/>
+                        value={data.high_amount}
+                        name="high_amount"/>
                 </div>
 
                 <div className="lbl">
@@ -165,8 +152,8 @@ export default function Inventory() {
                         type="text" 
                         placeholder="add" 
                         onChange={fieldChangeHandler}
-                        value={data.expire}
-                        name="expire"/>
+                        value={data.expire_date}
+                        name="expire_date"/>
                 </div>
 
                 <div className="lbl">
@@ -199,7 +186,7 @@ export default function Inventory() {
                         name="by"/>
                 </div>
 
-                <button>Add</button>
+                <button onClick={addInventory}>Add</button>
             </div>
 
             <table>
