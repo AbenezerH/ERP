@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Inventory from './components/inventory/Inventory';
 import Hrnavbar from './components/Hr/Hrnavbar'
+import Addemployee from './components/Hr/Addemployee'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -15,6 +16,7 @@ root.render(
     <Route path="/" element= {<App />} />
     <Route path="human-Resource" element= {<Hrnavbar />} />
     <Route path="/inventory" element={<Inventory />} />
+    <Route path="/addemployee" element= {<Addemployee />} />
   </Routes>
   </BrowserRouter>
 );
