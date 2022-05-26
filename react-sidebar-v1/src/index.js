@@ -7,12 +7,14 @@ import {
   Route,
 } from "react-router-dom";
 import Hrnavbar from './components/Hr/Hrnavbar'
+import Addemployee from './components/Hr/Addemployee'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
   <Routes>
     <Route path="/" element= {<App />} />
     <Route path="human-Resource" element= {<Hrnavbar />} />
+    <Route path="/addemployee" element= {<Addemployee />} />
   </Routes>
   </BrowserRouter>
 );

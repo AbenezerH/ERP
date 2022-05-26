@@ -11,6 +11,7 @@ const Humanresource = () => {
     <BrowserRouter>
   <Routes>
     <Route path="/emloyee" element= {<Hrnavbar />} />
+  
   </Routes>
   </BrowserRouter>
   )
