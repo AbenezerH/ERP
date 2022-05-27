@@ -9,14 +9,19 @@ import {
 import Inventory from './components/inventory/Inventory';
 import Hrnavbar from './components/Hr/Hrnavbar'
 import Addemployee from './components/Hr/Addemployee'
+import Header from './components/Header';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
   <Routes>
-    <Route path="/" element= {<App />} />
+    <Route path="/" element= {<Header />}>
+      <Route path="" element= {<App />}>
+        <Route path="inventory" element={<Inventory />} />
+        <Route path="addemployee" element= {<Addemployee />} />
+      </Route>
+    </Route>
+
     <Route path="human-Resource" element= {<Hrnavbar />} />
-    <Route path="/inventory" element={<Inventory />} />
-    <Route path="/addemployee" element= {<Addemployee />} />
   </Routes>
   </BrowserRouter>
 );
