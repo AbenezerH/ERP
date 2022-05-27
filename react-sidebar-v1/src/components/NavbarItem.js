@@ -6,13 +6,13 @@ export const mainNavbarItems = [
        route:'human-resource',
     },
     {
-        id: 1,
+        id: 2,
         icon: '', 
         label: 'Inventory',
         route:'inventory',
      },
      {
-        id: 1,
+        id: 3,
         icon: '', 
         label: 'Finance',
         route:'finance',
