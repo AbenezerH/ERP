@@ -35,25 +35,47 @@ const AddEmployee = () => {
     doj: "",
     ep_email: "",
   });
-  React.useEffect(() => {
-    fetch("http://localhost:3000/erpdatabase/hr/2")
-        .then(res => res.json())
-            .then(data => console.log(data))
-        .catch(error => console.log(error))
-}, [])
 
+  const [formData, setFormData] = React.useState({
+    name: "",
+    dob: "",
+    city: "",
+    state: "",
+    pincode: "",
+    address: "",
+    dept_id: "",
+    grade_id: "",
+    org_name: "SGSITS",
+    doj: "",
+    ep_email: "",
+});
+
+  function addEmployee(event) {
+    fetch("http://localhost:3000/erpdatabase/inventory/add", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    }).then(res => res.json())
+        .then(data => console.log("add " + data))
+    .catch(err => console.log("error " + err))
+
+    console.log("Add Inventory")
+
+}
 
 function fieldChangeHandler(event){
-    const target = event.target
-    const {name, value, type} = target
+  const target = event.target
+  const {name, value} = target
 
 
-    setData(prevData => {
-        return {
-            ...prevData,
-            [name]: value
-        } 
-    })
+  setFormData(prevData => {
+      return {
+          ...prevData,
+          [name]: value
+      } 
+  })
 
 }
 
@@ -88,7 +110,6 @@ function fieldChangeHandler(event){
               <label htmlFor="name">Name : </label>
               <input
                 type="text"
-                id="name"
                 name="name"
                 onChange={fieldChangeHandler}
                 value={data.name}

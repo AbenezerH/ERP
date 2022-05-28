@@ -4,7 +4,7 @@ const router = express.Router()
 
 
 
-router.get("/", User.dbHR.getAllEmployees);
+router.get("/allEmployee", User.dbHR.getAllEmployees);
 router.get("/:ep_email", User.dbHR.getEmployeeProfile);
 router.get("/getDepartments", User.dbHR.getDepartments);
 router.get("/getGrades", User.dbHR.getGrades);

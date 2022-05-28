@@ -25,9 +25,7 @@ const AdminDashboard = () => {
           alignSelf: "center",
           display: "flex",
           flexDirection: "row",
-          // width: "80%",
-          // backgroundColor: "grey",
-        }}
+          }}
       >
         <div
           className="Login-button"

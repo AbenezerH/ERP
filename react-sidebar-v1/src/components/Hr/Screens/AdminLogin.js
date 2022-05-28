@@ -60,7 +60,7 @@ const AdminLogin = () => {
   const history = useNavigate();
 const handleSubmit = async (e) => {
     e.preventDefault();
-    history("/adminDashboard");
+    history("/home");
 
 }
   
