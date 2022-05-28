@@ -57,7 +57,7 @@ function addGrade(event) {
       .then(data => console.log("add " + data))
   .catch(err => console.log("error " + err))
 
-  console.log("Add Inventory")
+  console.log("Add grade")
 
 }
 
