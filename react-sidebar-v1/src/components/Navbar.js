@@ -30,7 +30,7 @@ const Navbar = () => {
         <Divider />
         <List>
           {mainNavbarItems.map((item, index) => (
-            <ListItem button key={item.id} onclick={() => Navigate(item.route)}>
+            <ListItem button key={item.id} onClick={() => Navigate(item.route)}>
                 <ListItemIcon>
                   {item.icon}
                 </ListItemIcon>

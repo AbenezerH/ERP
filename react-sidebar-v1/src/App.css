@@ -15,4 +15,19 @@ h1 {
   text-align: center;
   color: blue;
   margin-top: 10px;
+  margin-right: auto;
+  margin-left: 20%;
+}
+
+.side-main {
+  display: flex;
+}
+
+.header {
+  display: flex;
+}
+
+.big-container {
+  display: flex;
+  flex-direction: column;
 }

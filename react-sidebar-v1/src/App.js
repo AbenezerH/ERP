@@ -1,14 +1,21 @@
 import React from 'react'
 import './App.css';
 import Navbar from './components/Navbar';
+import { Outlet } from "react-router-dom"
+
 function App() {
   return (
-   <div>
-     <h1>  MANUFACTURER ERP SYSTEM</h1>
-     <br/>
-     <hr/>
-  <Navbar />
-  </div>
+    <div>
+
+      <div className="side-main">
+
+        <Navbar />
+        <Outlet />
+        
+      </div>
+      
+    </div>
+
   );
 }
 

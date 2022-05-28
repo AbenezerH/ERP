@@ -6,7 +6,9 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Inventory from './components/inventory/Inventory';
 import Hrnavbar from './components/Hr/Hrnavbar'
+<<<<<<< HEAD
 import AddEmployee from './components/Hr/Screens/AddEmployee';
 import AddDep from './components/Hr/Screens/AddDep';
 import AddExtras from './components/Hr/Screens/AddExtras';
@@ -21,12 +23,23 @@ import EmployeeDrawer from './components/Hr/Screens/EmployeeDrawer';
 import EmployeeLogin from './components/Hr/Screens/EmployeeLogin';
 import Welcome from './components/Hr/Screens/Welcome';
 
+=======
+import Addemployee from './components/Hr/Addemployee'
+import Header from './components/Header';
+>>>>>>> be35d665327337c683706206854752b7d42e8ffd
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
   <Routes>
-    <Route path="/" element= {<App />} />
+    <Route path="/" element= {<Header />}>
+      <Route path="" element= {<App />}>
+        <Route path="inventory" element={<Inventory />} />
+        <Route path="addemployee" element= {<Addemployee />} />
+      </Route>
+    </Route>
+
     <Route path="human-Resource" element= {<Hrnavbar />} />
+<<<<<<< HEAD
     <Route path="/addemployee" element= {<AddEmployee />} />
     <Route path="/addDepartment" element= {<AddDep />} />
     <Route path="/addextras" element= {<AddExtras />} />
@@ -40,6 +53,8 @@ root.render(
     <Route path="/employedrawer" element= {<EmployeeDrawer />} />
     <Route path="/employelogin" element= {<EmployeeLogin />} />
     <Route path="/welcome" element= {<Welcome />} />
+=======
+>>>>>>> be35d665327337c683706206854752b7d42e8ffd
   </Routes>
   </BrowserRouter>
 );
