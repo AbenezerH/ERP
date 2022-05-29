@@ -26,6 +26,7 @@ import Welcome from './components/Hr/Screens/Welcome';
 
 import Header from './components/Header';
 import Employee from './components/Hr/Employee'
+import AddDamagedGood from './components/inventory/damagedGood/AddDamagedGood';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -57,7 +58,8 @@ root.render(
     <Route path="/employelogin" element= {<EmployeeLogin />} />
     <Route path="/welcome" element= {<Welcome />} />
     <Route path="/addwarranty" element= {<AddWarranty />} />
-    
+    <Route path="/adddamagedgood" element={<AddDamagedGood />} />
+
   </Routes>
   </BrowserRouter>
 );
