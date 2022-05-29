@@ -6,6 +6,8 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+
+import AddWarranty from './components/inventory/warranty/AddWarranty'
 import Inventory from './components/inventory/inventory/Inventory';
 import Hrnavbar from './components/Hr/Hrnavbar'
 import AddEmployee from './components/Hr/Screens/AddEmployee';
@@ -22,7 +24,6 @@ import EmployeeDrawer from './components/Hr/Screens/EmployeeDrawer';
 import EmployeeLogin from './components/Hr/Screens/EmployeeLogin';
 import Welcome from './components/Hr/Screens/Welcome';
 
-import Addemployee from './components/Hr/Screens/AddEmployee'
 import Header from './components/Header';
 import Employee from './components/Hr/Employee'
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -55,6 +56,8 @@ root.render(
     <Route path="/employedrawer" element= {<EmployeeDrawer />} />
     <Route path="/employelogin" element= {<EmployeeLogin />} />
     <Route path="/welcome" element= {<Welcome />} />
+    <Route path="/addwarranty" element= {<AddWarranty />} />
+    
   </Routes>
   </BrowserRouter>
 );
