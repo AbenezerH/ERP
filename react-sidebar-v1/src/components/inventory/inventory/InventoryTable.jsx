@@ -138,9 +138,7 @@ export default function StickyHeadTable(props) {
     React.useEffect(() => {
         setRows(props.items)
     }, [props.items])
-
-    //console.log(rows[0].id + "\n\n\n" + props.items[0].id);
-   
+    
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -191,7 +189,7 @@ export default function StickyHeadTable(props) {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[5, 10, 25, 100]}
         component="div"
         count={rows.length}
         rowsPerPage={rowsPerPage}

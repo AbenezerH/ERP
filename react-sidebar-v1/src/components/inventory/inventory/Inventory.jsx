@@ -5,6 +5,8 @@ import StickyHeadTable from './InventoryTable'
 
 export default function Inventory() {
 
+    let [change, setChange] = React.useState(true)
+
     const [formData, setFormData] = React.useState({
         id: "",
         product_name: "",
@@ -48,7 +50,7 @@ export default function Inventory() {
                     setItems(data);
                 })
             .catch(error => console.log(error))
-    }, [])
+    }, [change])
 
 
     function fieldChangeHandler(event){
@@ -67,6 +69,18 @@ export default function Inventory() {
 
 
     function addInventory(event) {
+        setChange(prev => !prev)
+        setFormData(prevFormData => {
+            let obj
+            for (let key in prevFormData){
+                obj = {
+                    ...obj, 
+                    [key]: ""
+                }
+            }
+            return obj
+        })
+
         fetch("http://localhost:3000/erpdatabase/inventory/add", {
             method: "POST",
             body: JSON.stringify(formData),
@@ -92,7 +106,7 @@ export default function Inventory() {
                         <label>Name</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="name" 
                             onChange={fieldChangeHandler}
                             value={formData.product_name}
                             name="product_name"/>
@@ -100,9 +114,9 @@ export default function Inventory() {
 
                     <div className="lbl">
                         <label>Description</label>
-                        <input 
-                            type="text" 
-                            placeholder="add" 
+                        <textarea 
+                            className="desc-textarea"
+                            placeholder="description" 
                             onChange={fieldChangeHandler}
                             value={formData.product_description}
                             name="product_description"/>
@@ -114,7 +128,7 @@ export default function Inventory() {
                         <label>Unit</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="unit" 
                             onChange={fieldChangeHandler}
                             value={formData.product_unit}
                             name="product_unit"/>
@@ -124,7 +138,7 @@ export default function Inventory() {
                         <label>Quantity</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="quantity" 
                             onChange={fieldChangeHandler}
                             value={formData.product_quantity}
                             name="product_quantity"/>
@@ -134,7 +148,7 @@ export default function Inventory() {
                         <label>Unit-Cost</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="unit cost" 
                             onChange={fieldChangeHandler}
                             value={formData.unit_cost}
                             name="unit_cost"/>
@@ -147,7 +161,7 @@ export default function Inventory() {
                         <label>Price</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="price" 
                             onChange={fieldChangeHandler}
                             value={formData.price}
                             name="price"/>
@@ -157,7 +171,7 @@ export default function Inventory() {
                         <label>Least Critical Amount</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="least critical amount" 
                             onChange={fieldChangeHandler}
                             value={formData.least_critical_amount}
                             name="least_critical_amount"/>
@@ -167,7 +181,7 @@ export default function Inventory() {
                         <label>High Amount</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="high amount" 
                             onChange={fieldChangeHandler}
                             value={formData.high_amount}
                             name="high_amount"/>
@@ -179,7 +193,7 @@ export default function Inventory() {
                         <label>Category</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="category" 
                             onChange={fieldChangeHandler}
                             value={formData.category}
                             name="category"/>
@@ -189,7 +203,7 @@ export default function Inventory() {
                         <label>Brand</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="brand" 
                             onChange={fieldChangeHandler}
                             value={formData.brand}
                             name="brand"/>
@@ -198,8 +212,7 @@ export default function Inventory() {
                     <div className="lbl">
                         <label>Expire Date</label>
                         <input 
-                            type="text" 
-                            placeholder="add" 
+                            type="datetime-local" 
                             onChange={fieldChangeHandler}
                             value={formData.expire_date}
                             name="expire_date"/>
