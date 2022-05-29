@@ -112,7 +112,7 @@ function fieldChangeHandler(event){
                 type="text"
                 name="name"
                 onChange={fieldChangeHandler}
-                value={data.name}
+                value={formData.name}
               />
             </div>
 
@@ -123,7 +123,7 @@ function fieldChangeHandler(event){
                 id="dob"
                 name="dob"
                 onChange={fieldChangeHandler}
-                value={data.dob}
+                value={formData.dob}
               />
             </div>
             <div className="form-control">
@@ -133,7 +133,7 @@ function fieldChangeHandler(event){
                 id="address"
                 name="address"
                 onChange={fieldChangeHandler}
-                value={data.address}
+                value={formData.address}
               />
             </div>
             <div className="form-control">
@@ -143,7 +143,7 @@ function fieldChangeHandler(event){
                 id="city"
                 name="city"
                 onChange={fieldChangeHandler}
-                value={data.city}
+                value={formData.city}
               />
             </div>
             <div className="form-control">
@@ -153,7 +153,7 @@ function fieldChangeHandler(event){
                 id="state"
                 name="state"
                 onChange={fieldChangeHandler}
-                value={data.state}
+                value={formData.state}
               />
             </div>
             <div className="form-control">
@@ -165,7 +165,7 @@ function fieldChangeHandler(event){
                 id="pincode"
                 name="pincode"
                 onChange={fieldChangeHandler}
-                value={data.pincode}
+                value={formData.pincode}
                 size="6"
                 maxLength="6"
               />
@@ -182,7 +182,7 @@ function fieldChangeHandler(event){
                 placeholder="email"
                 name="email"
                 onChange={fieldChangeHandler}
-                value={data.ep_email}
+                value={formData.ep_email}
               />
             </div>
             <div className="form-control">
@@ -192,7 +192,7 @@ function fieldChangeHandler(event){
                 placeholder="department"
                 name="department"
                 onChange={fieldChangeHandler}
-                value={data.dept_id}
+                value={formData.dept_id}
               />
             </div>
             <div className="form-control">
@@ -202,7 +202,7 @@ function fieldChangeHandler(event){
                 placeholder="grade"
                 name="grade"
                 onChange={fieldChangeHandler}
-                value={data.grade_id}
+                value={formData.grade_id}
               />
             </div>
             <div className="form-control">
@@ -212,7 +212,7 @@ function fieldChangeHandler(event){
                 placeholder="org_name"
                 name="org_name"
                 onChange={fieldChangeHandler}
-                value={data.org_name}
+                value={formData.org_name}
               />
             </div>
             <div className="form-control">
@@ -223,7 +223,7 @@ function fieldChangeHandler(event){
                 placeholder="date"
                 name="doj"
                 onChange={fieldChangeHandler}
-                value={data.doj}
+                value={formData.doj}
               />
             </div>
           </div>
