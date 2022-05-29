@@ -31,7 +31,7 @@ return (
       <Divider />
       <List>
         {hrNavbarItems.map((item, index) => (
-          <ListItem button key={item.id} onclick={() => Navigate(item.route)}>
+          <ListItem button key={item.id} onClick={() => Navigate(item.route)}>
             <ListItemButton>
               <ListItemIcon>
                 {item.icon}

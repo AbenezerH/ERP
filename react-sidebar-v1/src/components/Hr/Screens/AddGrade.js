@@ -4,43 +4,66 @@ import "../StyleSheets/Welcome.css";
 import "../StyleSheets/AdminOptions.css";
 
 const AddGrade = () => {
-  const [data, setData] = React.useState({
-    grade_name: "",
-    basic_pay: "",
-    grade_pf: "",
-    grade_bonus: "",
-    grade_ta: "",
-    grade_da: "",
+const [formData, setFormData] = React.useState({
+  grade_name: "",
+  basic_pay: "",
+  grade_pf: "",
+  grade_bonus: "",
+  grade_ta: "",
+  grade_da: "",
 });
 
-
+const [items, setItems] = React.useState([{
+  grade_name: "",
+  basic_pay: "",
+  grade_pf: "",
+  grade_bonus: "",
+  grade_ta: "",
+  grade_da: "",
+}]);
 React.useEffect(() => {
-    fetch("http://localhost:3000/erpdatabase/hr/2")
-        .then(res => res.json())
-            .then(data => console.log(data))
-        .catch(error => console.log(error))
+  fetch("http://localhost:3000/erpdatabase/hr/addGrade")
+      .then(res => res.json())
+          .then(data => {
+              setItems(data);
+          })
+      .catch(error => console.log(error))
 }, [])
 
 
 function fieldChangeHandler(event){
-    const target = event.target
-    const {name, value, type} = target
+  const target = event.target
+  const {name, value} = target
 
 
-    setData(prevData => {
-        return {
-            ...prevData,
-            [name]: value
-        } 
-    })
+  setFormData(prevData => {
+      return {
+          ...prevData,
+          [name]: value
+      } 
+  })
 
 }
 
 
- 
+function addGrade(event) {
+  fetch("http://localhost:3000/erpdatabase/hr/addGrade", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+          "Content-type": "application/json; charset=UTF-8"
+      }
+  }).then(res => res.json())
+      .then(data => console.log("add " + data))
+  .catch(err => console.log("error " + err))
+
+  console.log("Add grade")
+
+}
+
   return (
-    <> 
-      <div className="App">
+    <div> 
+      <div className="Addgrade">
         <header>
           <h1>Payroll Management System</h1>
           <hr className="Underline" />
@@ -54,7 +77,7 @@ function fieldChangeHandler(event){
               placeholder="Grade_Name"
               name="Grade_Name"
               onChange={fieldChangeHandler}
-                value={data.grade_name}
+                value={formData.grade_name}
             />
           </div>
           <div className="form-control">
@@ -64,7 +87,7 @@ function fieldChangeHandler(event){
               placeholder="Bonus"
               name="Bonus"
               onChange={fieldChangeHandler}
-                value={data.grade_bonus}
+                value={formData.grade_bonus}
             />
           </div>
           <div className="form-control">
@@ -74,7 +97,7 @@ function fieldChangeHandler(event){
               placeholder="Travel_Allowance"
               name="Travel_Allowance"
               onChange={fieldChangeHandler}
-                value={data.grade_ta}
+                value={formData.grade_ta}
             />
           </div>
           <div className="form-control">
@@ -84,7 +107,7 @@ function fieldChangeHandler(event){
               placeholder="Dearness_Allowance"
               name="Dearness_Allowance"
               onChange={fieldChangeHandler}
-                value={data.grade_da}
+                value={formData.grade_da}
             />
           </div>
           <div className="form-control">
@@ -94,7 +117,7 @@ function fieldChangeHandler(event){
               placeholder="Basic_Pay"
               name="Basic_Pay"
               onChange={fieldChangeHandler}
-                value={data.basic_pay}
+                value={formData.basic_pay}
             />
           </div>
           <div className="form-control">
@@ -104,13 +127,13 @@ function fieldChangeHandler(event){
               placeholder="Grade_PF"
               name="Grade_PF"
               onChange={fieldChangeHandler}
-                value={data.grade_pf}
+                value={formData.grade_pf}
             />
           </div>
-          <button type="submit">add Grade</button>
+          <button onClick={addGrade}>add Grade</button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

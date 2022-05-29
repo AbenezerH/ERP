@@ -8,10 +8,13 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { mainNavbarItems } from './NavbarItem';
 import { useNavigate } from "react-router-dom";
+import Header from './Header';
 const Navbar = () => {
   const Navigate=useNavigate();
     const drawerWidth=220;
   return (
+    <>
+    <Header />
     <Drawer
         sx={{
           width: drawerWidth,
@@ -19,6 +22,7 @@ const Navbar = () => {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
+            paddingTop:5,
             backgroundColor: '#101F33',
             color: 'rgb(255, 255, 255, 0.7)',
           },
@@ -39,6 +43,7 @@ const Navbar = () => {
           ))}
         </List>
       </Drawer>
+      </>
   )
 }
 

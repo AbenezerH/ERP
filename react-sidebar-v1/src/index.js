@@ -24,6 +24,8 @@ import Welcome from './components/Hr/Screens/Welcome';
 
 import Addemployee from './components/Hr/Addemployee'
 import Header from './components/Header';
+import Header from './components/Header';
+import Employee from './components/Hr/Employee'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -36,13 +38,18 @@ root.render(
     </Route>
 
     <Route path="human-Resource" element= {<Hrnavbar />} />
+    <Route path="/header" element= {<Header />} />
+      <Route path="/home" element= {<App />}/>
+        <Route path="/home/inventory" element={<Inventory />} />
+    <Route path="/home/human-Resource" element= {<Hrnavbar />} />
     <Route path="/addemployee" element= {<AddEmployee />} />
+    <Route path="/home/human-Resource/employee" element= {<Employee />} />
     <Route path="/addDepartment" element= {<AddDep />} />
     <Route path="/addextras" element= {<AddExtras />} />
     <Route path="/addgrade" element= {<AddGrade />} />
     <Route path="/adminaddinfo" element= {<AdminAddInfo />} />
     <Route path="/admindashboard" element= {<AdminDashboard />} />
-    <Route path="/adminlogin" element= {<AdminLogin />} />
+    <Route path="/" element= {<AdminLogin />} />
     <Route path="/adminupdateinfo" element= {<AdminUpdateInfo />} />
     <Route path="/attendance" element= {<Attendance />} />
     <Route path="/attendancelog" element= {<AttendanceLog />} />

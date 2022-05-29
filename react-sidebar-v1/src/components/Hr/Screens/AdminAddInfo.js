@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import logo from "../Assets/Logo.png";
 import "../StyleSheets/Welcome.css";
 import {useNavigate} from "react-router-dom";
@@ -16,7 +16,7 @@ const AdminAddInfo=()=>{
           <div className='Login-button' onClick={()=>history('/addEmployee')}>
           <h4>Employee</h4>
         </div>
-        <div className='Login-button' onClick={()=>history('/addDep')}>
+        <div className='Login-button' onClick={()=>history('/addDepartment')}>
           <h4>Department</h4>
         </div>
         </div>
