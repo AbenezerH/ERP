@@ -180,7 +180,7 @@ function fieldChangeHandler(event){
               <input
                 type="text"
                 placeholder="email"
-                name="email"
+                name="ep_email"
                 onChange={fieldChangeHandler}
                 value={formData.ep_email}
               />
@@ -190,7 +190,7 @@ function fieldChangeHandler(event){
               <input
                 type="text"
                 placeholder="department"
-                name="department"
+                name="dept_id"
                 onChange={fieldChangeHandler}
                 value={formData.dept_id}
               />
@@ -200,7 +200,7 @@ function fieldChangeHandler(event){
               <input
                 type="text"
                 placeholder="grade"
-                name="grade"
+                name="grade_id"
                 onChange={fieldChangeHandler}
                 value={formData.grade_id}
               />
