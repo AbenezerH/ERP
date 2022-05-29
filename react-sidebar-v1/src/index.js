@@ -6,7 +6,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Inventory from './components/inventory/Inventory';
+import Inventory from './components/inventory/inventory/Inventory';
 import Hrnavbar from './components/Hr/Hrnavbar'
 import AddEmployee from './components/Hr/Screens/AddEmployee';
 import AddDep from './components/Hr/Screens/AddDep';
