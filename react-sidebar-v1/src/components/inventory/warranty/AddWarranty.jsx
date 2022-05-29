@@ -19,6 +19,44 @@ const AddWarranty = () => {
     setOpen(false);
     navigate.goBack();
   };
+
+
+  const [formData, setFormData] = React.useState(
+    {
+      full_name: "",
+      phone_number: "",
+      serial_number: "",
+      valid_until: ""
+    }
+  )
+
+  function fieldChangeHandler(event){
+    const target = event.target
+    const {name, value} = target
+
+
+    setFormData(prevData => {
+        return {
+            ...prevData,
+            [name]: value
+        } 
+    })
+
+}
+
+  function addWarranty(event){
+    fetch("http://localhost:3000/erpdatabase/warranty/add", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+          "Content-type": "application/json; charset=UTF-8"
+      }
+    }).then(res => res.json())
+        .then(data => console.log("add " + data))
+    .catch(err => console.log("error " + err))
+
+    console.log("Add Warranty")
+  }
    
   return (
     <>
@@ -48,7 +86,7 @@ const AddWarranty = () => {
           <hr className="Underline" />
           <img src={logo} alt="logo"></img>
         </header>
-        <form className="form" >
+        <form className="form" onSubmit={addWarranty}>
        
           <div className="form-control">
             <label htmlFor="dep_Name">Full Name : </label>
@@ -56,7 +94,8 @@ const AddWarranty = () => {
               type="text"
               id="full_name"
               name="full_name"
-             
+              onChange={fieldChangeHandler}
+              value={formData.full_name}
             />
           </div>
 
@@ -66,6 +105,8 @@ const AddWarranty = () => {
               type="text"
               id="phone_number"
               name="phone_number"
+              onChange={fieldChangeHandler}
+              value={formData.phone_number}
             />
           </div>
 
@@ -75,15 +116,19 @@ const AddWarranty = () => {
               type="text"
               id="serial_number"
               name="serial_number"
+              onChange={fieldChangeHandler}
+              value={formData.serial_number}
             />
           </div>
 
           <div className="form-control">
             <label htmlFor="org_Name">Valid Until : </label>
             <input
-              type="text"
+              type="date"
               id="valid_until"
               name="valid_until"
+              onChange={fieldChangeHandler}
+              value={formData.valid_until}
             />
           </div>
           <button type="submit">Add Warranty</button>
