@@ -32,8 +32,8 @@ const AddWarranty = () => {
 
   let reg = {
     full_name: /^[a-zA-Z ]+$/,
-    phone_number: /^(([+]?[0-9]{12})|(0[\d]{9}){1})$/,
-    serial_number: /^[a-zA-Z0-9 ]+$/,
+    phone_number: /^(([0-9]{12})|(0[\d]{9}){1})$/,
+    serial_number: /^[a-zA-Z0-9 ]{1,20}$/,
     valid_until: /.*/
   }
 

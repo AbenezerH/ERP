@@ -1,5 +1,8 @@
 const mysql = require('mysql')
 
+const warrantySample = require("./warrantySample")
+
+
 let db = mysql.createConnection({
 
     host: "localhost",
@@ -344,9 +347,34 @@ function createExpenseTable(){
 
 }
 
+
+function enterWarranty(){
+
+  for (let i = 0; i < warrantySample.names.length; i++){
+    let sql = 
+    `INSERT IGNORE INTO warranty
+    (id,
+    full_name,
+    phone_number,
+    serial_number,
+    valid_until) VALUES
+    ("${i+1}",
+    "${warrantySample.names[i]}",
+    "${warrantySample.phone_number[i]}",
+    "${warrantySample.serial_number[i]}",
+    "${warrantySample.valid_until[i]}")`
+
+      // console.log(sql + "\n\n")
+    connectOnce.query(sql, (sqlErr, results) => {
+      if(sqlErr) console.log(sqlErr.message)
+      console.log(results)
+    })
+  }
+}
+
 function enterCategory(){
   let sqlData = 
-      `INSERT INTO category 
+      `INSERT IGNORE INTO category 
       (name) VALUES ("other")`
 
       connectOnce.query( sqlData, (err) => {
@@ -357,7 +385,7 @@ function enterCategory(){
 }
 function enterBrand(){
   let sqlData = 
-      `INSERT INTO brand 
+      `INSERT IGNORE INTO brand 
       (name) VALUES ("other")`
 
       connectOnce.query( sqlData, (err) => {
@@ -393,8 +421,14 @@ function createTables(){
     createAssetTable()
     createExpenseTable()
 
+
+
+    // entering the sample database data
+
     enterCategory()
     enterBrand()
+    enterWarranty()
+
 
     db.end(err => {if(err) throw err})
 }
