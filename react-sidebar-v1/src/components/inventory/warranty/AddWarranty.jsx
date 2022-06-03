@@ -30,10 +30,23 @@ const AddWarranty = () => {
     }
   )
 
+  let reg = {
+    full_name: /^[a-zA-Z ]+$/,
+    phone_number: /^(([+]?[0-9]{12})|(0[\d]{9}){1})$/,
+    serial_number: /^[a-zA-Z0-9 ]+$/,
+    valid_until: /.*/
+  }
+
   function fieldChangeHandler(event){
     const target = event.target
     const {name, value} = target
 
+    if(reg[name].test(value)){
+      target.style.color = "red"
+    }
+    else{
+      target.style.color = "black"
+    }
 
     setFormData(prevData => {
         return {
@@ -43,6 +56,8 @@ const AddWarranty = () => {
     })
 
 }
+
+console.log(formData)
 
   function addWarranty(event){
     fetch("http://localhost:3000/erpdatabase/warranty/add", {
