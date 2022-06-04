@@ -22,7 +22,9 @@ import EmployeeDrawer from './components/Hr/Screens/EmployeeDrawer';
 import EmployeeLogin from './components/Hr/Screens/EmployeeLogin';
 import Welcome from './components/Hr/Screens/Welcome';
 import Header from './components/Header';
-import Employee from './components/Hr/Employee'
+import Employee from './components/Hr/Employee';
+import AddOrg from './components/Hr/Screens/AddOrg';
+import SignUp from './components/Hr/Screens/SignUp'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -45,6 +47,8 @@ root.render(
     <Route path="/employedrawer" element= {<EmployeeDrawer />} />
     <Route path="/employelogin" element= {<EmployeeLogin />} />
     <Route path="/welcome" element= {<Welcome />} />
+    <Route path="/addorg" element= {<AddOrg />} />
+    <Route path="/" element= {<SignUp />} />
   </Routes>
   </BrowserRouter>
 );

@@ -8,17 +8,12 @@ import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import { useNavigate } from "react-router-dom";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -45,17 +40,6 @@ const AdminLogin = () => {
   const classes = useStyles();
   const [email, setEmail] = useState("email");
   const [password, setPassword] = useState("password");
-  const [open, setOpen] = useState(false);
-  const [msg, setMessage] = useState("");
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   
   const history = useNavigate();
 const handleSubmit = async (e) => {
@@ -66,34 +50,6 @@ const handleSubmit = async (e) => {
   
   return (
     <div className="App">
-      <div>
-        {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-          Open alert dialog
-        </Button> */}
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">
-            {"Authentification Error"}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              {msg}
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            {/* <Button onClick={handleClose} color="primary">
-              Disagree
-            </Button> */}
-            <Button onClick={handleClose} color="primary" autoFocus>
-              OK
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </div>
       <header>
         <h1>Payroll Management System</h1>
         <hr className="Underline" />

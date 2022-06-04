@@ -19,6 +19,9 @@ const AdminAddInfo=()=>{
         <div className='Login-button' onClick={()=>history('/addDepartment')}>
           <h4>Department</h4>
         </div>
+        <div className='Login-button' onClick={()=>history('/addorg')}>
+          <h4>Organization</h4>
+        </div>
         </div>
 
         <div style={{justifyContent:"center",alignItems:"center",display:"flex",flexDirection:"row"}}>
