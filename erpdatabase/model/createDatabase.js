@@ -25,7 +25,9 @@ let db = mysql.createConnection({
 
 function createAdminTable(){
     let admin =
-      `CREATE TABLE IF NOT EXISTS admin(admin_id varchar(255),
+      `CREATE TABLE IF NOT EXISTS admin(
+      companyName varchar(255),
+      TIN_number int,
        username varchar(255), 
        ad_email varchar(255), 
        password varchar(255), 
@@ -40,11 +42,12 @@ function createAdminTable(){
 
 function createOrganizationTable(){
     let org =
-      `CREATE TABLE IF NOT EXISTS organisation(org_name varchar(255),
+      `CREATE TABLE IF NOT EXISTS organisation(
+        org_name varchar(255),
        ad_email varchar(255), 
        location varchar(255), 
        contact_number varchar(255), 
-       paid_leave_limit int, encashed_leave_limit int,
+       paid_leave_limit date, encashed_leave_limit date,
         primary key(org_name)) `;
     connectOnce.query(org, (err) => {
       if (err) {
@@ -55,11 +58,11 @@ function createOrganizationTable(){
 
 function createDepartmentTable(){
     let dep =
-        `CREATE TABLE IF NOT EXISTS department(dept_id varchar(255),
+        `CREATE TABLE IF NOT EXISTS department(
+          dept_id varchar(255),
          dept_name varchar(255), 
-         org_name varchar(255), 
-         primary key (dept_id), foreign key (org_name)
-          references organisation(org_name) on delete set null)`;
+         branch varchar(255), 
+         primary key (dept_id))`;
       connectOnce.query(dep, (err) => {
         if (err) {
           throw err;
@@ -84,19 +87,17 @@ function createGradePayTable(){
 
 function createEmployeTable(){
     let employe =
-        `CREATE TABLE IF NOT EXISTS employe(present int,  e_id varchar(255),
-          paid_leave_taken int, 
-          encashed_leave_this_month int,
-           encashed_leave_till_date int,
-            doj date,  
-            name varchar(255), dob date, 
-            address varchar(255), city varchar(255),
+        `CREATE TABLE IF NOT EXISTS employe(name varchar(255),
+        dob date, 
+        address varchar(255),
+             city varchar(255),
              state varchar(255), pincode numeric(6, 0), 
              ep_email varchar(255) unique, password varchar(255),
-              org_name varchar(255), dept_id varchar(255), 
-              grade_id varchar(255), primary key(ep_email), 
-              foreign key (org_name) references organisation(org_name)
-               on delete  set null, foreign key (dept_id) references 
+               dept_id varchar(255), 
+              grade_id varchar(255), doj date, paid_leave_taken date, 
+              encashed_leave_this_month date,
+               encashed_leave_till_date date, primary key(ep_email), 
+               foreign key (dept_id) references 
                department(dept_id) on delete set null, 
                foreign key (grade_id) references gradepay(grade_id) 
                on delete set null)`;

@@ -2,7 +2,20 @@ export const hrNavbarItems = [
     {
        id: 1,
        icon: '', 
-       label: 'Emloyee',
-       route:'emloyee',
+       label: 'Employee',
+       route:'employee',
     },
+    {
+        id: 2,
+        icon: '', 
+        label: 'Payroll',
+        route:'payroll',
+     },
+     {
+        id: 3,
+        icon: '', 
+        label: 'Attendance',
+        route:'attendance',
+     },
+ 
 ]

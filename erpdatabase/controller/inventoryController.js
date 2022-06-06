@@ -67,6 +67,7 @@ const dbInventory = {
             inventoryCon.query(sql, (sqlErr, results) => {
                 if(sqlErr) throw sqlErr
 
+                console.log(sql)
                 res.send(results)
             })
     },
