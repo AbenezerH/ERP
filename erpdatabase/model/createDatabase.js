@@ -1,5 +1,8 @@
 const mysql = require('mysql')
 
+const warrantySample = require("./warrantySample")
+
+
 let db = mysql.createConnection({
 
     host: "localhost",
@@ -157,7 +160,7 @@ function createBrandTable(){
     let sqlBrand = 
     `CREATE TABLE IF NOT EXISTS brand
     (id int(11) AUTO_INCREMENT,
-    name varchar(50),
+    name varchar(50) UNIQUE,
     PRIMARY KEY(id))
     `
           
@@ -173,7 +176,7 @@ function createCategoryTable(){
     let sqlCategory =
     `CREATE TABLE IF NOT EXISTS category
     (id int(11) AUTO_INCREMENT,
-    name varchar(50),
+    name varchar(50) UNIQUE,
     PRIMARY KEY(id))
     `
     
@@ -193,7 +196,7 @@ function createWarrantyTable(){
     full_name varchar(50),
     phone_number int(11),
     serial_number varchar(20),
-    valid_until datetime,
+    valid_until date,
     PRIMARY KEY(id))
     `      
         
@@ -216,9 +219,9 @@ function createInventoryTable(){
       unit_cost double, price double, 
       least_critical_amount double, 
       high_amount double, 
-      created_at datetime, 
-      updated_at datetime, 
-      expire_date datetime, 
+      created_at date, 
+      updated_at date, 
+      expire_date date, 
       category int(11), 
       brand int(11), 
       added_by varchar(255), 
@@ -245,7 +248,7 @@ function createSalesTable(){
       warranty int(11), 
       vat double, 
       witholding_tax double, 
-      created_at datetime,
+      created_at date,
       sold_by varchar(255),
       primary key(id),
       FOREIGN KEY (product_id) REFERENCES inventory(id) ON DELETE SET NULL, 
@@ -284,7 +287,7 @@ function createIncomeTable(){
     (id int(11) AUTO_INCREMENT,
     type varchar(255),
     quantity double,
-    created_at datetime,
+    created_at date,
     registered_by varchar(255),
     PRIMARY KEY (id),
     FOREIGN KEY(registered_by) REFERENCES employe(ep_email) ON DELETE SET NULL)`
@@ -300,7 +303,7 @@ function createLiabilityTable(){
     `CREATE TABLE IF NOT EXISTS liability
     (id int(11) AUTO_INCREMENT,
     name varchar(255),
-    created_at datetime,
+    created_at date,
     type varchar(255),
     amount double,
     PRIMARY KEY (id))`
@@ -317,7 +320,7 @@ function createAssetTable(){
     (id int(11) AUTO_INCREMENT,
     name varchar(255),
     value double,
-    created_at datetime,
+    created_at date,
     asset_type varchar(255),
     depreciation_cost double,
     PRIMARY KEY (id))`
@@ -333,7 +336,7 @@ function createExpenseTable(){
   `CREATE TABLE IF NOT EXISTS expense
   (id int(11) AUTO_INCREMENT,
   name varchar(255),
-  created_at datetime,
+  created_at date,
   ex_type varchar(255),
   ex_amount double,
   PRIMARY KEY (id))`
@@ -343,6 +346,54 @@ function createExpenseTable(){
     }
   });
 
+}
+
+
+function enterWarranty(){
+
+  for (let i = 0; i < warrantySample.names.length; i++){
+    let sql = 
+    `INSERT IGNORE INTO warranty
+    (id,
+    full_name,
+    phone_number,
+    serial_number,
+    valid_until) VALUES
+    ("${i+1}",
+    "${warrantySample.names[i]}",
+    "${warrantySample.phone_number[i]}",
+    "${warrantySample.serial_number[i]}",
+    "${warrantySample.valid_until[i]}")`
+
+      // console.log(sql + "\n\n")
+    connectOnce.query(sql, (sqlErr, results) => {
+      if(sqlErr) console.log(sqlErr.message)
+      console.log(results)
+    })
+  }
+}
+
+function enterCategory(){
+  let sqlData = 
+      `INSERT IGNORE INTO category 
+      (name) VALUES ("other")`
+
+      connectOnce.query( sqlData, (err) => {
+        if (err) {
+          throw err;
+        }
+      })
+}
+function enterBrand(){
+  let sqlData = 
+      `INSERT IGNORE INTO brand 
+      (name) VALUES ("other")`
+
+      connectOnce.query( sqlData, (err) => {
+        if (err) {
+          throw err;
+        }
+      })
 }
 
 function createTables(){
@@ -370,6 +421,15 @@ function createTables(){
     createLiabilityTable()
     createAssetTable()
     createExpenseTable()
+
+
+
+    // entering the sample database data
+
+    enterCategory()
+    enterBrand()
+    enterWarranty()
+
 
     db.end(err => {if(err) throw err})
 }

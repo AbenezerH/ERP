@@ -5,6 +5,18 @@ import StickyHeadTable from './InventoryTable'
 
 export default function Inventory() {
 
+    const [change, setChange] = React.useState(true)
+
+    const [brandItems, setBrandItems] = React.useState([{
+        id: "",
+        name: ""
+    }]);
+
+    const [categoryItems, setCategoryItems] = React.useState([{
+        id: "",
+        name: ""
+    }]);
+
     const [formData, setFormData] = React.useState({
         id: "",
         product_name: "",
@@ -18,8 +30,8 @@ export default function Inventory() {
         created_at: "",
         updated_at: "",
         expire_date: "",
-        category: "",
-        brand: "",
+        category: "1",
+        brand: "1",
         by: ""
     });
 
@@ -48,25 +60,87 @@ export default function Inventory() {
                     setItems(data);
                 })
             .catch(error => console.log(error))
-    }, [])
+
+
+        fetch("http://localhost:3000/erpdatabase/category")
+            .then(res => res.json())
+                .then(data => {
+                    setCategoryItems(data);
+                })
+            .catch(error => console.log(error))
+
+        fetch("http://localhost:3000/erpdatabase/brand")
+            .then(res => res.json())
+                .then(data => {
+                    setBrandItems(data);
+                })
+            .catch(error => console.log(error))
+
+    }, [change])
+
+
+    // the object containing the regex
+    let reg = {
+        product_name: /^[a-zA-Z0-9(),\-_ ]{1,50}$/,
+
+        product_description: /^[a-zA-Z0-9(),\-_ ]{0,1024}$/,
+
+        product_unit: /^[a-zA-Z0-9(),/\-_/ ]{0,10}$/,
+
+        product_quantity: /^\d+.?[\d]+$/,
+        
+        unit_cost: /^\d+.?[\d]+$/,
+        
+        price: /^\d+.?[\d]+$/,
+        
+        least_critical_amount: /^\d+.?[\d]+$/,
+        
+        high_amount: /^\d+.?[\d]+$/,
+        
+        expire_date: /.*/,
+
+        category: /.*/,
+
+        brand: /.*/
+    }
 
 
     function fieldChangeHandler(event){
         const target = event.target
         const {name, value} = target
 
-
+        
         setFormData(prevData => {
+            
+            if(reg[name].test(value)){
+                target.style.color = "red"
+            }
+            else{
+                target.style.color = "black"
+            }
+            
             return {
                 ...prevData,
                 [name]: value
             } 
         })
-
+        
     }
 
 
     function addInventory(event) {
+        setChange(prev => !prev)
+        setFormData(prevFormData => {
+            let obj
+            for (let key in prevFormData){
+                obj = {
+                    ...obj, 
+                    [key]: ""
+                }
+            }
+            return obj
+        })
+
         fetch("http://localhost:3000/erpdatabase/inventory/add", {
             method: "POST",
             body: JSON.stringify(formData),
@@ -92,7 +166,7 @@ export default function Inventory() {
                         <label>Name</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="name" 
                             onChange={fieldChangeHandler}
                             value={formData.product_name}
                             name="product_name"/>
@@ -100,9 +174,9 @@ export default function Inventory() {
 
                     <div className="lbl">
                         <label>Description</label>
-                        <input 
-                            type="text" 
-                            placeholder="add" 
+                        <textarea 
+                            className="desc-textarea"
+                            placeholder="description" 
                             onChange={fieldChangeHandler}
                             value={formData.product_description}
                             name="product_description"/>
@@ -114,7 +188,7 @@ export default function Inventory() {
                         <label>Unit</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="unit" 
                             onChange={fieldChangeHandler}
                             value={formData.product_unit}
                             name="product_unit"/>
@@ -124,7 +198,7 @@ export default function Inventory() {
                         <label>Quantity</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="quantity" 
                             onChange={fieldChangeHandler}
                             value={formData.product_quantity}
                             name="product_quantity"/>
@@ -134,7 +208,7 @@ export default function Inventory() {
                         <label>Unit-Cost</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="unit cost" 
                             onChange={fieldChangeHandler}
                             value={formData.unit_cost}
                             name="unit_cost"/>
@@ -147,7 +221,7 @@ export default function Inventory() {
                         <label>Price</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="price" 
                             onChange={fieldChangeHandler}
                             value={formData.price}
                             name="price"/>
@@ -157,7 +231,7 @@ export default function Inventory() {
                         <label>Least Critical Amount</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="least critical amount" 
                             onChange={fieldChangeHandler}
                             value={formData.least_critical_amount}
                             name="least_critical_amount"/>
@@ -167,7 +241,7 @@ export default function Inventory() {
                         <label>High Amount</label>
                         <input 
                             type="text" 
-                            placeholder="add" 
+                            placeholder="high amount" 
                             onChange={fieldChangeHandler}
                             value={formData.high_amount}
                             name="high_amount"/>
@@ -177,29 +251,44 @@ export default function Inventory() {
                 <div className="lbl--group">
                     <div className="lbl">
                         <label>Category</label>
-                        <input 
-                            type="text" 
-                            placeholder="add" 
-                            onChange={fieldChangeHandler}
-                            value={formData.category}
-                            name="category"/>
+                        <select 
+                                id="category" 
+                                name="category"
+                                value={formData.category}
+                                onChange={fieldChangeHandler}>
+                            <option value="1">other</option>
+                            {categoryItems.map(cat_item => {
+                                if(!cat_item.name === "other")
+                                return(
+                                    <option key={cat_item.id} value={cat_item.id}>{cat_item.name}</option>
+                                )
+                            })}
+                        </select>
+                        
                     </div>
 
                     <div className="lbl">
                         <label>Brand</label>
-                        <input 
-                            type="text" 
-                            placeholder="add" 
-                            onChange={fieldChangeHandler}
-                            value={formData.brand}
-                            name="brand"/>
+                        <select 
+                                id="brand" 
+                                name="brand"
+                                value={formData.brand}
+                                onChange={fieldChangeHandler}>
+                            <option value="1">other</option>
+                            {brandItems.map(brand_item => {
+                                if(!brand_item.name === "other")
+                                return(
+                                    <option key={brand_item.id} value={brand_item.id}>{brand_item.name}</option>
+                                )
+                            })}
+                        </select>
+                        
                     </div>
                     
                     <div className="lbl">
                         <label>Expire Date</label>
                         <input 
-                            type="text" 
-                            placeholder="add" 
+                            type="date" 
                             onChange={fieldChangeHandler}
                             value={formData.expire_date}
                             name="expire_date"/>

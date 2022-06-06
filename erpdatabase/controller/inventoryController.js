@@ -49,7 +49,9 @@ const dbInventory = {
         high_amount,
         created_at,
         updated_at,
-        expire_date
+        expire_date,
+        category,
+        brand
         ) VALUES (
             "${req.body.product_name}",
             "${req.body.product_description}",
@@ -61,13 +63,15 @@ const dbInventory = {
             "${req.body.high_amount}",
             "${req.body.created_at}",
             "${req.body.updated_at}",
-            "${req.body.expire_date}"
+            "${req.body.expire_date}",
+            "${req.body.category}",
+            "${req.body.brand}"
+
         )`
 
             inventoryCon.query(sql, (sqlErr, results) => {
                 if(sqlErr) throw sqlErr
 
-                console.log(sql)
                 res.send(results)
             })
     },
@@ -112,7 +116,9 @@ const dbInventory = {
         high_amount = "${req.body.high_amount}",
         created_at = "${req.body.created_at}",
         updated_at = "${req.body.updated_at}",
-        expire_date = "${req.body.expire_date}"
+        expire_date = "${req.body.expire_date}",
+        category = "${req.body.category}",
+        brand = "${req.body.brand}"
         WHERE id = "${req.params.id}"
         `
 

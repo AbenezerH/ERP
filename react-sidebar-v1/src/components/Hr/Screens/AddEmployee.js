@@ -243,6 +243,33 @@ const AddEmployee = () => {
               >
                 {grades}
               </select>
+              <input
+                type="text"
+                placeholder="department"
+                name="dept_id"
+                onChange={fieldChangeHandler}
+                value={formData.dept_id}
+              />
+            </div>
+            <div className="form-control">
+              <label htmlFor="grade_id">Grade-ID : </label>
+              <input
+                type="text"
+                placeholder="grade"
+                name="grade_id"
+                onChange={fieldChangeHandler}
+                value={formData.grade_id}
+              />
+            </div>
+            <div className="form-control">
+              <label htmlFor="org_name">Org Name: </label>
+              <input
+                type="text"
+                placeholder="org_name"
+                name="org_name"
+                onChange={fieldChangeHandler}
+                value={formData.org_name}
+              />
             </div>
             <div className="form-control">
               <label htmlFor="doj">doj : </label>
