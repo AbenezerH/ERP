@@ -43,10 +43,5 @@ const AdminDashboard = () => {
     </div>
   );
 };
-const styles = {
-  content: {
-    // align:"center",
-    // width: "20%",
-  },
-};
+
 export default AdminDashboard;

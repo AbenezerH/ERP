@@ -10,6 +10,7 @@ const Welcome = () => {
         <h1>Payroll Management System</h1>
         <hr className="Underline" />
       </header>
+      
       <div className="Login">
         <button className="Login-button" onClick={()=>history('/adminLogin')}>
           Admin Login

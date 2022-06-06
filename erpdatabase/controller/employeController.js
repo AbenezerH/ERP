@@ -126,6 +126,17 @@ getDepartments: getDepartments =  (req, res) => {
     res.send(results)
 })
 },
+getDepartmentid: getDepartmentid = (req, res) => {
+  const comments = db.query('Select dept_id from department');
+  let arrayOfObjects = [];
+  comments.forEach(elem => {
+     arrayOfObjects.push({
+        id: dept_id,
+        
+     });
+  })
+  console.log(arrayOfObjects);
+},
 addGrade: addGrade = (req, res) => {
   const sql = `INSERT into gradepay(
     grade_id,
@@ -151,6 +162,26 @@ addGrade: addGrade = (req, res) => {
       res.send(results)
             })
 },
+
+getGrades: getGrades = (req, res) => {
+  const sql = `Select * from gradepay`;
+
+  db.query(sql, (sqlErr, results) => {
+    if(sqlErr) console.log(sqlErr.message)
+
+    res.send(results)
+})
+},
+
+getGradeid: getGradeid = (req, res) => {
+  const sql = `Select grade_id from gradepay`;
+
+  db.query(sql, (sqlErr, results) => {
+    if(sqlErr) console.log(sqlErr.message)
+
+    res.send(results)
+})
+},
 addAdmin: addAdmin = (req, res) => {
   const sql = `INSERT into admin(
     companyName,
@@ -172,14 +203,7 @@ addAdmin: addAdmin = (req, res) => {
       res.send(results)
             })
 },
-getGrades: getGrades =  (req, res) => {
-  const query = `Select * from gradepay`;
-  db.query(query, (sqlErr, results) => {
-    if(sqlErr) console.log(sqlErr.message)
 
-    res.send(results)
-})
-},
 getAdmin: getAdmin =  (req, res) => {
   const query = `Select * from admin`;
   db.query(query, (sqlErr, results) => {

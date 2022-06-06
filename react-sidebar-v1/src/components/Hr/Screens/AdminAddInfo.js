@@ -13,7 +13,7 @@ const AdminAddInfo=()=>{
       </header>
       <div className='Login' style={{marginTop:'2rem'}}>
         <div style={{justifyContent:"center",alignItems:"center",display:"flex",flexDirection:"row"}}>
-          <div className='Login-button' onClick={()=>history('/addEmployee')}>
+          <div className='Login-button' onClick={()=>history('/addemployee')}>
           <h4>Employee</h4>
         </div>
         <div className='Login-button' onClick={()=>history('/addDepartment')}>

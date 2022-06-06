@@ -8,19 +8,6 @@ const AddExtras = () => {
     ex_id: "",
   });
   
-  const [items, setItems] = useState([{
-    ex_type: "",
-    ex_id: "",
-  }]);
-  React.useEffect(() => {
-    fetch("http://localhost:3000/erpdatabase/hr/addExtras")
-        .then(res => res.json())
-            .then(data => {
-                setItems(data);
-            })
-        .catch(error => console.log(error))
-  }, [items])
-  
   
   function fieldChangeHandler(event){
     const target = event.target

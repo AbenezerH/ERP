@@ -21,17 +21,28 @@ import AttendanceLog from './components/Hr/Screens/AttendanceLog';
 import EmployeeDrawer from './components/Hr/Screens/EmployeeDrawer';
 import EmployeeLogin from './components/Hr/Screens/EmployeeLogin';
 import Welcome from './components/Hr/Screens/Welcome';
+import Reports from './components/Hr/Screens/Reports';
 import Header from './components/Header';
 import Employee from './components/Hr/Employee';
 import AddOrg from './components/Hr/Screens/AddOrg';
-import SignUp from './components/Hr/Screens/SignUp'
+import SignUp from './components/Hr/Screens/SignUp';
+import Add from './components/Hr/Screens/Add'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
   <Routes>
+    {/* <Route path="/" element= {<Header />}>
+      <Route path="" element= {<App />}>
+        <Route path="inventory" element={<Inventory />} />
+        <Route path="addemployee" element= {<Addemployee />} />
+      </Route>
+    </Route> */}
+     <Route path="/add" element= {<Add />} />
+     <Route path="/reports" element= {<Reports />} />
+    <Route path="human-Resource" element= {<Hrnavbar />} />
     <Route path="/header" element= {<Header />} />
-      <Route path="/home" element= {<App />}/>
-        <Route path="/home/inventory" element={<Inventory />} />
+    <Route path="/home" element= {<App />}/>
+    <Route path="/home/inventory" element={<Inventory />} />
     <Route path="/home/human-Resource" element= {<Hrnavbar />} />
     <Route path="/addemployee" element= {<AddEmployee />} />
     <Route path="/home/human-Resource/employee" element= {<Employee />} />
@@ -48,12 +59,12 @@ root.render(
     <Route path="/employelogin" element= {<EmployeeLogin />} />
     <Route path="/welcome" element= {<Welcome />} />
     <Route path="/addorg" element= {<AddOrg />} />
-    <Route path="/" element= {<SignUp />} />
+    <Route path="/signup" element= {<SignUp />} />
   </Routes>
   </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitalszz
 

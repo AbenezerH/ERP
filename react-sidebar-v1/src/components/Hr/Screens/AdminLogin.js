@@ -14,7 +14,6 @@ import Container from "@material-ui/core/Container";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import { useNavigate } from "react-router-dom";
 
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -122,6 +121,17 @@ const handleSubmit = async (e) => {
                   }}
                 >
                   Forgot password?
+                </Link>
+                <h4> _____OR_____</h4><br/>
+                <Link
+                  variant="body2"
+                  onClick={() => {
+                    history("/signup",{
+                      text:"admin"
+                    });
+                  }}
+                >
+                  Register
                 </Link>
               </Grid>
             </Grid>

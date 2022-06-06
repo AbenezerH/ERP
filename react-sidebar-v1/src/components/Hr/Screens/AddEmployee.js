@@ -3,8 +3,6 @@ import "../StyleSheets/Welcome.css";
 import "../StyleSheets/AdminOptions.css";
 
 const AddEmployee = () => {
-  const [departmentsList, setDeplist] = useState([]);
-  const [gradesList, setGradeslist] = useState([]);
   
     const [formData, setFormData] = useState({
       name: "",
@@ -24,29 +22,23 @@ const AddEmployee = () => {
       });
       
   const [items, setItems] = useState([{
-    name: "",
-    dob: "",
-    address: "",
-    city: "",
-    state: "",
-    pincode: "",
-    ep_email: "",
-    password: "",
     dept_id: "",
-    grade_id: "",
-    doj: "",
-    paid_leave_taken: "",
-    encashed_leave_this_month: "",
-    encashed_leave_till_date: "", 
       }]);
+      function NameList() {
+          return (
+            <div>
+            {items.map(name => <h2>{name}</h2>)}
+              </div>
+          )
+      }
       React.useEffect(() => {
-        fetch("http://localhost:3000/erpdatabase/hr/addEmployee")
+        fetch("http://localhost:3000/erpdatabase/hr/getDepartmentid")
             .then(res => res.json())
                 .then(data => {
                     setItems(data);
                 })
             .catch(error => console.log(error))
-      }, [items])
+      }, [])
       
       
       function fieldChangeHandler(event){
@@ -62,8 +54,6 @@ const AddEmployee = () => {
         })
       
       }
-      
-      
       function addor(event) {
         fetch("http://localhost:3000/erpdatabase/hr/addEmployee", {
             method: "POST",
@@ -78,47 +68,6 @@ const AddEmployee = () => {
         console.log("Add employee")
       
       }
-      React.useEffect(() => {
-        getDepartments();
-        getGrades();
-      }, []);
-      const getDepartments = () => {
-        fetch(`http://localhost:3000/erpdatabase/hr/getDepartments`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-          .then((res) => res.json())
-          .then((res) => {
-            setDeplist(res);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      };
-      const getGrades = () => {
-        fetch(`http://localhost:3000/erpdatabase/hr/getGrades`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-          .then((res) => res.json())
-          .then((res) => {
-            setGradeslist(res);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      };
-      const departments = departmentsList.map((dept) => {
-        return <option value={dept.dept_id}>{dept.dept_name}</option>;
-      });
-      const grades = gradesList.map((grade) => {
-        return <option value={grade.grade_id}>{grade.grade_name}</option>;
-      });
-  
   return (
     <>
       <div className="App">
@@ -225,23 +174,21 @@ const AddEmployee = () => {
             </div>
             <div className="form-control">
               <label htmlFor="Dept">Department: </label>
-              <select
-                style={styles.dropDown}
-                onChange={fieldChangeHandler}
-                value={formData.dept_id}
-              >
-                {departments}
-              </select>
+             <select
+      style={styles.dropDown}
+      onChange={fieldChangeHandler}
+                value={formData.dep_id}
+      >NameList
+      </select>
+               
             </div>
             <div className="form-control">
               <label htmlFor="grade_id">Grade-ID : </label>
               <select
                 style={styles.dropDown}
                 onChange={fieldChangeHandler}
-                value={formData.name}
-                required
+                value={formData.grade_id}
               >
-                {grades}
               </select>
             </div>
             <div className="form-control">
