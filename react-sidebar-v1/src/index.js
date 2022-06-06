@@ -28,7 +28,6 @@ import Header from './components/Header';
 import Employee from './components/Hr/Employee';
 import AddOrg from './components/Hr/Screens/AddOrg';
 import SignUp from './components/Hr/Screens/SignUp'
-import Employee from './components/Hr/Employee'
 import AddDamagedGood from './components/inventory/damagedGood/AddDamagedGood';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
