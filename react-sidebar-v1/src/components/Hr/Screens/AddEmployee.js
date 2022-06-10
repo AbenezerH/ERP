@@ -3,7 +3,17 @@ import "../StyleSheets/Welcome.css";
 import "../StyleSheets/AdminOptions.css";
 
 const AddEmployee = () => {
-  
+  const [change, setChange] = useState(true)
+
+    const [grad_idItems, setgrad_idItems] = useState([{
+      id: "",
+      name: ""
+    }]);
+
+    const [dep_idItems, setdep_idItems] = useState([{
+      id: "",
+        name: ""
+    }]);
     const [formData, setFormData] = useState({
       name: "",
       dob: "",
@@ -13,61 +23,92 @@ const AddEmployee = () => {
       pincode: "",
       ep_email: "",
       password: "",
-      dept_id: "",
-      grade_id: "",
-      doj: "",
-      paid_leave_taken: "",
-      encashed_leave_this_month: "",
-      encashed_leave_till_date: "", 
+      dept_id: "1",
+      grade_id: "1",
+      doj: "", 
       });
-      
-  const [items, setItems] = useState([{
-    dept_id: "",
-      }]);
-      function NameList() {
-          return (
-            <div>
-            {items.map(name => <h2>{name}</h2>)}
-              </div>
-          )
-      }
       React.useEffect(() => {
+               fetch("http://localhost:3000/erpdatabase/hr/getGradeid")
+            .then(res => res.json())
+                .then(data => {
+                  setgrad_idItems(data);
+                })
+            .catch(error => console.log(error))
+
         fetch("http://localhost:3000/erpdatabase/hr/getDepartmentid")
             .then(res => res.json())
                 .then(data => {
-                    setItems(data);
+                  setdep_idItems(data);
                 })
             .catch(error => console.log(error))
-      }, [])
+
+    }, [change])
+
+
+    // the object containing the regex
+    let reg = {
+        name: /^[a-zA-Z0-9(),\-_ ]{1,5}$/,
+        dob: /.*/,
+        address:  /^[a-zA-Z0-9(),\-_ ]{1,5}$/,
+        city: /^[a-zA-Z0-9(),\-_ ]{1,5}$/,
+        state: /^[a-zA-Z0-9(),\-_ ]{1,5}$/,
+        pincode: /^[0-9()]{1,6}$/,
+        ep_email:  /^[a-zA-Z0-9(),\-_ ]{1,8}$/,
+        password:  /^[a-zA-Z0-9(),\-_ ]{1,6}$/,
+        dept_id: /.*/,
+        grade_id:/.*/,
+        doj: /.*/,
+
+    }
+     
       
+    function fieldChangeHandler(event){
+      const target = event.target
+      const {name, value} = target
+
       
-      function fieldChangeHandler(event){
-        const target = event.target
-        const {name, value} = target
+      setFormData(prevData => {
+          
+          if(reg[name].test(value)){
+              target.style.color = "red"
+          }
+          else{
+              target.style.color = "black"
+          }
+          
+          return {
+              ...prevData,
+              [name]: value
+          } 
+      })
       
-      
-        setFormData(prevData => {
-            return {
-                ...prevData,
-                [name]: value
-            } 
-        })
-      
-      }
-      function addor(event) {
-        fetch("http://localhost:3000/erpdatabase/hr/addEmployee", {
-            method: "POST",
-            body: JSON.stringify(formData),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
+  }
+  function addor(event) {
+    setChange(prev => !prev)
+    setFormData(prevFormData => {
+        let obj
+        for (let key in prevFormData){
+            obj = {
+                ...obj, 
+                [key]: ""
             }
-        }).then(res => res.json())
-            .then(data => console.log("add " + data))
-        .catch(err => console.log("error " + err))
-      
-        console.log("Add employee")
-      
-      }
+        }
+        return obj
+    })
+
+    fetch("http://localhost:3000/erpdatabase/hr/addEmployee", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    }).then(res => res.json())
+        .then(data => console.log("add " + data))
+    .catch(err => console.log("error " + err))
+
+    console.log("Add employee information")
+
+}
   return (
     <>
       <div className="App">
@@ -83,7 +124,6 @@ const AddEmployee = () => {
                 name="name"
                 onChange={fieldChangeHandler}
                 value={formData.name}
-                required
               />
             </div>
 
@@ -174,68 +214,47 @@ const AddEmployee = () => {
             </div>
             <div className="form-control">
               <label htmlFor="Dept">Department: </label>
-             <select
-      style={styles.dropDown}
-      onChange={fieldChangeHandler}
-                value={formData.dep_id}
-      >NameList
-      </select>
-               
+              <select 
+              style={styles.dropDown}
+                                id="dept_id" 
+                                name="dept_id"
+                                value={formData.dept_id}
+                                onChange={fieldChangeHandler}>
+                            <option value="1">other</option>
+                            {dep_idItems.map(cat_item => {
+                                if(!cat_item.name === "other")
+                                return(
+                                    <option key={cat_item.id} value={cat_item.id}>{cat_item.name}</option>
+                                )
+                            })}
+                        </select>
             </div>
             <div className="form-control">
               <label htmlFor="grade_id">Grade-ID : </label>
-              <select
-                style={styles.dropDown}
-                onChange={fieldChangeHandler}
-                value={formData.grade_id}
-              >
-              </select>
+              <select 
+              style={styles.dropDown}
+                                id="grade_id" 
+                                name="grade_id"
+                                value={formData.grade_id}
+                                onChange={fieldChangeHandler}>
+                            <option value="1">other</option>
+                            {grad_idItems.map(cat_item => {
+                                if(!cat_item.name === "other")
+                                return(
+                                    <option key={cat_item.id} value={cat_item.id}>{cat_item.name}</option>
+                                )
+                            })}
+                        </select>
             </div>
             <div className="form-control">
               <label htmlFor="doj">doj : </label>
               <input
-                // style={styles.input}
+                 style={styles.input}
                 type="date"
                 id="doj"
                 name="doj"
                 onChange={fieldChangeHandler}
                 value={formData.doj}
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label htmlFor="doj">paid_leave_taken : </label>
-              <input
-                // style={styles.input}
-                type="date"
-                id="paid_leave_taken"
-                name="paid_leave_taken"
-                onChange={fieldChangeHandler}
-                value={formData.paid_leave_taken}
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label htmlFor="doj">encashed_leave_this_month : </label>
-              <input
-                // style={styles.input}
-                type="date"
-                id="encashed_leave_this_month"
-                name="encashed_leave_this_month"
-                onChange={fieldChangeHandler}
-                value={formData.encashed_leave_this_month}
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label htmlFor="doj">encashed_leave_till_date : </label>
-              <input
-                // style={styles.input}
-                type="date"
-                id="encashed_leave_till_date"
-                name="encashed_leave_till_date"
-                onChange={fieldChangeHandler}
-                value={formData.encashed_leave_till_date}
                 required
               />
             </div>

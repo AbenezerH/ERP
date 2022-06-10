@@ -6,9 +6,12 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Header from './components/Header';
+import Hrnavbar from './components/Hr/Hrnavbar';
+
 import Inventory from './components/inventory/Inventory';
-import Hrnavbar from './components/Hr/Hrnavbar'
 import AddEmployee from './components/Hr/Screens/AddEmployee';
+import Employee from './components/Hr/Employee';
 import AddDep from './components/Hr/Screens/AddDep';
 import AddExtras from './components/Hr/Screens/AddExtras';
 import AddGrade from './components/Hr/Screens/AddGrade';
@@ -22,11 +25,9 @@ import EmployeeDrawer from './components/Hr/Screens/EmployeeDrawer';
 import EmployeeLogin from './components/Hr/Screens/EmployeeLogin';
 import Welcome from './components/Hr/Screens/Welcome';
 import Reports from './components/Hr/Screens/Reports';
-import Header from './components/Header';
-import Employee from './components/Hr/Employee';
 import AddOrg from './components/Hr/Screens/AddOrg';
 import SignUp from './components/Hr/Screens/SignUp';
-import Add from './components/Hr/Screens/Add'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -37,13 +38,10 @@ root.render(
         <Route path="addemployee" element= {<Addemployee />} />
       </Route>
     </Route> */}
-     <Route path="/add" element= {<Add />} />
-     <Route path="/reports" element= {<Reports />} />
     <Route path="human-Resource" element= {<Hrnavbar />} />
     <Route path="/header" element= {<Header />} />
     <Route path="/home" element= {<App />}/>
     <Route path="/home/inventory" element={<Inventory />} />
-    <Route path="/home/human-Resource" element= {<Hrnavbar />} />
     <Route path="/addemployee" element= {<AddEmployee />} />
     <Route path="/home/human-Resource/employee" element= {<Employee />} />
     <Route path="/addDepartment" element= {<AddDep />} />
@@ -51,15 +49,16 @@ root.render(
     <Route path="/addgrade" element= {<AddGrade />} />
     <Route path="/adminaddinfo" element= {<AdminAddInfo />} />
     <Route path="/admindashboard" element= {<AdminDashboard />} />
-    <Route path="/" element= {<AdminLogin />} />
+    <Route path="/adminLogin" element= {<AdminLogin />} />
     <Route path="/adminupdateinfo" element= {<AdminUpdateInfo />} />
     <Route path="/attendance" element= {<Attendance />} />
     <Route path="/attendancelog" element= {<AttendanceLog />} />
     <Route path="/employedrawer" element= {<EmployeeDrawer />} />
     <Route path="/employelogin" element= {<EmployeeLogin />} />
-    <Route path="/welcome" element= {<Welcome />} />
+    <Route path="/" element= {<Welcome />} />
     <Route path="/addorg" element= {<AddOrg />} />
     <Route path="/signup" element= {<SignUp />} />
+    <Route path="/reports" element= {<Reports />} />
   </Routes>
   </BrowserRouter>
 );

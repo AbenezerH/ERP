@@ -45,9 +45,9 @@ addEmployee: addEmployee =  (req, res) => {
     "${req.body.dept_id}",
     "${req.body.grade_id}",
     "${req.body.doj}",
-      "${req.body.paid_leave_taken}",
-      "${req.body.encashed_leave_this_month}",
-      "${req.body.encashed_leave_till_date}"
+      0,
+      0,
+      0
   )`;
   db.query(sql, (sqlErr, results) => {
     if(sqlErr) throw sqlErr
