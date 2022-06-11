@@ -4,22 +4,24 @@ import "../StyleSheets/Welcome.css";
 import "../StyleSheets/AdminOptions.css";
 
 const AddGrade = () => {
-const [formData, setFormData] = React.useState({
-  grade_name: "",
-  basic_pay: "",
-  grade_pf: "",
-  grade_bonus: "",
+const [formData, setFormData] = useState({
+  grade_id: "",
+  grade_name: "", 
+  basic_pay: "", 
+  grade_pf: "", 
+  grade_bonus: "", 
   grade_ta: "",
-  grade_da: "",
+   grade_da: "",
 });
 
-const [items, setItems] = React.useState([{
-  grade_name: "",
-  basic_pay: "",
-  grade_pf: "",
-  grade_bonus: "",
+const [items, setItems] = useState([{
+  grade_id: "",
+  grade_name: "", 
+  basic_pay: "", 
+  grade_pf: "", 
+  grade_bonus: "", 
   grade_ta: "",
-  grade_da: "",
+   grade_da: "",
 }]);
 React.useEffect(() => {
   fetch("http://localhost:3000/erpdatabase/hr/addGrade")
@@ -28,7 +30,7 @@ React.useEffect(() => {
               setItems(data);
           })
       .catch(error => console.log(error))
-}, [])
+}, [items])
 
 
 function fieldChangeHandler(event){
@@ -46,7 +48,7 @@ function fieldChangeHandler(event){
 }
 
 
-function addGrade(event) {
+function addgrade(event) {
   fetch("http://localhost:3000/erpdatabase/hr/addGrade", {
       method: "POST",
       body: JSON.stringify(formData),
@@ -70,67 +72,77 @@ function addGrade(event) {
           <img src={logo} alt="logo"></img>
         </header>
         <form className="form">
-          <div className="form-control">
-            <label htmlFor="Grade_Name">Grade Name : </label>
+        <div className="form-control">
+            <label>Grade ID : </label>
             <input
               type="text"
-              placeholder="Grade_Name"
-              name="Grade_Name"
+              id="grade_id"
+              name="grade_id"
+              onChange={fieldChangeHandler}
+                value={formData.grade_id}
+            />
+          </div>
+          <div className="form-control">
+            <label>Grade Name : </label>
+            <input
+              type="text"
+              id="grade_name"
+              name="grade_name"
               onChange={fieldChangeHandler}
                 value={formData.grade_name}
             />
           </div>
           <div className="form-control">
-            <label htmlFor="Bonus">Bonus : </label>
+            <label>Basic Pay : </label>
             <input
               type="number"
-              placeholder="Bonus"
-              name="Bonus"
-              onChange={fieldChangeHandler}
-                value={formData.grade_bonus}
-            />
-          </div>
-          <div className="form-control">
-            <label htmlFor="Travel_Allowance">Travel Allowance : </label>
-            <input
-              type="number"
-              placeholder="Travel_Allowance"
-              name="Travel_Allowance"
-              onChange={fieldChangeHandler}
-                value={formData.grade_ta}
-            />
-          </div>
-          <div className="form-control">
-            <label htmlFor="Dearness_Allowance">Dearness Allowance : </label>
-            <input
-              type="number"
-              placeholder="Dearness_Allowance"
-              name="Dearness_Allowance"
-              onChange={fieldChangeHandler}
-                value={formData.grade_da}
-            />
-          </div>
-          <div className="form-control">
-            <label htmlFor="Basic_Pay">Basic Pay : </label>
-            <input
-              type="number"
-              placeholder="Basic_Pay"
-              name="Basic_Pay"
+              id="basic_pay"
+              name="basic_pay"
               onChange={fieldChangeHandler}
                 value={formData.basic_pay}
             />
           </div>
           <div className="form-control">
-            <label htmlFor="Grade_PF">Grade PF : </label>
+            <label>Grade PF : </label>
             <input
-              type="number"
-              placeholder="Grade_PF"
-              name="Grade_PF"
+              type="text"
+              id="grade_pf"
+              name="grade_pf"
               onChange={fieldChangeHandler}
                 value={formData.grade_pf}
             />
           </div>
-          <button onClick={addGrade}>add Grade</button>
+          <div className="form-control">
+            <label>Bonus : </label>
+            <input
+               type="number"
+               id="grade_bonus"
+               name="grade_bonus"
+               onChange={fieldChangeHandler}
+                 value={formData.grade_bonus}
+            />
+          </div>
+          <div className="form-control">
+            <label>Travel Allowance : </label>
+            <input
+              type="text"
+              id="grade_ta"
+              name="grade_ta"
+              onChange={fieldChangeHandler}
+                value={formData.grade_ta}
+            />
+          </div>
+          <div className="form-control">
+            <label>Dearness Allowance : </label>
+            <input
+              type="text"
+              id="grade_da"
+              name="grade_da"
+              onChange={fieldChangeHandler}
+                value={formData.grade_da}
+            />
+          </div>
+          <button onClick={addgrade}>add Grade</button>
         </form>
       </div>
     </div>

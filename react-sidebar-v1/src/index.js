@@ -25,7 +25,9 @@ import EmployeeLogin from './components/Hr/Screens/EmployeeLogin';
 import Welcome from './components/Hr/Screens/Welcome';
 
 import Header from './components/Header';
-import Employee from './components/Hr/Employee'
+import Employee from './components/Hr/Employee';
+import AddOrg from './components/Hr/Screens/AddOrg';
+import SignUp from './components/Hr/Screens/SignUp'
 import AddDamagedGood from './components/inventory/damagedGood/AddDamagedGood';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -57,9 +59,10 @@ root.render(
     <Route path="/employedrawer" element= {<EmployeeDrawer />} />
     <Route path="/employelogin" element= {<EmployeeLogin />} />
     <Route path="/welcome" element= {<Welcome />} />
+    <Route path="/addorg" element= {<AddOrg />} />
+    <Route path="/" element= {<SignUp />} />
     <Route path="/addwarranty" element= {<AddWarranty />} />
     <Route path="/adddamagedgood" element={<AddDamagedGood />} />
-
   </Routes>
   </BrowserRouter>
 );

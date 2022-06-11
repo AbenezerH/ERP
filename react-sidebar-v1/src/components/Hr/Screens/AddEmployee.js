@@ -1,106 +1,126 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../StyleSheets/Welcome.css";
 import "../StyleSheets/AdminOptions.css";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Button from "@material-ui/core/Button";
-import { useNavigate } from "react-router-dom";
 
 const AddEmployee = () => {
-  const history = useNavigate();
-  const [open, setOpen] = useState(false);
-  const [msg, setMessage] = useState("");
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-    history();
-  };
-  const [data, setData] = React.useState({
+  const [departmentsList, setDeplist] = useState([]);
+  const [gradesList, setGradeslist] = useState([]);
+  
+    const [formData, setFormData] = useState({
+      name: "",
+      dob: "",
+      address: "",
+      city: "",
+      state: "",
+      pincode: "",
+      ep_email: "",
+      password: "",
+      dept_id: "",
+      grade_id: "",
+      doj: "",
+      paid_leave_taken: "",
+      encashed_leave_this_month: "",
+      encashed_leave_till_date: "", 
+      });
+      
+  const [items, setItems] = useState([{
     name: "",
     dob: "",
+    address: "",
     city: "",
     state: "",
     pincode: "",
-    address: "",
+    ep_email: "",
+    password: "",
     dept_id: "",
     grade_id: "",
-    org_name: "SGSITS",
     doj: "",
-    ep_email: "",
-  });
-
-  const [formData, setFormData] = React.useState({
-    name: "",
-    dob: "",
-    city: "",
-    state: "",
-    pincode: "",
-    address: "",
-    dept_id: "",
-    grade_id: "",
-    org_name: "SGSITS",
-    doj: "",
-    ep_email: "",
-});
-
-  function addEmployee(event) {
-    fetch("http://localhost:3000/erpdatabase/inventory/add", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-        }
-    }).then(res => res.json())
-        .then(data => console.log("add " + data))
-    .catch(err => console.log("error " + err))
-
-    console.log("Add Inventory")
-
-}
-
-function fieldChangeHandler(event){
-  const target = event.target
-  const {name, value} = target
-
-
-  setFormData(prevData => {
-      return {
-          ...prevData,
-          [name]: value
-      } 
-  })
-
-}
-
+    paid_leave_taken: "",
+    encashed_leave_this_month: "",
+    encashed_leave_till_date: "", 
+      }]);
+      React.useEffect(() => {
+        fetch("http://localhost:3000/erpdatabase/hr/addEmployee")
+            .then(res => res.json())
+                .then(data => {
+                    setItems(data);
+                })
+            .catch(error => console.log(error))
+      }, [items])
+      
+      
+      function fieldChangeHandler(event){
+        const target = event.target
+        const {name, value} = target
+      
+      
+        setFormData(prevData => {
+            return {
+                ...prevData,
+                [name]: value
+            } 
+        })
+      
+      }
+      
+      
+      function addor(event) {
+        fetch("http://localhost:3000/erpdatabase/hr/addEmployee", {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then(res => res.json())
+            .then(data => console.log("add " + data))
+        .catch(err => console.log("error " + err))
+      
+        console.log("Add employee")
+      
+      }
+      React.useEffect(() => {
+        getDepartments();
+        getGrades();
+      }, []);
+      const getDepartments = () => {
+        fetch(`http://localhost:3000/erpdatabase/hr/getDepartments`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            setDeplist(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+      const getGrades = () => {
+        fetch(`http://localhost:3000/erpdatabase/hr/getGrades`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            setGradeslist(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+      const departments = departmentsList.map((dept) => {
+        return <option value={dept.dept_id}>{dept.dept_name}</option>;
+      });
+      const grades = gradesList.map((grade) => {
+        return <option value={grade.grade_id}>{grade.grade_name}</option>;
+      });
+  
   return (
     <>
-      <div>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">{"Message"}</DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              {msg}
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary" autoFocus>
-              OK
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </div>
       <div className="App">
         <form className="form">
           <div className="grouping">
@@ -110,9 +130,11 @@ function fieldChangeHandler(event){
               <label htmlFor="name">Name : </label>
               <input
                 type="text"
+                id="name"
                 name="name"
                 onChange={fieldChangeHandler}
                 value={formData.name}
+                required
               />
             </div>
 
@@ -124,6 +146,7 @@ function fieldChangeHandler(event){
                 name="dob"
                 onChange={fieldChangeHandler}
                 value={formData.dob}
+                required
               />
             </div>
             <div className="form-control">
@@ -134,6 +157,7 @@ function fieldChangeHandler(event){
                 name="address"
                 onChange={fieldChangeHandler}
                 value={formData.address}
+                required
               />
             </div>
             <div className="form-control">
@@ -144,6 +168,7 @@ function fieldChangeHandler(event){
                 name="city"
                 onChange={fieldChangeHandler}
                 value={formData.city}
+                required
               />
             </div>
             <div className="form-control">
@@ -154,6 +179,7 @@ function fieldChangeHandler(event){
                 name="state"
                 onChange={fieldChangeHandler}
                 value={formData.state}
+                required
               />
             </div>
             <div className="form-control">
@@ -178,15 +204,45 @@ function fieldChangeHandler(event){
             <div className="form-control">
               <label htmlFor="org_name">Email : </label>
               <input
-                type="text"
-                placeholder="email"
+                type="email"
+                id="ep_email"
                 name="ep_email"
                 onChange={fieldChangeHandler}
                 value={formData.ep_email}
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label htmlFor="org_name">password : </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                onChange={fieldChangeHandler}
+                value={formData.password}
+                required
               />
             </div>
             <div className="form-control">
               <label htmlFor="Dept">Department: </label>
+              <select
+                style={styles.dropDown}
+                onChange={fieldChangeHandler}
+                value={formData.dept_id}
+              >
+                {departments}
+              </select>
+            </div>
+            <div className="form-control">
+              <label htmlFor="grade_id">Grade-ID : </label>
+              <select
+                style={styles.dropDown}
+                onChange={fieldChangeHandler}
+                value={formData.name}
+                required
+              >
+                {grades}
+              </select>
               <input
                 type="text"
                 placeholder="department"
@@ -220,14 +276,52 @@ function fieldChangeHandler(event){
               <input
                 // style={styles.input}
                 type="date"
-                placeholder="date"
+                id="doj"
                 name="doj"
                 onChange={fieldChangeHandler}
                 value={formData.doj}
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label htmlFor="doj">paid_leave_taken : </label>
+              <input
+                // style={styles.input}
+                type="date"
+                id="paid_leave_taken"
+                name="paid_leave_taken"
+                onChange={fieldChangeHandler}
+                value={formData.paid_leave_taken}
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label htmlFor="doj">encashed_leave_this_month : </label>
+              <input
+                // style={styles.input}
+                type="date"
+                id="encashed_leave_this_month"
+                name="encashed_leave_this_month"
+                onChange={fieldChangeHandler}
+                value={formData.encashed_leave_this_month}
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label htmlFor="doj">encashed_leave_till_date : </label>
+              <input
+                // style={styles.input}
+                type="date"
+                id="encashed_leave_till_date"
+                name="encashed_leave_till_date"
+                onChange={fieldChangeHandler}
+                value={formData.encashed_leave_till_date}
+                required
               />
             </div>
           </div>
-          <button type="submit">
+          <button onClick={addor}>
+
             Add
           </button>
         </form>
@@ -235,7 +329,6 @@ function fieldChangeHandler(event){
     </>
   );
 };
-
 const styles = {
   input: {
     width: window.innerWidth / 4.5,
