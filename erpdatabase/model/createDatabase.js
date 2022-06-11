@@ -195,7 +195,7 @@ function createWarrantyTable(){
     `CREATE TABLE IF NOT EXISTS warranty
     (id int(11) AUTO_INCREMENT,
     full_name varchar(50),
-    phone_number int(11),
+    phone_number bigint(12),
     serial_number varchar(20),
     valid_until date,
     PRIMARY KEY(id))
