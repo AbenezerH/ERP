@@ -1,10 +1,14 @@
 import "./sidebar.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import StoreIcon from "@mui/icons-material/Store";
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
+import PriceChangeIcon from '@mui/icons-material/PriceChange';
+import ColorLensIcon from '@mui/icons-material/ColorLens';
+import SquareFootIcon from '@mui/icons-material/SquareFoot';
 import PaymentsIcon from '@mui/icons-material/Payments';
 import InsertChartIcon from "@mui/icons-material/InsertChart";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
@@ -43,7 +47,7 @@ const Sidebar = () => {
             <span>Dashboard</span>
           </li>
           </Link>
-          <p className="title">inventory</p>
+          <p className="title">INVENTORY</p>
           <Link to="/products" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
@@ -52,45 +56,54 @@ const Sidebar = () => {
           </Link>
           <li>
             <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>brand Catagory</span>
+            <span>Brand Category</span>
           </li>
           <li>
-            <PsychologyOutlinedIcon className="icon" />
-            <span>measurement</span>
+            <SquareFootIcon className="icon" />
+            <span>Measurement</span>
           </li>
           <li>
-            <CreditCardIcon className="icon" />
-            <span>Orders</span>
+            <ColorLensIcon className="icon" />
+            <span>Colors</span>
           </li>
-          <li>
-            <LocalShippingIcon className="icon" />
-            <span>color</span>
-          </li>
-          <p className="title">Finance</p>
-          <li>
-            <AccountBalanceIcon className="icon" />
-            <span>Finance report</span>
-          </li>
-          <li>
-            <CreditCardIcon className="icon" />
-            <span>Sales</span>
-          </li>
-          <li>
-            <PaymentsIcon className="icon" />
-            <span>expense</span>
-          </li>
-          <li>
-            <CreditCardIcon className="icon" />
-            <span>expense Category</span>
-          </li>
-          <li>
-            <CreditCardIcon className="icon" />
-            <span>income</span>
-          </li>
-          <li>
-            <CreditCardIcon className="icon" />
-            <span>income Category</span>
-          </li>
+          <p className="title">FINANCE</p>
+          <Link to="/financereport" style={{ textDecoration: "none" }}>
+              <li>
+                <AccountBalanceIcon className="icon" />
+                <span>Finance report</span>
+              </li>
+          </Link>
+          
+          <Link to="/sales" style={{ textDecoration: "none" }}>
+              <li>
+                <CreditCardIcon className="icon" />
+                <span>Sales</span>
+              </li>
+          </Link>
+          <Link to="/expense" style={{ textDecoration: "none" }}>
+              <li>
+                <PaymentsIcon className="icon" />
+                <span>Expense</span>
+              </li>
+          </Link>
+          <Link to="/expenseCategory" style={{ textDecoration: "none" }}>
+              <li>
+                <PriceChangeIcon className="icon" />
+                <span>Expense Category</span>
+              </li>
+            </Link>
+          <Link to="/income" style={{ textDecoration: "none" }}>
+            <li>
+              <AttachMoneyIcon className="icon" />
+              <span>Income</span>
+            </li>
+            </Link>
+          <Link to="/incomeCategory" style={{ textDecoration: "none" }}>
+              <li>
+                <CurrencyExchangeIcon className="icon" />
+                <span>Income Category</span>
+              </li>
+          </Link>
           <p className="title">USEFUL & SERVICE</p>
           <li>
             <InsertChartIcon className="icon" />

@@ -12,7 +12,14 @@ import {onAuthStateChanged} from 'firebase/auth'
 import PrivateRoute from './PrivateRoute'
 import {Navigate} from 'react-router-dom'
 
-import List from "./pages/list/List";
+import Users from "./pages/users/Users";
+import Products from "./pages/products/Products";
+import FinanceReport from "./pages/financeReport/FinanceReport";
+import Sales from "./pages/sales/Sales";
+import Expense from "./pages/expense/Expense";
+import ExpenseCategory from "./pages/expenseCategory/ExpenseCategory";
+import Income from "./pages/income/Income";
+import IncomeCategory from "./pages/incomeCategory/IncomeCategory";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { productInputs, userInputs } from "./formSource";
@@ -41,7 +48,7 @@ function App() {
         <Routes>           
           {/*  */}
             <Route path="/users">
-              <Route index element={<List />} />
+              <Route index element={<Users />} />
               <Route path=":userId" element={<Single />} />
               <Route
                 path="new"
@@ -49,11 +56,58 @@ function App() {
               />
             </Route>
             <Route path="/products">
-              <Route index element={<List />} />
+              <Route index element={<Products />} />
               <Route path=":productId" element={<Single />} />
               <Route
                 path="new"
                 element={<New inputs={productInputs} title="Add New Product" />}
+              />
+            </Route>
+
+            <Route path="/financereport">
+              <Route index element={<FinanceReport />} />
+            </Route>
+
+            <Route path="/sales">
+              <Route index element={<Sales />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={userInputs} title="Add New User" />}
+              />
+            </Route>
+
+            <Route path="/expense">
+              <Route index element={<Expense />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={userInputs} title="Add New User" />}
+              />
+            </Route>
+            <Route path="/expenseCategory">
+              <Route index element={<ExpenseCategory />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={userInputs} title="Add New User" />}
+              />
+            </Route>
+
+            <Route path="/income">
+              <Route index element={<Income />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={userInputs} title="Add New User" />}
+              />
+            </Route>
+            <Route path="/incomeCategory">
+              <Route index element={<IncomeCategory />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={userInputs} title="Add New User" />}
               />
             </Route>
             {/*  */}

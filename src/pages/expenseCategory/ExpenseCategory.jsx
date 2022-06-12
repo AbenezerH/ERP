@@ -1,18 +1,18 @@
-import "./list.scss"
+import "./expenseCategory.scss"
 import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
 import Datatable from "../../components/datatable/Datatable"
 
-const List = () => {
+const Expense = () => {
   return (
     <div className="list">
       <Sidebar/>
       <div className="listContainer">
         <Navbar/>
-        <Datatable/>
+        <Datatable title={"expense catagory"}/>
       </div>
     </div>
   )
 }
 
-export default List
+export default Expense
