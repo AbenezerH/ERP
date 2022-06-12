@@ -1,11 +1,13 @@
 import React, {useContext} from 'react'
-
-const AuthContext = React.createContext()
+import Loading from "./pages/loading/loading";
+const AuthContext = React.createContext();
 
 export function AuthProvider({children, value}) {
   return (
     <AuthContext.Provider value={value}>
-      {children}
+      {value.loading ?
+          <Loading/>
+      :children}
     </AuthContext.Provider>
   )
 }

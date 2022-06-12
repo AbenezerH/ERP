@@ -14,18 +14,20 @@ import {Navigate} from 'react-router-dom'
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState(null)
-  const [timeActive, setTimeActive] = useState(false)
+  const [currentUser, setCurrentUser] = useState(null);
+  const [timeActive, setTimeActive] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user)
+      setCurrentUser(user);
+      setLoading(false);
     })
   }, [])
 
   return (
     <Router>
-      <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
+      <AuthProvider value={{currentUser, loading, timeActive, setTimeActive}}>
         <Routes>
           
           <Route exact path='/profile' element={
