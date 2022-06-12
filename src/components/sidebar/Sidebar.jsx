@@ -13,9 +13,16 @@ import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
-import { useContext } from "react";
-
+import { useContext, useState  } from "react";
+import Popup from '../popup/Popup';
+import { signOut } from 'firebase/auth'; 
+import { auth } from '../../firebase';
 const Sidebar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+ 
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
   const { dispatch } = useContext(DarkModeContext);
   return (
     <div className="sidebar">
@@ -28,10 +35,12 @@ const Sidebar = () => {
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
+          <Link to="/" style={{ textDecoration: "none" }}>
           <li>
             <DashboardIcon className="icon" />
             <span>Dashboard</span>
           </li>
+          </Link>
           <p className="title">LISTS</p>
           <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
@@ -76,11 +85,13 @@ const Sidebar = () => {
             <span>Settings</span>
           </li>
           <p className="title">USER</p>
+          <Link to="/profile" style={{ textDecoration: "none" }}>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
-          <li>
+          </Link>
+          <li onClick={togglePopup}>
             <ExitToAppIcon className="icon" />
             <span>Logout</span>
           </li>
@@ -96,6 +107,16 @@ const Sidebar = () => {
           onClick={() => dispatch({ type: "DARK" })}
         ></div>
       </div>
+      {
+        isOpen && <Popup
+        content={<>
+          <b>Your about to log out</b>
+          <p>Are you shure you want to log out,   doing so will log you out.</p>
+          <button onClick={()=>{ togglePopup(); signOut(auth);}}>Logout</button>
+        </>}
+        handleClose={togglePopup}
+      /> 
+      }
     </div>
   );
 };
