@@ -1,9 +1,10 @@
-import './App.css';
+// import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import Profile from './Profile'
-import Register from './Register'
+import Home from "./pages/home/Home"
+import Profile from './pages/profile/Profile'
+import Register from './pages/register/Register'
 import VerifyEmail from './VerifyEmail';
-import Login from './Login'
+import Login from './pages/login/Login'
 import {useState, useEffect} from 'react'
 import {AuthProvider} from './AuthContext'
 import {auth} from './firebase'
@@ -26,9 +27,15 @@ function App() {
     <Router>
       <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
         <Routes>
-          <Route exact path='/' element={
+          
+          <Route exact path='/profile' element={
             <PrivateRoute>
               <Profile/>
+            </PrivateRoute>
+          }/>
+          <Route exact path='/' element={
+            <PrivateRoute>
+              <Home />
             </PrivateRoute>
           }/>
           <Route path="/login" element={
