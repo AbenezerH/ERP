@@ -35,6 +35,8 @@ function Register() {
         .then(() => {
           sendEmailVerification(auth.currentUser)   
           .then(() => {
+            //code to sql database
+            //create user with the given informatyion
             setTimeActive(true)
             navigate('/verify-email')
           }).catch((err) => alert(err.message))

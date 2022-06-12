@@ -1,4 +1,4 @@
-import './profile.css'
+import styles from './Profile.module.scss'
 import {useAuthValue} from '../../AuthContext'
 import { signOut } from 'firebase/auth' 
 import { auth } from '../../firebase'
@@ -8,8 +8,8 @@ function Profile() {
   const {currentUser} = useAuthValue()
 
   return (
-      <div className='center'>
-        <div className='profile'>
+      <div className={styles.center}>
+        <div className={styles.profile}>
           <h1>Profile</h1>
           <p><strong>Email: </strong>{currentUser?.email}</p>
           <p>
