@@ -54,18 +54,24 @@ const Sidebar = () => {
               <span>Products</span>
             </li>
           </Link>
-          <li>
-            <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>Brand Category</span>
-          </li>
-          <li>
-            <SquareFootIcon className="icon" />
-            <span>Measurement</span>
-          </li>
-          <li>
-            <ColorLensIcon className="icon" />
-            <span>Colors</span>
-          </li>
+          <Link to="/brandCategory" style={{ textDecoration: "none" }}>
+            <li>
+              <SettingsSystemDaydreamOutlinedIcon className="icon" />
+              <span>Brand Category</span>
+            </li>
+          </Link>
+          <Link to="/measurementCategory" style={{ textDecoration: "none" }}>
+            <li>
+              <SquareFootIcon className="icon" />
+              <span>Measurement</span>
+            </li>
+          </Link>
+          <Link to="/colorCategory" style={{ textDecoration: "none" }}>
+            <li>
+              <ColorLensIcon className="icon" />
+              <span>Colors</span>
+            </li>
+          </Link>
           <p className="title">FINANCE</p>
           <Link to="/financereport" style={{ textDecoration: "none" }}>
               <li>

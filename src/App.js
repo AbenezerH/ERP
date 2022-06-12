@@ -19,7 +19,10 @@ import Sales from "./pages/sales/Sales";
 import Expense from "./pages/expense/Expense";
 import ExpenseCategory from "./pages/expenseCategory/ExpenseCategory";
 import Income from "./pages/income/Income";
-import IncomeCategory from "./pages/incomeCategory/IncomeCategory";
+import IncomeCategory from "./pages/incomeCategory/IncomeCategory"
+import BrandCategory from "./pages/brandCategory/BrandCategory";
+import MeasurementCategory from "./pages/measurementCategory/MeasurementCategory";
+import Color from "./pages/color/Color";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { productInputs, userInputs } from "./formSource";
@@ -58,6 +61,30 @@ function App() {
             <Route path="/products">
               <Route index element={<Products />} />
               <Route path=":productId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={productInputs} title="Add New Product" />}
+              />
+            </Route>
+            <Route path="/brandCategory">
+              <Route index element={<BrandCategory />} />
+              <Route path=":brandCategoryId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={productInputs} title="Add New Product" />}
+              />
+            </Route>
+            <Route path="/measurementCategory">
+              <Route index element={<MeasurementCategory />} />
+              <Route path=":measurementCategoryId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={productInputs} title="Add New Product" />}
+              />
+            </Route>
+            <Route path="/colorCategory">
+              <Route index element={<Color />} />
+              <Route path=":colorsId" element={<Single />} />
               <Route
                 path="new"
                 element={<New inputs={productInputs} title="Add New Product" />}
