@@ -226,7 +226,7 @@ const AddEmployee = () => {
             <div className="form-control">
               <label htmlFor="Dept">Department: </label>
               <select
-                /* style={styles.dropDown} */
+                style={styles.dropDown}
                 name="dept_id"
                 value={formData.dept_id}
                 onChange={fieldChangeHandler}
@@ -237,7 +237,7 @@ const AddEmployee = () => {
             <div className="form-control">
               <label htmlFor="grade_id">Grade-ID : </label>
               <select
-                /* style={styles.dropDown} */
+                style={styles.dropDown}
                 name="grade_id"
                 value={formData.grade_id}
                 onChange={fieldChangeHandler}
