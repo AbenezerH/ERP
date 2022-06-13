@@ -40,7 +40,7 @@ const AddEmployee = () => {
     encashed_leave_till_date: "", 
       }]);
       React.useEffect(() => {
-        fetch("http://localhost:3000/erpdatabase/hr/addEmployee")
+        fetch("http://localhost:3000/erpdatabase/hr/allEmployee")
             .then(res => res.json())
                 .then(data => {
                     setItems(data);
@@ -113,10 +113,10 @@ const AddEmployee = () => {
           });
       };
       const departments = departmentsList.map((dept) => {
-        return <option value={dept.dept_id}>{dept.dept_name}</option>;
+        return <option key={dept.dept_id} value={dept.dept_id}>{dept.dept_name}</option>;
       });
       const grades = gradesList.map((grade) => {
-        return <option value={grade.grade_id}>{grade.grade_name}</option>;
+        return <option key={grade.grade_id} value={grade.grade_id}>{grade.grade_name}</option>;
       });
   
   return (
@@ -226,9 +226,10 @@ const AddEmployee = () => {
             <div className="form-control">
               <label htmlFor="Dept">Department: </label>
               <select
-                style={styles.dropDown}
-                onChange={fieldChangeHandler}
+                /* style={styles.dropDown} */
+                name="dept_id"
                 value={formData.dept_id}
+                onChange={fieldChangeHandler}
               >
                 {departments}
               </select>
@@ -236,30 +237,14 @@ const AddEmployee = () => {
             <div className="form-control">
               <label htmlFor="grade_id">Grade-ID : </label>
               <select
-                style={styles.dropDown}
+                /* style={styles.dropDown} */
+                name="grade_id"
+                value={formData.grade_id}
                 onChange={fieldChangeHandler}
-                value={formData.name}
                 required
               >
                 {grades}
               </select>
-              <input
-                type="text"
-                placeholder="department"
-                name="dept_id"
-                onChange={fieldChangeHandler}
-                value={formData.dept_id}
-              />
-            </div>
-            <div className="form-control">
-              <label htmlFor="grade_id">Grade-ID : </label>
-              <input
-                type="text"
-                placeholder="grade"
-                name="grade_id"
-                onChange={fieldChangeHandler}
-                value={formData.grade_id}
-              />
             </div>
             <div className="form-control">
               <label htmlFor="org_name">Org Name: </label>
