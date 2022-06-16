@@ -66,10 +66,10 @@ const Sidebar = () => {
               <span>Measurement</span>
             </li>
           </Link>
-          <Link to="/colorCategory" style={{ textDecoration: "none" }}>
+          <Link to="/warranty" style={{ textDecoration: "none" }}>
             <li>
               <ColorLensIcon className="icon" />
-              <span>Colors</span>
+              <span>Warranty</span>
             </li>
           </Link>
           <p className="title">FINANCE</p>

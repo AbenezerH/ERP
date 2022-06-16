@@ -29,6 +29,7 @@ import { productInputs, userInputs } from "./formSource";
 import { DarkModeContext } from "./context/darkModeContext";
 import { useContext } from "react";
 import "./style/dark.scss";
+import Warranty from './pages/color/Warranty';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -82,9 +83,9 @@ function App() {
                 element={<New inputs={productInputs} title="Add New Product" />}
               />
             </Route>
-            <Route path="/colorCategory">
-              <Route index element={<Color />} />
-              <Route path=":colorsId" element={<Single />} />
+            <Route path="/warranty">
+              <Route index element={<Warranty />} />
+              <Route path=":warrantyId" element={<Single />} />
               <Route
                 path="new"
                 element={<New inputs={productInputs} title="Add New Product" />}
