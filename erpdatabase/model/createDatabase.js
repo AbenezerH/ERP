@@ -1,6 +1,7 @@
 const mysql = require('mysql')
 
 const warrantySample = require("./warrantySample")
+const inventorySample = require('./inventorySample')
 
 
 let db = mysql.createConnection({
@@ -193,7 +194,7 @@ function createWarrantyTable(){
     `CREATE TABLE IF NOT EXISTS warranty
     (id int(11) AUTO_INCREMENT,
     full_name varchar(50),
-    phone_number int(11),
+    phone_number bigint(12),
     serial_number varchar(20),
     valid_until date,
     PRIMARY KEY(id))
@@ -395,6 +396,47 @@ function enterBrand(){
       })
 }
 
+function enterInventory(){
+  for (let i = 0; i < 10; i++){
+    let sql = 
+    `INSERT IGNORE INTO inventory
+    (id,
+    product_name,
+    product_description,
+    product_unit,
+    product_quantity,
+    unit_cost,
+    price,
+    least_critical_amount,
+    high_amount,
+    created_at,
+    updated_at,
+    expire_date,
+    category,
+    brand) VALUES
+    ("${i+1}",
+    "${inventorySample.product_name[i]}",
+    "${inventorySample.product_description[i]}",
+    "${inventorySample.product_unit[i]}",
+    "${inventorySample.product_quantity[i]}",
+    "${inventorySample.unit_cost[i]}",
+    "${inventorySample.price[i]}",
+    "${inventorySample.least_critical_amount[i]}",
+    "${inventorySample.high_amount[i]}",
+    "${inventorySample.created_at[i]}",
+    "${inventorySample.updated_at[i]}",
+    "${inventorySample.expire_date[i]}",
+    "1",
+    "1")`
+
+    console.log(sql + "\n\n")
+    connectOnce.query(sql, (sqlErr, results) => {
+      if(sqlErr) console.log(sqlErr.message)
+      console.log(results)
+    })
+  }
+}
+
 function createTables(){
 
     createAdminTable()
@@ -428,6 +470,7 @@ function createTables(){
     enterCategory()
     enterBrand()
     enterWarranty()
+    enterInventory()
 
 
     db.end(err => {if(err) throw err})
