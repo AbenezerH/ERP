@@ -9,7 +9,7 @@ const Hr = () => {
       <Sidebar/>
       <div className="listContainer">
         <Navbar/>
-        <HrDatatable title={"Human Resource"}/>
+        <HrDatatable title={"Employee"}/>
       </div>
     </div>
   )
