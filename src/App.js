@@ -131,6 +131,16 @@ function App() {
                 element={<New inputs={userInputs} title="Add New User" />}
               />
             </Route>
+
+            <Route path="/hr">
+              <Route index element={<Hr />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="hrnew"
+                element={<New inputs={gradeInputs} title="Add New grade" />}
+              />
+            </Route>
+
             <Route path="/incomeCategory">
               <Route index element={<IncomeCategory />} />
               <Route path=":userId" element={<Single />} />
