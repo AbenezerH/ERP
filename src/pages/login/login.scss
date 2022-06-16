@@ -4,6 +4,7 @@
     border: 1px solid #dcdcdc;
     padding: 20px;
     text-align: center;
+   
   }
   
   .auth form{
@@ -30,6 +31,13 @@
     font-size: 16px;
     padding: 0 10px;
   }
+  .center {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
   //@at-root
 //   *{
 //     box-sizing: border-box;
@@ -39,12 +47,7 @@
 //     display: block;
 //   }
   
-//   .center {
-//     height: 100vh;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//   }
+ 
   
 //   body {
 //     margin: 0;
