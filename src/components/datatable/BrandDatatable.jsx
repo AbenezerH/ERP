@@ -67,8 +67,8 @@ const BrandDatatable = ({title}) => {
 
   if(title === "Brand"){
     return (
-      <div className="branddatatable datatable">
-        <div className="datatableTitle">
+      <div className="branddatatable">
+        <div className="branddatatableTitle">
           Add New {title}
           <Link to="/users/new" className="link">
             Add New
@@ -89,8 +89,8 @@ const BrandDatatable = ({title}) => {
 
   else if(title === "Category"){
     return(
-      <div className="branddatatable datatable">
-        <div className="datatableTitle">
+      <div className="branddatatable">
+        <div className="branddatatableTitle">
           Add New {title}
           <Link to="/users/new" className="link">
             Add New
