@@ -1,7 +1,7 @@
 import "./income.scss"
 import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
-import Datatable from "../../components/datatable/Datatable"
+import IncomeDatatable from "../../components/datatable/IncomeDatatable"
 
 const Income = () => {
   return (
@@ -9,7 +9,7 @@ const Income = () => {
       <Sidebar/>
       <div className="listContainer">
         <Navbar/>
-        <Datatable title={"income"}/>
+        <IncomeDatatable title={"Income"}/>
       </div>
     </div>
   )
