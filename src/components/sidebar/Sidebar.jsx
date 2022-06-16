@@ -110,6 +110,15 @@ const Sidebar = () => {
                 <span>Income Category</span>
               </li>
           </Link>
+          <p className="title">HUMAN RESOURCE</p>
+          <Link to="/hr" style={{ textDecoration: "none" }}>
+            <li>
+              <span>Employee</span>
+            </li>
+          </Link>
+          <li>
+            <span>Payroll</span>
+          </li>
           <p className="title">USEFUL & SERVICE</p>
           <li>
             <InsertChartIcon className="icon" />
