@@ -2,8 +2,6 @@ const User = require("../controller/employeController");
 const express = require('express')
 const router = express.Router()
 
-
-
 router.get("/allEmployee", User.dbHR.getAllEmployees);
 router.get("/:ep_email", User.dbHR.getEmployeeProfile);
 router.get("/getDepartments", User.dbHR.getDepartments);

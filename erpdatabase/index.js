@@ -50,6 +50,6 @@ app.use('/erpdatabase/payroll', payrollRoute)
 app.use('/erpdatabase/authenticate', authenticateRoute)
 
 
-app.listen('3000', () => {
-    console.log('server started at 3000')
+app.listen('5000', () => {
+    console.log('server started at 5000')
 })

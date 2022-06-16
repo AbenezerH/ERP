@@ -21,7 +21,8 @@ const dbHR = {
   sqlConn: sqlConn,
 addEmployee: addEmployee =  (req, res) => {
   let sql = `INSERT INTO employe( name,
-  dob,
+    phonenumber,
+    dob,
   address,
   city,
   state,
@@ -30,10 +31,7 @@ addEmployee: addEmployee =  (req, res) => {
   password,
   dept_id,
   grade_id,
-  doj,
-  paid_leave_taken,
-  encashed_leave_this_month,
-  encashed_leave_till_date)
+  doj)
     VALUES("${req.body.name}",
       "${req.body.dob}",
     "${req.body.address}",
@@ -45,9 +43,6 @@ addEmployee: addEmployee =  (req, res) => {
     "${req.body.dept_id}",
     "${req.body.grade_id}",
     "${req.body.doj}",
-      "${req.body.paid_leave_taken}",
-      "${req.body.encashed_leave_this_month}",
-      "${req.body.encashed_leave_till_date}"
   )`;
   db.query(sql, (sqlErr, results) => {
     if(sqlErr) throw sqlErr
@@ -87,13 +82,13 @@ updateEmployeedata: updateEmployeedata = (req, res) => {
   
   const updateQuery = `UPDATE employe set 
   name= "${req.body.name}",
+  phonenumber= "${req.body.phonenumber}",
   dob= "${req.body.dob}",
   address= "${req.body.address}",
   city= "${req.body.city}",
   state= "${req.body.state}",
   pincode= "${req.body.pincode}",
   doj= "${req.body.doj}",
-  org_name= "${req.body.org_name}",
   dept_id= "${req.body.dept_id}",
   grade_id= "${req.body.grade_id}",
   where ep_email= "${req.body.ep_email}"`;
@@ -110,7 +105,7 @@ addDepartment: addDepartment = (req, res) => {
     dept_id,
     dept_name,
     branch)
-    VALUES( "${req.body.dept_name}", "${req.body.org_name}", "${req.body.branch}")`;
+    VALUES( "${req.body.dept_id}","${req.body.dept_name}", "${req.body.branch}")`;
     db.query(sql, (sqlErr, results) => {
       if(sqlErr) throw sqlErr
 
