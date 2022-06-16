@@ -31,6 +31,8 @@ import { useContext } from "react";
 import "./style/dark.scss";
 import Warranty from './pages/color/Warranty';
 import Notification from './pages/notifications/Notification';
+import Hr from './pages/HR/Hr';
+import { gradeInputs } from "./Hrsource";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
