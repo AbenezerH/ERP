@@ -40,7 +40,7 @@ export const empInputs = [
       id: 6,
       label: "Email",
       type: "text",
-      placeholder: "emp_email",
+      placeholder: "ep_email",
     },
     {
       id: 7,
@@ -49,16 +49,22 @@ export const empInputs = [
       placeholder: "password",
     },
     {
-      id: 7,
+      id: 8,
       label: "department ID",
       type: "number",
       placeholder: "dept_id",
     },
     {
-      id: 7,
+      id: 9,
       label: "grade ID",
       type: "number",
       placeholder: "grade_id",
+    },
+    {
+      id: 9,
+      label: "date of joining",
+      type: "date",
+      placeholder: "doj",
     },
   ];
   
@@ -81,72 +87,89 @@ export const empInputs = [
       type: "text",
       placeholder: "Branch",
     },
+  ];
+ 
+  export const orgInputs = [
+    {
+      id: 1,
+      label: "Organozation name",
+      type: "text",
+      placeholder: "org_name",
+    },
+    {
+      id: 2,
+      label: "Admin email",
+      type: "text",
+      placeholder: "ad_email",
+    },
+    {
+      id: 3,
+      label: "Location",
+      type: "text",
+      placeholder: "location",
+    },
     {
       id: 4,
-      label: "Price",
+      label: "Contact Number",
       type: "text",
-      placeholder: "100",
+      placeholder: "contact_number",
     },
     {
       id: 5,
-      label: "Stock",
+      label: "paid leave limit",
       type: "text",
-      placeholder: "in stock",
+      placeholder: "paid_leave_limit",
+    },
+    {
+      id: 6,
+      label: "encashed leave limit",
+      type: "text",
+      placeholder: "encashed_leave_limit",
     },
   ];
-  export function Grade(){
-    
-  }
-  
+
   export const gradeInputs = [
     {
       id: 1,
       label: "grade_id",
       type: "number",
       placeholder: "Grade ID",
-      value: "2",
     },
     {
       id: 2,
       label: "grade_name",
       type: "text",
       placeholder: "Grade Name",
-      value: "2",
     },
     {
       id: 3,
       label: "basic_pay",
       type: "number",
       placeholder: "Basic pay",
-      value: "2",
     },
     {
       id: 4,
       label: "grade_pf",
       type: "text",
       placeholder: "Grade PF",
-      value: "2",
     },
     {
       id: 5,
       label: "grade_bonus",
       type: "number",
       placeholder: "Grade Bonus",
-      value: "2",
     },
     {
         id: 6,
         label: "grade_ta",
         type: "text",
         placeholder: "Grade travel allowance",
-        value: "2",
       },
       {
         id: 7,
         label: "grade_da",
         type: "text",
         placeholder: "Grade deduction",
-        value: "2",
       },
   ];
   

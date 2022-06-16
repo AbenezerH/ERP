@@ -88,9 +88,11 @@ updateEmployeedata: updateEmployeedata = (req, res) => {
   city= "${req.body.city}",
   state= "${req.body.state}",
   pincode= "${req.body.pincode}",
-  doj= "${req.body.doj}",
+  ep_email= "${req.body.ep_email}",
+  password= "${req.body.password}",
   dept_id= "${req.body.dept_id}",
   grade_id= "${req.body.grade_id}",
+  doj= "${req.body.doj}",
   where ep_email= "${req.body.ep_email}"`;
   //console.log(values);
   db.query(updateQuery, (sqlErr, results) => {
