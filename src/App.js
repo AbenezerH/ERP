@@ -30,6 +30,7 @@ import { DarkModeContext } from "./context/darkModeContext";
 import { useContext } from "react";
 import "./style/dark.scss";
 import Warranty from './pages/color/Warranty';
+import Notification from './pages/notifications/Notification';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -137,6 +138,9 @@ function App() {
                 path="new"
                 element={<New inputs={userInputs} title="Add New User" />}
               />
+            </Route>
+            <Route path="/notifications">
+              <Route index element={<Notification />} />
             </Route>
             {/*  */}
           <Route exact path='/profile' element={

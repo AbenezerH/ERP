@@ -115,10 +115,12 @@ const Sidebar = () => {
             <InsertChartIcon className="icon" />
             <span>Stats</span>
           </li>
-          <li>
-            <NotificationsNoneIcon className="icon" />
-            <span>Notifications</span>
-          </li>
+          <Link to="/notifications" style={{ textDecoration: "none" }}>
+            <li>
+              <NotificationsNoneIcon className="icon" />
+              <span>Notifications</span>
+            </li>            
+          </Link>
           <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
