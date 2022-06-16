@@ -34,10 +34,12 @@ const Navbar = () => {
           <div className="item">
             <FullscreenExitOutlinedIcon className="icon" />
           </div>
-          <div className="item">
-            <NotificationsNoneOutlinedIcon className="icon" />
-            <div className="counter">1</div>
-          </div>
+          <Link to='/notifications'>
+            <div className="item">
+              <NotificationsNoneOutlinedIcon className="icon" />
+              <div className="counter">1</div>
+            </div>
+          </Link>
           <div className="item">
             <ChatBubbleOutlineOutlinedIcon className="icon" />
             <div className="counter">2</div>
