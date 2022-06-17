@@ -88,15 +88,14 @@ function createGradePayTable(){
 function createEmployeTable(){
     let employe =
         `CREATE TABLE IF NOT EXISTS employe(name varchar(255),
+        phonenumber varchar(255),
         dob date, 
         address varchar(255),
              city varchar(255),
              state varchar(255), pincode numeric(6, 0), 
              ep_email varchar(255) unique, password varchar(255),
                dept_id varchar(255), 
-              grade_id varchar(255), doj date, paid_leave_taken date, 
-              encashed_leave_this_month date,
-               encashed_leave_till_date date, primary key(ep_email), 
+              grade_id varchar(255), doj date, primary key(ep_email), 
                foreign key (dept_id) references 
                department(dept_id) on delete set null, 
                foreign key (grade_id) references gradepay(grade_id) 
@@ -112,7 +111,7 @@ function createEmployeTable(){
 function createExtrasTable(){
     let extra =
       `CREATE TABLE IF NOT EXISTS extras(ex_type varchar(255),
-       ex_id varchar(255), primary key (ex_id))`;
+       ex_id varchar(255), ep_email varchar(255), primary key (ex_id))`;
     connectOnce.query(extra, (err) => {
       if (err) {
     

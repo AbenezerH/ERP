@@ -30,10 +30,7 @@ addEmployee: addEmployee =  (req, res) => {
   password,
   dept_id,
   grade_id,
-  doj,
-  paid_leave_taken,
-  encashed_leave_this_month,
-  encashed_leave_till_date)
+  doj)
     VALUES("${req.body.name}",
       "${req.body.dob}",
     "${req.body.address}",
@@ -45,9 +42,6 @@ addEmployee: addEmployee =  (req, res) => {
     "${req.body.dept_id}",
     "${req.body.grade_id}",
     "${req.body.doj}",
-      "${req.body.paid_leave_taken}",
-      "${req.body.encashed_leave_this_month}",
-      "${req.body.encashed_leave_till_date}"
   )`;
   db.query(sql, (sqlErr, results) => {
     if(sqlErr) throw sqlErr
@@ -237,9 +231,11 @@ addOrganisation: addOrganisation =  (req, res) => {
 addExtras: addExtras = (req, res) => {
   const sql = `INSERT into extras(
     ex_type,
-    ex_id
+    ex_id,
+    ep_email
     ) values("${req.body.ex_type}",
-             "${req.body.ex_id}"
+             "${req.body.ex_id}",
+             "${req.body.ep_mail}"
              )`;
     db.query(sql, (sqlErr, results) => {
       if(sqlErr) throw sqlErr
@@ -262,7 +258,7 @@ addIsgiven: addIsgiven = (req, res) => {
   const sql = `Insert into is_given(
     ex_id,
     amount,
-    email)
+    ep_email)
     values( "${req.body.ex_id}","${req.body.amount}","${req.body.email}")`
     db.query(sql, (sqlErr, results) => {
       if(sqlErr) throw sqlErr
