@@ -4,22 +4,17 @@ import { userColumns } from "../../hrdatatablesource";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const HrDatatable = ({title}) => {
+const GradeDatatable = ({title}) => {
 
   const [data, setData] = useState([
     {
-      name: "",
-      phonenumber: "",
-      dob: "",
-      address: "",
-      city: "",
-      state: "",
-      pincode: "",
-      password: "",
-      org_name: "",
-      dept_id : "",
-      grade_id : "",
-      doj: ""
+        grade_id: "",
+        grade_name: "", 
+        basic_pay: "", 
+        grade_pf: "", 
+        grade_bonus: "", 
+        grade_ta: "",
+        grade_da: "",
     }
   ]);
   
@@ -30,25 +25,15 @@ const HrDatatable = ({title}) => {
                     setData(prevData => {
                       return data.map(each => ({
                         ...each,
-                        id: each.ep_email
+                        id: each.grade_id
                       }))
                     });
                 })
             .catch(error => console.log(error))
   }, [])
 
-  const handleDelete = (ep_email) => {
-
-    // delete from the db
-    // console.log(ep_email)
-    fetch(`http://localhost:5000/erpdatabase/hr/delete/${ep_email}`, {
-            method: "DELETE",
-        }).then(res => res.json())
-            .then(data => console.log("add " + data))
-        .catch(err => console.log("error " + err))
-    
-    // delete from ui
-    setData(data.filter((item) => item.ep_email !== ep_email));
+  const handleDelete = (id) => {
+    setData(data.filter((item) => item.id !== id));
   };
 
   const actionColumn = [
@@ -64,7 +49,7 @@ const HrDatatable = ({title}) => {
             </Link>
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row.ep_email)}
+              onClick={() => handleDelete(params.row.id)}
             >
               Delete
             </div>
@@ -93,4 +78,4 @@ const HrDatatable = ({title}) => {
   );
 };
 
-export default HrDatatable;
+export default GradeDatatable;
