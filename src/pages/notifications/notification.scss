@@ -6,7 +6,9 @@
   
       .widgets{
         display: flex;
+        flex-direction: column;
         padding: 20px;
+        padding-right: 40%;
         gap: 20px;
       }
       

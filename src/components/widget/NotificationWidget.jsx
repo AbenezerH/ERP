@@ -1,4 +1,4 @@
-import "./widget.scss";
+import "./notificationwidget.scss";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
@@ -79,7 +79,7 @@ const Widget = ({ type }) => {
   }
 
   return (
-    <div className="widget">
+    <div className="notificationwidget">
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
