@@ -48,12 +48,12 @@ const dbAsset = {
         value,
         created_at,
         asset_type,
-        depreciation_cost) VALUES
+        salvage_value) VALUES
         ("${req.body.name}",
         "${req.body.value}",
         "${req.body.created_at}",
         "${req.body.asset_type}",
-        "${req.body.depreciation_cost}")`
+        "${req.body.salvage_value}")`
 
         assetCon.query(sql, (sqlErr, results) => {
             if(sqlErr) console.log(sqlErr.message)
@@ -69,7 +69,7 @@ const dbAsset = {
         value = "${req.body.value}",
         created_at = "${req.body.created_at}",
         asset_type = "${req.body.asset_type }",
-        depreciation_cost = "${req.body.depreciation_cost}"
+        salvage_value = "${req.body.salvage_value}"
         WHERE id = "${req.params.id}"`
 
         assetCon.query(sql, (sqlErr, results) => {

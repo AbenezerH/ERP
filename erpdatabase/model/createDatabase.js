@@ -321,7 +321,7 @@ function createAssetTable(){
     value double,
     created_at datetime,
     asset_type varchar(255),
-    depreciation_cost double,
+    salvage_value double,
     PRIMARY KEY (id))`
     connectOnce.query(sqlAsset, (err) => {
       if (err) {
