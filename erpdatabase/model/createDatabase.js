@@ -1,5 +1,8 @@
 const mysql = require('mysql')
 
+const warrantySample = require("./warrantySample")
+const inventorySample = require('./inventorySample')
+
 let db = mysql.createConnection({
 
     host: "localhost",
@@ -344,6 +347,94 @@ function createExpenseTable(){
 
 }
 
+function enterWarranty(){
+
+  for (let i = 0; i < warrantySample.names.length; i++){
+    let sql = 
+    `INSERT IGNORE INTO warranty
+    (id,
+    full_name,
+    phone_number,
+    serial_number,
+    valid_until) VALUES
+    ("${i+1}",
+    "${warrantySample.names[i]}",
+    "${warrantySample.phone_number[i]}",
+    "${warrantySample.serial_number[i]}",
+    "${warrantySample.valid_until[i]}")`
+
+      // console.log(sql + "\n\n")
+    connectOnce.query(sql, (sqlErr, results) => {
+      if(sqlErr) console.log(sqlErr.message)
+      console.log(results)
+    })
+  }
+}
+
+function enterCategory(){
+  let sqlData = 
+      `INSERT IGNORE INTO category 
+      (name) VALUES ("other")`
+
+      connectOnce.query( sqlData, (err) => {
+        if (err) {
+          throw err;
+        }
+      })
+}
+function enterBrand(){
+  let sqlData = 
+      `INSERT IGNORE INTO brand 
+      (name) VALUES ("other")`
+
+      connectOnce.query( sqlData, (err) => {
+        if (err) {
+          throw err;
+        }
+      })
+}
+
+function enterInventory(){
+  for (let i = 0; i < 10; i++){
+    let sql = 
+    `INSERT IGNORE INTO inventory
+    (id,
+    product_name,
+    product_description,
+    product_unit,
+    product_quantity,
+    unit_cost,
+    price,
+    least_critical_amount,
+    high_amount,
+    created_at,
+    updated_at,
+    expire_date,
+    category,
+    brand) VALUES
+    ("${i+1}",
+    "${inventorySample.product_name[i]}",
+    "${inventorySample.product_description[i]}",
+    "${inventorySample.product_unit[i]}",
+    "${inventorySample.product_quantity[i]}",
+    "${inventorySample.unit_cost[i]}",
+    "${inventorySample.price[i]}",
+    "${inventorySample.least_critical_amount[i]}",
+    "${inventorySample.high_amount[i]}",
+    "${inventorySample.created_at[i]}",
+    "${inventorySample.updated_at[i]}",
+    "${inventorySample.expire_date[i]}",
+    "1",
+    "1")`
+
+    console.log(sql + "\n\n")
+    connectOnce.query(sql, (sqlErr, results) => {
+      if(sqlErr) console.log(sqlErr.message)
+      console.log(results)
+    })
+  }
+}
+
 function createTables(){
 
     createAdminTable()
@@ -393,6 +484,13 @@ const createDatabase = () => {
             console.log("ConnectOnce connected")
           })
           createTables()
+
+          // entering the sample database data
+
+          enterCategory()
+          enterBrand()
+          enterWarranty()
+          enterInventory()
       
         });
     }
