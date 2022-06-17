@@ -1,7 +1,6 @@
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import nextId from "react-id-generator"
 import { useState } from "react";
 const Hrnew = ({ inputs, title }) => {
     const [formData, setFormData] = useState({
