@@ -53,7 +53,7 @@ addEmployee: addEmployee =  (req, res) => {
 })
 },
 deleteEmployee: deleteEmployee =  (req, res) => {
-  const sql = `DELETE FROM Employe WHERE ep_email = "${req.params.ep_email_email}"`;
+  const sql = `DELETE FROM Employe WHERE ep_email = "${req.params.ep_email}"`;
  db.query(sql, (sqlErr, results) => {
     if(sqlErr) console.log(sqlErr.message)
 
