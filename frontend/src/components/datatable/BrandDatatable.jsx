@@ -38,8 +38,21 @@ const BrandDatatable = ({title}) => {
   }, [])
 
 
-  const handleDelete = (id) => {
-    setBrandData(brandData.filter((item) => item.id !== id));
+  const handleDelete = (id, table) => {
+
+    // delete from the db
+    // console.log(id)
+    fetch(`http://localhost:5000/erpdatabase/${table}/delete/${id}`, {
+            method: "DELETE",
+        }).then(res => res.json())
+            .then(data => console.log("add " + data))
+        .catch(err => console.log("error " + err))
+
+    // delete from the ui
+    table === "brand"? 
+                      setBrandData(brandData.filter((item) => item.id !== id)) : 
+                      setCatData(catData.filter((item) => item.id !== id))
+
   };
 
   const actionColumn = [
@@ -55,7 +68,7 @@ const BrandDatatable = ({title}) => {
             </Link>
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row.id, title === "Brand"? "brand": title === "Category"? "category": "nottable")}
               >
               Delete
             </div>
