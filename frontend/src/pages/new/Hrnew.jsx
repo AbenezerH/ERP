@@ -1,9 +1,13 @@
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
+import {default as UUID} from "node-uuid";
 import { useState } from "react";
 const Hrnew = ({ inputs, title }) => {
+  
+    const rid = UUID.v1();
     const [formData, setFormData] = useState({
+<<<<<<< HEAD
       name: "",
       phonenumber: "",
       dob: "",
@@ -16,6 +20,15 @@ const Hrnew = ({ inputs, title }) => {
       dept_id: "1",
       grade_id: "1",
       doj: ""
+=======
+        grade_id: rid,
+        grade_name: "", 
+        basic_pay: "", 
+        grade_pf: "", 
+        grade_bonus: "", 
+        grade_ta: "",
+        grade_da: "",
+>>>>>>> b8b03ec741d25c533f016950c62c94578b4e5355
       });
 
       
@@ -47,8 +60,6 @@ const Hrnew = ({ inputs, title }) => {
         console.log("Add employ")
       
       }
-
-      console.log(formData)
       
       
   return (
