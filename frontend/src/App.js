@@ -22,7 +22,6 @@ import Income from "./pages/income/Income";
 import IncomeCategory from "./pages/incomeCategory/IncomeCategory"
 import BrandCategory from "./pages/brandCategory/BrandCategory";
 import MeasurementCategory from "./pages/measurementCategory/MeasurementCategory";
-import Color from "./pages/color/Color";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { productInputs, userInputs } from "./formSource";

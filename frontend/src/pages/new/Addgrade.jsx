@@ -4,18 +4,13 @@ import Navbar from "../../components/navbar/Navbar";
 import { useState } from "react";
 const Hrnew = ({ inputs, title }) => {
     const [formData, setFormData] = useState({
-      name: "",
-      phonenumber: "",
-      dob: "",
-      address: "",
-      city: "",
-      state: "",
-      pincode: "",
-      ep_email: "",
-      password: "",
-      dept_id: "1",
-      grade_id: "1",
-      doj: ""
+        grade_id: "123456",
+        grade_name: "", 
+        basic_pay: "", 
+        grade_pf: "", 
+        grade_bonus: "", 
+        grade_ta: "",
+        grade_da: "",
       });
 
       
@@ -33,7 +28,7 @@ const Hrnew = ({ inputs, title }) => {
       }
       
       
-      function addemp(event) {
+      function addgrade(event) {
         fetch("http://localhost:5000/erpdatabase/hr/addGrade", {
             method: "POST",
             body: JSON.stringify(formData),
@@ -44,7 +39,7 @@ const Hrnew = ({ inputs, title }) => {
             .then(data => console.log("add " + data))
         .catch(err => console.log("error " + err))
       
-        console.log("Add employ")
+        console.log("Add grade")
       
       }
 
@@ -74,7 +69,7 @@ const Hrnew = ({ inputs, title }) => {
                 </div>
               ))}
               
-              <button onClick={addemp}>Send</button>
+              <button onClick={addgrade}>Send</button>
             </form>
           </div>
         </div>
