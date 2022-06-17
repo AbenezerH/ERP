@@ -32,7 +32,7 @@ import Warranty from './pages/color/Warranty';
 import Notification from './pages/notifications/Notification';
 import Hr from './pages/HR/Hr';
 import Hrnew from './pages/new/Hrnew';
-import { gradeInputs } from "./Hrsource";
+import { empInputs } from "./Hrsource";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -139,7 +139,7 @@ function App() {
               <Route path=":userId" element={<Single />} />
               <Route
                 path="hrnew"
-                element={<Hrnew inputs={gradeInputs} title="Add New grade" />}
+                element={<Hrnew inputs={empInputs} title="Add New grade" />}
               />
             </Route>
 

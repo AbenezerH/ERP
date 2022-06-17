@@ -34,7 +34,7 @@ const Hrnew = ({ inputs, title }) => {
       
       
       function addemp(event) {
-        fetch("http://localhost:5000/erpdatabase/hr/addGrade", {
+        fetch("http://localhost:5000/erpdatabase/hr/addEmployee", {
             method: "POST",
             body: JSON.stringify(formData),
             headers: {

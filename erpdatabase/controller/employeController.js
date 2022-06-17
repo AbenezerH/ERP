@@ -21,7 +21,8 @@ const dbHR = {
   sqlConn: sqlConn,
 addEmployee: addEmployee =  (req, res) => {
   let sql = `INSERT INTO employe( name,
-  dob,
+    phonenumber,
+    dob,
   address,
   city,
   state,
@@ -32,6 +33,7 @@ addEmployee: addEmployee =  (req, res) => {
   grade_id,
   doj)
     VALUES("${req.body.name}",
+      "${req.body.phonenumber}",
       "${req.body.dob}",
     "${req.body.address}",
     "${req.body.city}",
@@ -41,7 +43,7 @@ addEmployee: addEmployee =  (req, res) => {
     "${req.body.password}",
     "${req.body.dept_id}",
     "${req.body.grade_id}",
-    "${req.body.doj}",
+    "${req.body.doj}"
   )`;
   db.query(sql, (sqlErr, results) => {
     if(sqlErr) throw sqlErr
