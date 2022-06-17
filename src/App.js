@@ -32,6 +32,7 @@ import "./style/dark.scss";
 import Warranty from './pages/color/Warranty';
 import Notification from './pages/notifications/Notification';
 import Hr from './pages/HR/Hr';
+import Hrnew from './pages/new/Hrnew';
 import { gradeInputs } from "./Hrsource";
 
 function App() {
@@ -139,7 +140,7 @@ function App() {
               <Route path=":userId" element={<Single />} />
               <Route
                 path="hrnew"
-                element={<New inputs={gradeInputs} title="Add New grade" />}
+                element={<Hrnew inputs={gradeInputs} title="Add New grade" />}
               />
             </Route>
 
