@@ -4,22 +4,17 @@ import { userColumns } from "../../hrdatatablesource";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const HrDatatable = ({title}) => {
+const GradeDatatable = ({title}) => {
 
   const [data, setData] = useState([
     {
-      name: "",
-      phonenumber: "",
-      dob: "",
-      address: "",
-      city: "",
-      state: "",
-      pincode: "",
-      password: "",
-      org_name: "",
-      dept_id : "",
-      grade_id : "",
-      doj: ""
+        grade_id: "",
+        grade_name: "", 
+        basic_pay: "", 
+        grade_pf: "", 
+        grade_bonus: "", 
+        grade_ta: "",
+        grade_da: "",
     }
   ]);
   
@@ -30,7 +25,7 @@ const HrDatatable = ({title}) => {
                     setData(prevData => {
                       return data.map(each => ({
                         ...each,
-                        id: each.ep_email
+                        id: each.grade_id
                       }))
                     });
                 })
@@ -83,4 +78,4 @@ const HrDatatable = ({title}) => {
   );
 };
 
-export default HrDatatable;
+export default GradeDatatable;
