@@ -1,11 +1,13 @@
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import nextId from "react-id-generator"
+import {default as UUID} from "node-uuid";
 import { useState } from "react";
 const Hrnew = ({ inputs, title }) => {
+  
+    const rid = UUID.v1();
     const [formData, setFormData] = useState({
-        grade_id: "123456",
+        grade_id: rid,
         grade_name: "", 
         basic_pay: "", 
         grade_pf: "", 
@@ -43,8 +45,6 @@ const Hrnew = ({ inputs, title }) => {
         console.log("Add grade")
       
       }
-
-      console.log(formData)
       
       
   return (
