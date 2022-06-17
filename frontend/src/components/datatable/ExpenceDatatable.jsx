@@ -8,20 +8,10 @@ const ExpenceDatatable = ({ title }) => {
   const [data, setData] = useState([
     {
       id: "",
-      product_name: "",
-      product_description: "",
-      product_unit: "",
-      product_quantity: "",
-      unit_cost: "",
-      price: "",
-      least_critical_amount: "",
-      high_amount: "",
+      name: "",
       created_at: "",
-      updated_at: "",
-      expire_date: "",
-      category: "1",
-      brand: "1",
-      by: "",
+      ex_type: "",
+      ex_amount: ""
     },
   ]);
 
