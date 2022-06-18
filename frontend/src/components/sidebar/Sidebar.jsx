@@ -104,10 +104,10 @@ const Sidebar = () => {
               <span>Income</span>
             </li>
             </Link>
-          <Link to="/incomeCategory" style={{ textDecoration: "none" }}>
+          <Link to="/asset" style={{ textDecoration: "none" }}>
               <li>
                 <CurrencyExchangeIcon className="icon" />
-                <span>Income Category</span>
+                <span>Asset</span>
               </li>
           </Link>
           <p className="title">HUMAN RESOURCE</p>

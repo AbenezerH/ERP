@@ -17,7 +17,7 @@ import Products from "./pages/products/Products";
 import FinanceReport from "./pages/financeReport/FinanceReport";
 import Sales from "./pages/sales/Sales";
 import Expense from "./pages/expense/Expense";
-import ExpenseCategory from "./pages/expenseCategory/ExpenseCategory";
+import Asset from "./pages/asset/Asset";
 import Income from "./pages/income/Income";
 import IncomeCategory from "./pages/incomeCategory/IncomeCategory"
 import BrandCategory from "./pages/brandCategory/BrandCategory";
@@ -116,8 +116,8 @@ function App() {
                 element={<New inputs={userInputs} title="Add New User" />}
               />
             </Route>
-            <Route path="/expenseCategory">
-              <Route index element={<ExpenseCategory />} />
+            <Route path="/asset">
+              <Route index element={<Asset />} />
               <Route path=":userId" element={<Single />} />
               <Route
                 path="new"
