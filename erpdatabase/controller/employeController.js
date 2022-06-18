@@ -64,13 +64,18 @@ deleteEmployee: deleteEmployee =  (req, res) => {
     res.send(results)
 })
 },
-getAllEmployees: getAllEmployees = (req, res) => {
-  const query = `SELECT * from employe`;
-  db.query(query, (sqlErr, results) => {
-    if(sqlErr) console.log(sqlErr.message)
-
-    res.send(results)
-})
+getAllEmployees: getAllEmployees = async(req, res) => {
+  try{
+    const query = `SELECT * from employe`;
+    await db.query(query, (sqlErr, results) => {
+      if(sqlErr) console.log(sqlErr.message)
+  
+      res.state(200).send(results);
+  })
+  }catch (error) {
+    console.log(`error`, error);
+    res.status(500).json("server error!");
+  }
 },
 
 getEmployeeProfile: getEmployeeProfile = (req, res) => {
