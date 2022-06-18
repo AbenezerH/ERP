@@ -10,9 +10,9 @@ const brandCon = mysql.createConnection({
     database: "ERPdatabase",
 })
 
-function sqlConn(){
+ function sqlConn(){
     
-    brandCon.connect(conErr => {
+     brandCon.connect(conErr => {
         if(conErr) throw conErr
     })
 }
@@ -21,57 +21,82 @@ const dbBrand = {
 
     sqlConn: sqlConn,
 
-    getAllBrand: getAllBrand = (req, res) => {
-        let sql = "SELECT * FROM brand"
-
-        brandCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    getAllBrand: getAllBrand = async (req, res) => {
+        try {
+            let sql = "SELECT * FROM brand"
+            
+            await brandCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+                
+                res.send(results)
+            })
+            
+        } catch (error) {
+            res.send(error)
+        }
     },
-
-    getBrand: getBrand = (req, res) => {
-        let sql = `SELECT * FROM brand WHERE id = ${req.params.id}`
-
-        brandCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    
+    getBrand: getBrand = async (req, res) => {
+        try {
+            let sql = `SELECT * FROM brand WHERE id = ${req.params.id}`
+            
+            await brandCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+                
+                res.send(results)
+            })
+            
+        } catch (error) {
+            res.send(error)
+        }
     },
-
-    addBrand: addBrand = (req, res) => {
-        let sql = 
-        `INSERT INTO brand
-        (name) VALUES ("${req.body.name}")`
-
-        brandCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    
+    addBrand: addBrand = async (req, res) => {
+        try {
+            let sql = 
+            `INSERT INTO brand
+            (name) VALUES ("${req.body.name}")`
+            
+            await brandCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+                
+                res.send(results)
+            })
+            
+        } catch (error) {
+            res.send(error)
+        }
     },
-
-    updateItem: updateItem = (req, res) => {
-        let sql = 
-        `UPDATE brand SET name = "${req.body.name}" WHERE id = "${req.params.id}"`
-
-        brandCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    
+    updateItem: updateItem = async (req, res) => {
+        try {
+            let sql = 
+            `UPDATE brand SET name = "${req.body.name}" WHERE id = "${req.params.id}"`
+            
+            await brandCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+                
+                res.send(results)
+            })
+            
+        } catch (error) {
+            res.send(error)
+        }
     },
-
-    deleteItem: deleteItem = (req, res) => {
-        let sql = `DELETE FROM brand WHERE id = "${req.params.id}"`
-
-        brandCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    
+    deleteItem: deleteItem = async (req, res) => {
+        try {
+            let sql = `DELETE FROM brand WHERE id = "${req.params.id}"`
+    
+            await brandCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+    
+                res.send(results)
+            })
+            
+        } catch (error) {
+            res.send(error)
+        }
     },
 }
 

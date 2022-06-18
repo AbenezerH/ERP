@@ -10,9 +10,9 @@ const categoryCon = mysql.createConnection({
     database: "ERPdatabase",
 })
 
-function sqlConn(){
+ function sqlConn(){
     
-    categoryCon.connect(conErr => {
+     categoryCon.connect(conErr => {
         if(conErr) throw conErr
     })
 }
@@ -21,56 +21,81 @@ const dbCategory = {
 
     sqlConn: sqlConn,
 
-    getAllCategory: getAllCategory = (req, res) => {
-        let sql = "SELECT * FROM category"
-
-        categoryCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    getAllCategory: getAllCategory = async (req, res) => {
+        try {
+            let sql = "SELECT * FROM category"
+            
+            await categoryCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+                
+                res.send(results)
+            })
+            
+        } catch (error) {
+            res.send(error)
+        }
     },
-
-    getCategory: getCategory = (req, res) => {
-        let sql = `SELECT * FROM category WHERE id = "${req.params.id}"`
-
-        categoryCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    
+    getCategory: getCategory = async (req, res) => {
+        try {
+            let sql = `SELECT * FROM category WHERE id = "${req.params.id}"`
+            
+            await categoryCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+                
+                res.send(results)
+            })
+            
+        } catch (error) {
+            res.send(error)
+        }
     },
-
-
-    addCategory: addCategory = (req, res) => {
-        let sql = `INSERT INTO category (name) VALUES ("${req.body.name}")`
-
-        categoryCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    
+    
+    addCategory: addCategory = async (req, res) => {
+        try {
+            let sql = `INSERT INTO category (name) VALUES ("${req.body.name}")`
+            
+            await categoryCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+                
+                res.send(results)
+            })
+            
+        } catch (error) {
+            res.send(error)
+        }
     },
-
-
-    updateItem: updateItem = (req, res) => {
-        let sql = `UPDATE category SET name = "${req.body.name}" WHERE id = "${req.params.id}"`
-
-        categoryCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    
+    
+    updateItem: updateItem = async (req, res) => {
+        try {
+            let sql = `UPDATE category SET name = "${req.body.name}" WHERE id = "${req.params.id}"`
+            
+            await categoryCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+                
+                res.send(results)
+            })
+            
+        } catch (error) {
+            res.send(error)
+        }
     },
-
-    deleteItem: deleteItem = (req, res) => {
-        let sql = `DELETE FROM category WHERE id = "${req.params.id}"`
-
-        categoryCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    
+    deleteItem: deleteItem = async (req, res) => {
+        try {
+            let sql = `DELETE FROM category WHERE id = "${req.params.id}"`
+    
+            await categoryCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+    
+                res.send(results)
+            })
+            
+        } catch (error) {
+            res.send(error)
+        }
     }
 }
 

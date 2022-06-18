@@ -10,9 +10,9 @@ const adminCon = mysql.createConnection({
     database: "ERPdatabase",
 })
 
-function sqlConn(){
+ function sqlConn(){
     
-    adminCon.connect(conErr => {
+     adminCon.connect(conErr => {
         if(conErr) throw conErr
     })
 }
@@ -21,69 +21,98 @@ const dbAdmin = {
 
     sqlConn: sqlConn,
 
-    getAllAdmin: getAllAdmin = (req, res) => {
-        let sql = `SELECT * FROM admin`
+    getAllAdmin: getAllAdmin = async (req, res) => {
 
-        adminCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+        try {
+            let sql = `SELECT * FROM admin`
+            
+            await adminCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+                
+                res.send(results)
+            })
+            
+        } catch (error) {
+            res.send(error)
+        }
     },
     
-    getAdmin: getAdmin = (req, res) => {
-        let sql = `SELECT * FROM admin WHERE ad_email = "${req.params.id}"`
-
-        adminCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    getAdmin: getAdmin = async (req, res) => {
+        try {
+            let sql = `SELECT * FROM admin WHERE ad_email = "${req.params.id}"`
+            
+            await adminCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+                
+                res.send(results)
+            })
+            
+        } catch (error) {
+            res.send(error)
+        }
     },
-
-    addAdmin: addAdmin = (req, res) => {
-        let sql = 
-        `INSERT INTO admin
-        (admin_id,
-        username,
-        ad_email,
-        password) VALUES
-        ("${req.body.admin_id}",
-        "${req.body.username}",
-        "${req.body.ad_email}",
-        "${req.body.password}")`
-
-        adminCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
-    },
-
-    updateItem: updateItem = (req, res) => {
-        let sql = 
-        `UPDATE admin SET
-        admin_id = "${req.body.admin_id}",
-        username = "${req.body.username}",
-        ad_email = "${req.body.ad_email}",
-        password = "${req.body.password}"
-        WHERE ad_email = "${req.params.id}"`
-
-        adminCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
-    },
-
-    deleteItem: deleteItem = (req, res) => {
-        let sql = `DELETE FROM admin WHERE ad_email = "${req.params.id}"`
-
-        adminCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    
+    addAdmin: addAdmin = async (req, res) => {
+        try {
+            let sql = 
+            `INSERT INTO admin
+            (companyName,
+                username,
+                TIN_number,
+                ad_email,
+                password) VALUES
+                ("${req.body.companyName}",
+                "${req.body.username}",
+                "${req.body.TIN_number}",
+                "${req.body.ad_email}",
+                "${req.body.password}")`
+                
+                await adminCon.query(sql, (sqlErr, results) => {
+                    if(sqlErr) console.log(sqlErr.message)
+                    
+                    res.send(results)
+                })
+            
+        } catch (error) {
+            res.status(500).send(error)
+        }
+        },
+        
+        updateItem: updateItem = async (req, res) => {
+            try {
+                let sql = 
+                `UPDATE admin SET
+                companyName = "${req.body.companyName}",
+                username = "${req.body.username}",
+                TIN_number = "${req.body.TIN_number}",
+                ad_email = "${req.body.ad_email}",
+                password = "${req.body.password}"
+                WHERE ad_email = "${req.params.id}"`
+                
+                await adminCon.query(sql, (sqlErr, results) => {
+                    if(sqlErr) console.log(sqlErr.message)
+                    
+                    res.send(results)
+                })
+                
+            } catch (error) {
+                res.send(error)
+            }
+        },
+        
+        deleteItem: deleteItem = async (req, res) => {
+            try {
+                let sql = `DELETE FROM admin WHERE ad_email = "${req.params.id}"`
+                
+                await adminCon.query(sql, (sqlErr, results) => {
+                    if(sqlErr) console.log(sqlErr.message)
+        
+                    res.send(results)
+                })
+                
+            } catch (error) {
+                res.status(500).send(error)
+            }
     },
 
 }
