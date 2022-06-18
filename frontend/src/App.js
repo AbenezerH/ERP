@@ -19,7 +19,7 @@ import Sales from "./pages/sales/Sales";
 import Expense from "./pages/expense/Expense";
 import Asset from "./pages/asset/Asset";
 import Income from "./pages/income/Income";
-import IncomeCategory from "./pages/incomeCategory/IncomeCategory"
+import Liability from "./pages/liability/Liability"
 import BrandCategory from "./pages/brandCategory/BrandCategory";
 import MeasurementCategory from "./pages/measurementCategory/MeasurementCategory";
 import Single from "./pages/single/Single";
@@ -143,8 +143,8 @@ function App() {
               />
             </Route>
 
-            <Route path="/incomeCategory">
-              <Route index element={<IncomeCategory />} />
+            <Route path="/liability">
+              <Route index element={<Liability />} />
               <Route path=":userId" element={<Single />} />
               <Route
                 path="new"

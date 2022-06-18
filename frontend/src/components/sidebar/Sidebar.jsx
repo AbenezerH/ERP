@@ -92,10 +92,10 @@ const Sidebar = () => {
                 <span>Expense</span>
               </li>
           </Link>
-          <Link to="/expenseCategory" style={{ textDecoration: "none" }}>
+          <Link to="/liability" style={{ textDecoration: "none" }}>
               <li>
                 <PriceChangeIcon className="icon" />
-                <span>Expense Category</span>
+                <span>Liability</span>
               </li>
             </Link>
           <Link to="/income" style={{ textDecoration: "none" }}>
