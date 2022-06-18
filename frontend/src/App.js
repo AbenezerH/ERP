@@ -21,7 +21,8 @@ import Asset from "./pages/asset/Asset";
 import Income from "./pages/income/Income";
 import Liability from "./pages/liability/Liability"
 import BrandCategory from "./pages/brandCategory/BrandCategory";
-import MeasurementCategory from "./pages/measurementCategory/MeasurementCategory";
+//import MeasurementCategory from "./pages/measurementCategory/MeasurementCategory";
+import DamagedGood from "./pages/damagedgood/DamagedGood";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { productInputs, userInputs } from "./formSource";
@@ -78,9 +79,9 @@ function App() {
                 element={<New inputs={productInputs} title="Add New Product" />}
               />
             </Route>
-            <Route path="/measurementCategory">
-              <Route index element={<MeasurementCategory />} />
-              <Route path=":measurementCategoryId" element={<Single />} />
+            <Route path="/damagedgood">
+              <Route index element={<DamagedGood />} />
+              <Route path=":id" element={<Single />} />
               <Route
                 path="new"
                 element={<New inputs={productInputs} title="Add New Product" />}

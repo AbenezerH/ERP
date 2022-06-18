@@ -60,10 +60,10 @@ const Sidebar = () => {
               <span>Brand Category</span>
             </li>
           </Link>
-          <Link to="/measurementCategory" style={{ textDecoration: "none" }}>
+          <Link to="/damagedgood" style={{ textDecoration: "none" }}>
             <li>
-              <SquareFootIcon className="icon" />
-              <span>Measurement</span>
+              <StoreIcon className="icon" />
+              <span>Damaged Good</span>
             </li>
           </Link>
           <Link to="/warranty" style={{ textDecoration: "none" }}>
