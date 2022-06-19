@@ -32,7 +32,8 @@ const dbWarranty = {
             })
             
         } catch (error) {
-            res.send(error)
+            console.log(`error`, error);
+    res.status(500).json("server error!");
         }
     },
     
@@ -47,7 +48,8 @@ const dbWarranty = {
             })
             
         } catch (error) {
-            res.send(error)
+            console.log(`error`, error);
+    res.status(500).json("server error!");
         }
     },
     
@@ -72,7 +74,8 @@ const dbWarranty = {
                 })
             
         } catch (error) {
-            res.send(error)
+            console.log(`error`, error);
+    res.status(500).json("server error!");
         }
     },
         
@@ -93,7 +96,8 @@ const dbWarranty = {
                 })
                 
             } catch (error) {
-                res.send(error)
+                console.log(`error`, error);
+    res.status(500).json("server error!");
             }
         },
         
@@ -108,7 +112,8 @@ const dbWarranty = {
                 })
                 
             } catch (error) {
-                res.send(error)
+                console.log(`error`, error);
+    res.status(500).json("server error!");
             }
     },
 }

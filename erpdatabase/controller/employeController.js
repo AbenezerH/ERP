@@ -54,7 +54,8 @@ addEmployee: addEmployee =  async (req, res) => {
       })
             
   } catch (error) {
-      res.send(error)
+      console.log(`error`, error);
+    res.status(500).json("server error!");
   }
 },
   deleteEmployee: deleteEmployee =  async (req, res) => {
@@ -67,7 +68,8 @@ addEmployee: addEmployee =  async (req, res) => {
     })
             
   } catch (error) {
-      res.send(error)
+      console.log(`error`, error);
+    res.status(500).json("server error!");
   }
 },
 getAllEmployees: getAllEmployees = async (req, res) => {
@@ -80,7 +82,8 @@ getAllEmployees: getAllEmployees = async (req, res) => {
     })
             
   } catch (error) {
-      res.send(error)
+      console.log(`error`, error);
+    res.status(500).json("server error!");
   }
 },
 
@@ -95,7 +98,8 @@ getEmployeeProfile: getEmployeeProfile = async (req, res) => {
     })
             
   } catch (error) {
-      res.send(error)
+      console.log(`error`, error);
+    res.status(500).json("server error!");
   }
 },
 
@@ -121,7 +125,8 @@ updateEmployeedata: updateEmployeedata = async (req, res) => {
     })
             
   } catch (error) {
-      res.send(error)
+      console.log(`error`, error);
+    res.status(500).json("server error!");
   }
   
 },
@@ -141,7 +146,8 @@ addDepartment: addDepartment = async (req, res) => {
       })
             
   } catch (error) {
-      res.send(error)
+      console.log(`error`, error);
+    res.status(500).json("server error!");
   }
   },
   getDepartments: getDepartments =  async (req, res) => {
@@ -154,7 +160,8 @@ addDepartment: addDepartment = async (req, res) => {
       })
               
     } catch (error) {
-        res.send(error)
+        console.log(`error`, error);
+    res.status(500).json("server error!");
     }
   },
   getDepartmentid: getDepartmentid = async (req, res) => {
@@ -170,7 +177,8 @@ addDepartment: addDepartment = async (req, res) => {
       console.log(arrayOfObjects);
               
     } catch (error) {
-        res.send(error)
+        console.log(`error`, error);
+    res.status(500).json("server error!");
     }
   },
   addGrade: addGrade = async (req, res) => {
@@ -200,7 +208,8 @@ addDepartment: addDepartment = async (req, res) => {
           })
               
     } catch (error) {
-        res.send(error)
+        console.log(`error`, error);
+    res.status(500).json("server error!");
     }
   },
       
@@ -215,7 +224,8 @@ addDepartment: addDepartment = async (req, res) => {
           })
                   
         } catch (error) {
-            res.send(error)
+            console.log(`error`, error);
+    res.status(500).json("server error!");
         }
       },
       
@@ -230,7 +240,8 @@ addDepartment: addDepartment = async (req, res) => {
           })
                   
         } catch (error) {
-            res.send(error)
+            console.log(`error`, error);
+    res.status(500).json("server error!");
         }
       },
       addAdmin: addAdmin = async (req, res) => {
@@ -256,7 +267,8 @@ addDepartment: addDepartment = async (req, res) => {
               })
                   
         } catch (error) {
-            res.send(error)
+            console.log(`error`, error);
+    res.status(500).json("server error!");
         }
           },
           
@@ -270,7 +282,8 @@ getAdmin: getAdmin =  async (req, res) => {
     })
             
   } catch (error) {
-      res.send(error)
+      console.log(`error`, error);
+    res.status(500).json("server error!");
   }
 },
 addOrganisation: addOrganisation =  async (req, res) => {
@@ -297,7 +310,8 @@ addOrganisation: addOrganisation =  async (req, res) => {
       })
             
   } catch (error) {
-      res.send(error)
+      console.log(`error`, error);
+    res.status(500).json("server error!");
   }
   },
   addExtras: addExtras = async (req, res) => {
@@ -318,7 +332,8 @@ addOrganisation: addOrganisation =  async (req, res) => {
       })
             
   } catch (error) {
-      res.send(error)
+      console.log(`error`, error);
+    res.status(500).json("server error!");
   }
     
   },
@@ -333,7 +348,8 @@ addOrganisation: addOrganisation =  async (req, res) => {
       })
               
     } catch (error) {
-        res.send(error)
+        console.log(`error`, error);
+    res.status(500).json("server error!");
     }
   },
   addIsgiven: addIsgiven = async (req, res) => {
@@ -351,7 +367,8 @@ addOrganisation: addOrganisation =  async (req, res) => {
         })
               
     } catch (error) {
-        res.send(error)
+        console.log(`error`, error);
+    res.status(500).json("server error!");
     }
     },
     getExtraForemp: getExtraForemp = async (req, res) => {
@@ -364,7 +381,8 @@ addOrganisation: addOrganisation =  async (req, res) => {
         })
                 
       } catch (error) {
-          res.send(error)
+          console.log(`error`, error);
+    res.status(500).json("server error!");
       }
     },
     

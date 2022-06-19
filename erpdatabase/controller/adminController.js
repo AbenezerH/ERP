@@ -33,7 +33,8 @@ const dbAdmin = {
             })
             
         } catch (error) {
-            res.send(error)
+            console.log(`error`, error);
+    res.status(500).json("server error!");
         }
     },
     
@@ -48,7 +49,8 @@ const dbAdmin = {
             })
             
         } catch (error) {
-            res.send(error)
+            console.log(`error`, error);
+    res.status(500).json("server error!");
         }
     },
     
@@ -74,7 +76,8 @@ const dbAdmin = {
                 })
             
         } catch (error) {
-            res.status(500).send(error)
+            console.log(`error`, error);
+    res.status(500).json("server error!");
         }
         },
         
@@ -96,7 +99,8 @@ const dbAdmin = {
                 })
                 
             } catch (error) {
-                res.send(error)
+                console.log(`error`, error);
+    res.status(500).json("server error!");
             }
         },
         
@@ -111,7 +115,8 @@ const dbAdmin = {
                 })
                 
             } catch (error) {
-                res.status(500).send(error)
+                console.log(`error`, error);
+    res.status(500).json("server error!");
             }
     },
 
