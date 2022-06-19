@@ -8,6 +8,7 @@ const HrDatatable = ({title}) => {
 
   const [data, setData] = useState([
     {
+      id: "",
       name: "",
       phonenumber: "",
       dob: "",
@@ -15,6 +16,7 @@ const HrDatatable = ({title}) => {
       city: "",
       state: "",
       pincode: "",
+      ep_email: "4",
       password: "",
       org_name: "",
       dept_id : "",
@@ -67,7 +69,7 @@ const HrDatatable = ({title}) => {
     <div className="datatable">
       <div className="datatableTitle">
         Add New {title}
-        <Link to="/hr/hrnew" className="link">
+        <Link to="/addemployee/hrnew" className="link">
           Add New
         </Link>
       </div>

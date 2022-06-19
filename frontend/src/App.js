@@ -30,9 +30,11 @@ import { useContext } from "react";
 import "./style/dark.scss";
 import Warranty from './pages/color/Warranty';
 import Notification from './pages/notifications/Notification';
-import Hr from './pages/HR/Hr';
+import Employ from './pages/HR/Employ';
+import Grade from './pages/HR/Grade';
+import Addgrade from './pages/new/Addgrade';
 import Hrnew from './pages/new/Hrnew';
-import { empInputs } from "./Hrsource";
+import { empInputs, gradeInputs } from "./Hrsource";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -134,12 +136,20 @@ function App() {
               />
             </Route>
 
-            <Route path="/hr">
-              <Route index element={<Hr />} />
+            <Route path="/addemployee">
+              <Route index element={<Employ />} />
               <Route path=":userId" element={<Single />} />
               <Route
                 path="hrnew"
-                element={<Hrnew inputs={empInputs} title="Add New grade" />}
+                element={<Hrnew inputs={empInputs} title="New employee" />}
+              />
+            </Route>
+            <Route path="/grade">
+              <Route index element={<Grade />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="addgrade"
+                element={<Addgrade inputs={gradeInputs} title="New grade" />}
               />
             </Route>
 

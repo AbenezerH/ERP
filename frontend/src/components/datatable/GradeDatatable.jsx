@@ -8,6 +8,7 @@ const GradeDatatable = ({title}) => {
 
   const [data, setData] = useState([
     {
+        id: "",
         grade_id: "",
         grade_name: "", 
         basic_pay: "", 
@@ -62,7 +63,7 @@ const GradeDatatable = ({title}) => {
     <div className="datatable">
       <div className="datatableTitle">
         Add New {title}
-        <Link to="/hr/hrnew" className="link">
+        <Link to="/grade/addgrade" className="link">
           Add New
         </Link>
       </div>

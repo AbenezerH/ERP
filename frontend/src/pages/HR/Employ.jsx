@@ -3,7 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
 import HrDatatable from "../../components/datatable/HrDatatable"
 
-const Hr = () => {
+const Employ = () => {
   return (
     <div className="list">
       <Sidebar/>
@@ -15,4 +15,4 @@ const Hr = () => {
   )
 }
 
-export default Hr
+export default Employ

@@ -15,7 +15,6 @@ import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
-import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
@@ -111,14 +110,31 @@ const Sidebar = () => {
               </li>
           </Link>
           <p className="title">HUMAN RESOURCE</p>
-          <Link to="/hr" style={{ textDecoration: "none" }}>
+          <Link to="/addemployee" style={{ textDecoration: "none" }}>
             <li>
               <span>Employee</span>
             </li>
           </Link>
+          <Link to="/addgrade" style={{ textDecoration: "none" }}>
+            <li>
+              <span>Add Grade</span>
+            </li>
+          </Link>
+          <Link to="/org" style={{ textDecoration: "none" }}>
+            <li>
+              <span>organization information</span>
+            </li>
+          </Link>
+          <Link to="/dep" style={{ textDecoration: "none" }}>
+            <li>
+              <span>Add department</span>
+            </li>
+          </Link>
+          <Link to="/notifications" style={{ textDecoration: "none" }}>
           <li>
             <span>Payroll</span>
           </li>
+          </Link>
           <p className="title">USEFUL & SERVICE</p>
           <li>
             <InsertChartIcon className="icon" />

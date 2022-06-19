@@ -1,18 +1,18 @@
 import "./Hr.scss"
 import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
-import HrDatatable from "../../components/datatable/HrDatatable"
+import GradeDatatable from "../../components/datatable/GradeDatatable"
 
-const Hr = () => {
+const Grade = () => {
   return (
     <div className="list">
       <Sidebar/>
       <div className="listContainer">
         <Navbar/>
-        <HrDatatable title={"Grade Pay"}/>
+        <GradeDatatable title={"Grade Pay"}/>
       </div>
     </div>
   )
 }
 
-export default Hr
+export default Grade

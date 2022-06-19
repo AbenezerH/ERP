@@ -1,12 +1,11 @@
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
-import { defualt as UUID } from 'node-uuid';
 import Navbar from "../../components/navbar/Navbar";
 import { useState } from "react";
-const Hrnew = ({ inputs, title }) => {
-    const rid= UUID.v1();
+const Addgrade = ({ inputs, title }) => {
+  
     const [formData, setFormData] = useState({
-        grade_id: rid,
+        grade_id: " ",
         grade_name: "", 
         basic_pay: "", 
         grade_pf: "", 
@@ -80,4 +79,4 @@ const Hrnew = ({ inputs, title }) => {
   );
 };
 
-export default Hrnew;
+export default Addgrade;
