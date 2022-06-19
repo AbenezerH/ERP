@@ -5,7 +5,8 @@ import "react-circular-progressbar/dist/styles.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 
-const Featured = () => {
+const Featured = (props) => {
+  console.log("fe " + props.totalSales)
   return (
     <div className="featured">
       <div className="top">
@@ -17,7 +18,7 @@ const Featured = () => {
           <CircularProgressbar value={70} text={"70%"} strokeWidth={5} />
         </div>
         <p className="title">Total sales made today</p>
-        <p className="amount">4200 ETB</p>
+        <p className="amount">{props.totalSales} ETB</p>
         <p className="desc">
           Previous transactions processing. Last payments may not be included.
         </p>
