@@ -37,6 +37,16 @@ const InventoryDatatable = ({title}) => {
   }, [])
 
   const handleDelete = (id) => {
+
+    // delete from the db
+    // console.log(id)
+    fetch(`http://localhost:5000/erpdatabase/inventory/delete/${id}`, {
+            method: "DELETE",
+        }).then(res => res.json())
+            .then(data => console.log("add " + data))
+        .catch(err => console.log("error " + err))
+
+    // delete from the ui
     setData(data.filter((item) => item.id !== id));
   };
 

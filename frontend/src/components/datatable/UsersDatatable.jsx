@@ -30,8 +30,18 @@ const WarrantyDatatable = ({title}) => {
             .catch(error => console.log(error))
   }, [])
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+  const handleDelete = (ad_email) => {
+
+    // delete from the db
+    // console.log(ad_email)
+    fetch(`http://localhost:5000/erpdatabase/admin/delete/${ad_email}`, {
+            method: "DELETE",
+        }).then(res => res.json())
+            .then(data => console.log("add " + data))
+        .catch(err => console.log("error " + err))
+    
+    // delete from ui
+    setData(data.filter((item) => item.ad_email !== ad_email));
   };
 
   const actionColumn = [
@@ -47,7 +57,7 @@ const WarrantyDatatable = ({title}) => {
             </Link>
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row.ad_email)}
             >
               Delete
             </div>

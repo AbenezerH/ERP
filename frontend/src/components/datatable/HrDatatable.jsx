@@ -39,8 +39,18 @@ const HrDatatable = ({title}) => {
             .catch(error => console.log(error))
   }, [])
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+  const handleDelete = (ep_email) => {
+
+    // delete from the db
+    // console.log(ep_email)
+    fetch(`http://localhost:5000/erpdatabase/hr/delete/${ep_email}`, {
+            method: "DELETE",
+        }).then(res => res.json())
+            .then(data => console.log("add " + data))
+        .catch(err => console.log("error " + err))
+    
+    // delete from ui
+    setData(data.filter((item) => item.ep_email !== ep_email));
   };
 
   const actionColumn = [
@@ -56,7 +66,7 @@ const HrDatatable = ({title}) => {
             </Link>
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row.ep_email)}
             >
               Delete
             </div>

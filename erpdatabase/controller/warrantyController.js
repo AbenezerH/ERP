@@ -10,9 +10,9 @@ const warrantyCon = mysql.createConnection({
     database: "ERPdatabase",
 })
 
-function sqlConn(){
+ function sqlConn(){
     
-    warrantyCon.connect(conErr => {
+     warrantyCon.connect(conErr => {
         if(conErr) throw conErr
     })
 }
@@ -21,70 +21,100 @@ function sqlConn(){
 const dbWarranty = {
     sqlConn: sqlConn,
 
-    getAllWarranty: getAllWarranty = (req, res) => {
-        let sql = "SELECT * FROM warranty"
-
-        warrantyCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    getAllWarranty: getAllWarranty = async (req, res) => {
+        try {
+            let sql = "SELECT * FROM warranty"
+            
+            await warrantyCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+                
+                res.send(results)
+            })
+            
+        } catch (error) {
+            console.log(`error`, error);
+    res.status(500).json("server error!");
+        }
     },
-
-    getWarranty: getWarranty = (req, res) => {
-        let sql = `SELECT * FROM warranty WHERE id = "${req.params.id}"`
-
-        warrantyCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    
+    getWarranty: getWarranty = async (req, res) => {
+        try {
+            let sql = `SELECT * FROM warranty WHERE id = "${req.params.id}"`
+            
+            await warrantyCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+                
+                res.send(results)
+            })
+            
+        } catch (error) {
+            console.log(`error`, error);
+    res.status(500).json("server error!");
+        }
     },
-
-    addWarranty: addWarranty = (req, res) => {
-        let sql =
-        `INSERT INTO warranty
-        (full_name,
-        phone_number,
-        serial_number,
-        valid_until)
-        VALUES
-        ("${req.body.full_name}",
-        "${req.body.phone_number}",
-        "${req.body.serial_number}",
-        "${req.body.valid_until}")`
-
-        warrantyCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    
+    addWarranty: addWarranty = async (req, res) => {
+        try {
+            let sql =
+            `INSERT INTO warranty
+            (full_name,
+                phone_number,
+                serial_number,
+                valid_until)
+                VALUES
+                ("${req.body.full_name}",
+                "${req.body.phone_number}",
+                "${req.body.serial_number}",
+                "${req.body.valid_until}")`
+                
+                await warrantyCon.query(sql, (sqlErr, results) => {
+                    if(sqlErr) console.log(sqlErr.message)
+                    
+                    res.send(results)
+                })
+            
+        } catch (error) {
+            console.log(`error`, error);
+    res.status(500).json("server error!");
+        }
     },
-
-    updateItem: updateItem = (req, res) => {
-        let sql =
-        `UPDATE warranty SET
-        full_name = "${req.body.full_name}",
-        phone_number = "${req.body.phone_number}",
-        serial_number = "${req.body.serial_number}",
-        valid_until = "${req.body.valid_until}"
-        WHERE id = "${req.params.id}"`
-
-        warrantyCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
-    },
-
-    deleteItem: deleteItem = (req, res) => {
-        let sql = `DELETE FROM warranty WHERE id = "${req.params.id}"`
-
-        warrantyCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+        
+        updateItem: updateItem = async (req, res) => {
+            try {
+                let sql =
+                `UPDATE warranty SET
+                full_name = "${req.body.full_name}",
+                phone_number = "${req.body.phone_number}",
+                serial_number = "${req.body.serial_number}",
+                valid_until = "${req.body.valid_until}"
+                WHERE id = "${req.params.id}"`
+                
+                await warrantyCon.query(sql, (sqlErr, results) => {
+                    if(sqlErr) console.log(sqlErr.message)
+                    
+                    res.send(results)
+                })
+                
+            } catch (error) {
+                console.log(`error`, error);
+    res.status(500).json("server error!");
+            }
+        },
+        
+        deleteItem: deleteItem = async (req, res) => {
+            try {
+                let sql = `DELETE FROM warranty WHERE id = "${req.params.id}"`
+    
+                await warrantyCon.query(sql, (sqlErr, results) => {
+                    if(sqlErr) console.log(sqlErr.message)
+        
+                    res.send(results)
+                })
+                
+            } catch (error) {
+                console.log(`error`, error);
+    res.status(500).json("server error!");
+            }
     },
 }
 

@@ -1,34 +1,37 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../expencedatatablesource";
+import { userColumns } from "../../assetdatatablesource";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const ExpenceDatatable = ({ title }) => {
+const AssetDatatable = ({title}) => {
+
+  
   const [data, setData] = useState([
     {
       id: "",
       name: "",
+      value: "",
       created_at: "",
-      ex_type: "",
-      ex_amount: ""
-    },
+      asset_type: "",
+      salvage_value: "",
+    }
   ]);
-
+  
   useEffect(() => {
-    fetch("http://localhost:5000/erpdatabase/expense")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    fetch("http://localhost:5000/erpdatabase/asset")
+            .then(res => res.json())
+                .then(data => {
+                    setData(data);
+                })
+            .catch(error => console.log(error))
+  }, [])
 
   const handleDelete = (id) => {
 
     // delete from the db
     // console.log(id)
-    fetch(`http://localhost:5000/erpdatabase/expense/delete/${id}`, {
+    fetch(`http://localhost:5000/erpdatabase/asset/delete/${id}`, {
             method: "DELETE",
         }).then(res => res.json())
             .then(data => console.log("add " + data))
@@ -80,4 +83,4 @@ const ExpenceDatatable = ({ title }) => {
   );
 };
 
-export default ExpenceDatatable;
+export default AssetDatatable;

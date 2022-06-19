@@ -59,10 +59,10 @@ const Sidebar = () => {
               <span>Brand Category</span>
             </li>
           </Link>
-          <Link to="/measurementCategory" style={{ textDecoration: "none" }}>
+          <Link to="/damagedgood" style={{ textDecoration: "none" }}>
             <li>
-              <SquareFootIcon className="icon" />
-              <span>Measurement</span>
+              <StoreIcon className="icon" />
+              <span>Damaged Good</span>
             </li>
           </Link>
           <Link to="/warranty" style={{ textDecoration: "none" }}>
@@ -91,10 +91,10 @@ const Sidebar = () => {
                 <span>Expense</span>
               </li>
           </Link>
-          <Link to="/expenseCategory" style={{ textDecoration: "none" }}>
+          <Link to="/liability" style={{ textDecoration: "none" }}>
               <li>
                 <PriceChangeIcon className="icon" />
-                <span>Expense Category</span>
+                <span>Liability</span>
               </li>
             </Link>
           <Link to="/income" style={{ textDecoration: "none" }}>
@@ -103,10 +103,10 @@ const Sidebar = () => {
               <span>Income</span>
             </li>
             </Link>
-          <Link to="/incomeCategory" style={{ textDecoration: "none" }}>
+          <Link to="/asset" style={{ textDecoration: "none" }}>
               <li>
                 <CurrencyExchangeIcon className="icon" />
-                <span>Income Category</span>
+                <span>Asset</span>
               </li>
           </Link>
           <p className="title">HUMAN RESOURCE</p>

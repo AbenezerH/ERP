@@ -10,9 +10,9 @@ const assetCon = mysql.createConnection({
     database: "ERPdatabase",
 })
 
-function sqlConn(){
+ function sqlConn(){
     
-    assetCon.connect(conErr => {
+     assetCon.connect(conErr => {
         if(conErr) throw conErr
     })
 }
@@ -21,72 +21,102 @@ const dbAsset = {
 
     sqlConn: sqlConn,
 
-    getAllAsset: getAllAsset = (req, res) => {
-        let sql = `SELECT * FROM asset`
-
-        assetCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
-    },
-
-    getAsset: getAsset = (req, res) => {
-        let sql = `SELECT * FROM asset WHERE id = "${req.params.id}"`
-
-        assetCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    getAllAsset: getAllAsset = async (req, res) => {
+        try {
+            let sql = `SELECT * FROM asset`
+            
+            await assetCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+                
+                res.send(results)
+            })
+            
+        } catch (error) {
+            console.log(`error`, error);
+    res.status(500).json("server error!");
+        }
     },
     
-    addAsset: addAsset = (req, res) => {
-        let sql = 
-        `INSERT INTO asset
-        (name,
-        value,
-        created_at,
-        asset_type,
-        depreciation_cost) VALUES
-        ("${req.body.name}",
-        "${req.body.value}",
-        "${req.body.created_at}",
-        "${req.body.asset_type}",
-        "${req.body.depreciation_cost}")`
-
-        assetCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+    getAsset: getAsset = async (req, res) => {
+        try {
+            let sql = `SELECT * FROM asset WHERE id = "${req.params.id}"`
+            
+            await assetCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+                
+                res.send(results)
+            })
+            
+        } catch (error) {
+            console.log(`error`, error);
+    res.status(500).json("server error!");
+        }
     },
     
-    updateItem: updateItem = (req, res) => {
-        let sql = 
-        `UPDATE asset SET
-        name = "${req.body.name}",
-        value = "${req.body.value}",
-        created_at = "${req.body.created_at}",
-        asset_type = "${req.body.asset_type }",
-        depreciation_cost = "${req.body.depreciation_cost}"
-        WHERE id = "${req.params.id}"`
-
-        assetCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
-    },
+    addAsset: addAsset = async (req, res) => {
+        try {
+            let sql = 
+            `INSERT INTO asset
+            (name,
+                value,
+                created_at,
+                asset_type,
+                salvage_value) VALUES
+                ("${req.body.name}",
+                "${req.body.value}",
+                "${req.body.created_at}",
+                "${req.body.asset_type}",
+                "${req.body.salvage_value}")`
+                
+                await assetCon.query(sql, (sqlErr, results) => {
+                    if(sqlErr) console.log(sqlErr.message)
+                    
+                    res.send(results)
+                })
+            
+        } catch (error) {
+            console.log(`error`, error);
+    res.status(500).json("server error!");
+        }
+        },
+        
+        updateItem: updateItem = async (req, res) => {
+            try {
+                let sql = 
+                `UPDATE asset SET
+                name = "${req.body.name}",
+                value = "${req.body.value}",
+                created_at = "${req.body.created_at}",
+                asset_type = "${req.body.asset_type }",
+                salvage_value = "${req.body.salvage_value}"
+                WHERE id = "${req.params.id}"`
+                
+                await assetCon.query(sql, (sqlErr, results) => {
+                    if(sqlErr) console.log(sqlErr.message)
+                    
+                    res.send(results)
+                })
+                
+            } catch (error) {
+                console.log(`error`, error);
+    res.status(500).json("server error!");
+            }
+        },
+        
+        deleteItem: deleteItem = async (req, res) => {
+            try {
+                let sql = `DELETE FROM asset WHERE id = "${req.params.id}"`
     
-    deleteItem: deleteItem = (req, res) => {
-        let sql = `DELETE FROM asset WHERE id = "${req.params.id}"`
-
-        assetCon.query(sql, (sqlErr, results) => {
-            if(sqlErr) console.log(sqlErr.message)
-
-            res.send(results)
-        })
+                await assetCon.query(sql, (sqlErr, results) => {
+                    if(sqlErr) console.log(sqlErr.message)
+        
+                    res.send(results)
+                })
+                
+            } catch (error) {
+                console.log(`error`, error);
+    res.status(500).json("server error!");
+            }
     },
     
 
