@@ -10,6 +10,8 @@ const WarrantyDatatable = ({title}) => {
   const [data, setData] = useState([
     {
       id: "",
+      companyName: "",
+      TIN_number: "",
       username: "",
       ad_email: "",
       password: ""
@@ -23,7 +25,7 @@ const WarrantyDatatable = ({title}) => {
                     setData(prevData => {
                       return data.map((each) => ({
                         ...each,
-                        id: each.admin_id,                       
+                        id: each.ad_email,                       
                       }))
                     });
                 })
