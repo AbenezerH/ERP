@@ -4,7 +4,7 @@ import { userColumns } from "../../usersdatatablesource";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const WarrantyDatatable = ({title}) => {
+const UserDatatable = ({title}) => {
 
   
   const [data, setData] = useState([
@@ -88,4 +88,4 @@ const WarrantyDatatable = ({title}) => {
   );
 };
 
-export default WarrantyDatatable;
+export default UserDatatable;
