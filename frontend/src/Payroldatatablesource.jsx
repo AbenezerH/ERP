@@ -1,36 +1,36 @@
 export const userColumns = [
-  { field: "transaction_id", headerName: "ID", width: 60 },
+  { field: "id", headerName: "ID", width: 160 },
   {
     field: "month",
     headerName: "Month",
-    width: 230,
+    width: 100,
   },
   {
     field: "year",
     headerName: "Year",
-    width: 130,
+    width: 100,
   },
 
   {
     field: "gross_pay",
     headerName: "Gross pay",
-    width: 250,
+    width: 180,
   },
 
   {
     field: "income_tax", 
     headerName: "Tax",
-    width: 180,
+    width: 150,
   },
   {
     field: "ep_email",
     headerName: "Employ email",
-    width: 180,
+    width: 200,
   },
   {
     field: "ad_email",
     headerName: "Admin Email",
-    width: 180,
+    width: 200,
   },
 
 ];
