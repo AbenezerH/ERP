@@ -1,6 +1,6 @@
 import "./HrDatatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../hrdatatablesource";
+import { userColumns } from "../../Gradedatasource";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -20,7 +20,7 @@ const GradeDatatable = ({title}) => {
   ]);
   
   useEffect(() => {
-    fetch("http://localhost:5000/erpdatabase/hr/allemployee")
+    fetch("http://localhost:5000/erpdatabase/hr/getGrades")
             .then(res => res.json())
                 .then(data => {
                     setData(prevData => {
