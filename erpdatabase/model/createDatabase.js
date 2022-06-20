@@ -126,7 +126,7 @@ function createExtrasTable(){
 
 function createIsGivenTable(){
     let given =
-        `CREATE TABLE IF NOT EXISTS is_given( ex_id varchar(255)
+        `CREATE TABLE IF NOT EXISTS is_given( ex_id int(11) AUTO_INCREMENT
         , amount int, ep_email varchar(255), 
         primary key (ex_id, ep_email), foreign key(ep_email)
          references employe(ep_email) on delete cascade, 
@@ -142,7 +142,7 @@ function createIsGivenTable(){
 function createPayrollTable(){
     let payrol =
     `CREATE TABLE IF NOT EXISTS payroll( transaction_id SERIAL, 
-      month int, year int, gross_pay int, income_tax int, 
+     month int, year int, gross_pay int, income_tax int, 
       ep_email varchar(255), ad_email varchar(255), primary key (transaction_id),
        foreign key(ep_email) references employe(ep_email) on delete set null, 
        foreign key(ad_email) references admin(ad_email) on delete set null)`;

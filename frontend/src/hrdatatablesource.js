@@ -14,30 +14,26 @@ export const userColumns = [
       );
     },
   },
-  
   {
-    field: "ep_email",
-    headerName: "Email",
+    field: "phonenumber",
+    headerName: "Phonenumber",
     width: 200,
   },
   
-  {
-    field: "doj",
-    headerName: "Hire Date",
-    width: 115,
-  },
-
+  
   {
     field: "dob",
     headerName: "Birth Date",
     width: 115,
   },
-
+  
   {
     field: "address",
     headerName: "Street/Area",
     width: 180,
   },
+
+  
   {
     field: "city",
     headerName: "City",
@@ -49,13 +45,23 @@ export const userColumns = [
     width: 100,
   },
   {
-    field: "dept_id",
-    headerName: "Department",
+    field: "pincode",
+    headerName: "Pincode",
     width: 100,
   },
   {
-    field: "org_name",
-    headerName: "Organization",
+    field: "ep_email",
+    headerName: "Email",
+    width: 200,
+  },
+  {
+    field: "password",
+    headerName: "Password",
+    width: 100,
+  },
+  {
+    field: "dept_id",
+    headerName: "Department",
     width: 100,
   },
   {
@@ -63,16 +69,11 @@ export const userColumns = [
     headerName: "Pay Grade",
     width: 100,
   },
+ 
   {
-    field: "pincode",
-    headerName: "Pincode",
-    width: 100,
+    field: "doj",
+    headerName: "Hire Date",
+    width: 115,
   },
-  {
-    field: "password",
-    headerName: "Password",
-    width: 100,
-  },
-
 
 ];
