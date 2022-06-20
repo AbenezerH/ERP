@@ -18,7 +18,7 @@ export const userColumns = [
   },
 
   {
-    field: "income_tax",
+    field: "income_tax", 
     headerName: "Tax",
     width: 180,
   },

@@ -130,7 +130,7 @@ const Sidebar = () => {
               <span>Add department</span>
             </li>
           </Link>
-          <Link to="/notifications" style={{ textDecoration: "none" }}>
+          <Link to="/payrol" style={{ textDecoration: "none" }}>
           <li>
             <span>Payroll</span>
           </li>

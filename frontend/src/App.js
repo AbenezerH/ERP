@@ -1,5 +1,6 @@
 // import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import React from "react";
 import Home from "./pages/home/Home"
 import Profile from './pages/profile/Profile'
 import Register from './pages/register/Register'
@@ -33,6 +34,7 @@ import Warranty from './pages/color/Warranty';
 import Notification from './pages/notifications/Notification';
 import Employ from './pages/HR/Employ';
 import Grade from './pages/HR/Grade';
+import Payrol from './pages/HR/Payrol';
 import Addgrade from './pages/new/Addgrade';
 import Hrnew from './pages/new/Hrnew';
 import { empInputs, gradeInputs } from "./Hrsource";
@@ -153,6 +155,11 @@ function App() {
                 element={<Addgrade inputs={gradeInputs} title="New grade" />}
               />
             </Route>
+            <Route path="/payrol">
+              <Route index element={<Payrol />} />
+              <Route path=":userId" element={<Single />} />
+            </Route>
+
 
             <Route path="/liability">
               <Route index element={<Liability />} />
