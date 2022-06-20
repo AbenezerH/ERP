@@ -125,9 +125,9 @@ const Sidebar = () => {
               <span>organization information</span>
             </li>
           </Link>
-          <Link to="/dep" style={{ textDecoration: "none" }}>
+          <Link to="/department" style={{ textDecoration: "none" }}>
             <li>
-              <span>Add department</span>
+              <span>Department</span>
             </li>
           </Link>
           <Link to="/payrol" style={{ textDecoration: "none" }}>
