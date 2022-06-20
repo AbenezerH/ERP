@@ -20,7 +20,7 @@ const Payroldatatable = ({title}) => {
   ]);
   
   useEffect(() => {
-    fetch("http://localhost:5000//erpdatabase/payroll")
+    fetch("http://localhost:5000/erpdatabase/payroll")
             .then(res => res.json())
                 .then(data => {
                     setData(prevData => {
