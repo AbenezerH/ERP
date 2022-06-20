@@ -8,7 +8,8 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import PriceChangeIcon from '@mui/icons-material/PriceChange';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
-import SquareFootIcon from '@mui/icons-material/SquareFoot';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import PaymentsIcon from '@mui/icons-material/Payments';
 import InsertChartIcon from "@mui/icons-material/InsertChart";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
@@ -112,10 +113,11 @@ const Sidebar = () => {
           <p className="title">HUMAN RESOURCE</p>
           <Link to="/addemployee" style={{ textDecoration: "none" }}>
             <li>
+              <PeopleOutlineIcon className="icon" />
               <span>Employee</span>
             </li>
           </Link>
-          <Link to="/addgrade" style={{ textDecoration: "none" }}>
+          <Link to="/grade" style={{ textDecoration: "none" }}>
             <li>
               <span>Add Grade</span>
             </li>
@@ -132,6 +134,7 @@ const Sidebar = () => {
           </Link>
           <Link to="/payrol" style={{ textDecoration: "none" }}>
           <li>
+            <AccountBalanceWalletIcon className="icon" />
             <span>Payroll</span>
           </li>
           </Link>
