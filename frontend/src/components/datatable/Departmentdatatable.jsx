@@ -1,50 +1,45 @@
 import "./HrDatatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../Payroldatatablesource";
+import { userColumns } from "../../Departmentdatasource";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const Payroldatatable = ({title}) => {
+const Departmentdatatable = ({title}) => {
 
   const [data, setData] = useState([
     {
-      id: "",
-      transaction_id: "",
-      month: "",
-      year: "",
-      basic_pay: "",
-      income_tax: "",
-      ep_email: "",
-      ad_email: "",
+        id: "",
+        dept_id: " ",
+        dept_name: "", 
+        branch: "", 
     }
   ]);
   
   useEffect(() => {
-    fetch("http://localhost:5000//erpdatabase/payroll")
+    fetch("http://localhost:5000//erpdatabase/Hr/getDepartments")
             .then(res => res.json())
                 .then(data => {
                     setData(prevData => {
                       return data.map(each => ({
                         ...each,
-                        id: each.transaction_id
+                        id: each.dept_id
                       }))
                     });
                 })
             .catch(error => console.log(error))
   }, [])
-
-  const handleDelete = (transaction_id) => {
+  const handleDelete = (dept_id) => {
 
     // delete from the db
-    // console.log(ep_email)
-    fetch(`http://localhost:5000//erpdatabase/payrolldelete/:${transaction_id}`, {
+    // console.log(id)
+    fetch(`http://localhost:5000/erpdatabase/expense/delete/${dept_id}`, {
             method: "DELETE",
         }).then(res => res.json())
             .then(data => console.log("add " + data))
         .catch(err => console.log("error " + err))
-    
-    // delete from ui
-    setData(data.filter((item) => item.transaction_id !== transaction_id));
+
+    // delete from the ui
+    setData(data.filter((item) => item.dept_id !== dept_id));
   };
 
   const actionColumn = [
@@ -60,7 +55,7 @@ const Payroldatatable = ({title}) => {
             </Link>
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row.transaction_id)}
+              onClick={() => handleDelete(params.row.dept_id)}
             >
               Delete
             </div>
@@ -71,6 +66,12 @@ const Payroldatatable = ({title}) => {
   ];
   return (
     <div className="datatable">
+        <div className="datatableTitle">
+        Add Department {title}
+        <Link to="/department/addDep" className="link">
+          Add New
+        </Link>
+      </div>
       <DataGrid
         className="datagrid"
         rows={data}
@@ -83,4 +84,4 @@ const Payroldatatable = ({title}) => {
   );
 };
 
-export default Payroldatatable ;
+export default Departmentdatatable ;

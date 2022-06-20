@@ -16,7 +16,7 @@ const Hrsidebar = () => {
               <span>Add Grade</span>
             </li>
           </Link>
-          <Link to="/addep" style={{ textDecoration: "none" }}>
+          <Link to="/department" style={{ textDecoration: "none" }}>
             <li>
               <span>Add epartment</span>
             </li>

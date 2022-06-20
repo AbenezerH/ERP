@@ -36,8 +36,10 @@ import Employ from './pages/HR/Employ';
 import Grade from './pages/HR/Grade';
 import Payrol from './pages/HR/Payrol';
 import Addgrade from './pages/new/Addgrade';
+import AddDep from './pages/new/AddDep';
+import Department from './pages/HR/Department';
 import Hrnew from './pages/new/Hrnew';
-import { empInputs, gradeInputs } from "./Hrsource";
+import { empInputs, gradeInputs, depInputs } from "./Hrsource";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -153,6 +155,14 @@ function App() {
               <Route
                 path="addgrade"
                 element={<Addgrade inputs={gradeInputs} title="New grade" />}
+              />
+            </Route>
+            <Route path="/department">
+              <Route index element={<Department />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="addDep"
+                element={<AddDep inputs={depInputs} title="New department" />}
               />
             </Route>
             <Route path="/payrol">
