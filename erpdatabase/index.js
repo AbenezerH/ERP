@@ -5,6 +5,7 @@ const dbCreator = require('./model/createDatabase')
 
 const hrRoute=require('./routes/employee')
 const inventoryRoute = require('./routes/inventoryRoutes')
+const gradeRoute = require('./routes/paygradeRoutes')
 const brandRoute = require('./routes/brandRoutes')
 const warrantyRoute = require('./routes/warrantyRoutes')
 const salesRoute = require('./routes/salesRoutes')
@@ -31,6 +32,8 @@ app.use(express.json())
 
 app.use('/erpdatabase/hr', hrRoute)
 app.use('/erpdatabase/inventory', inventoryRoute)
+app.use('/erpdatabase/grade', gradeRoute)
+
 app.use('/erpdatabase/brand', brandRoute)
 app.use('/erpdatabase/warranty', warrantyRoute)
 
