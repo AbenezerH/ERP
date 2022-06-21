@@ -24,5 +24,7 @@ router.post("/addIsgiven", User.dbHR.addIsgiven);
 router.put("/updateEmployeeData", User.dbHR.updateEmployeedata);
 
 router.delete("/delete/:ep_email", User.dbHR.deleteEmployee);
+router.delete("/delete/:dept_id", User.dbHR. deleteDepartment);
+router.delete("/delete/:grade_id", User.dbHR.deleteGrade);
 
 module.exports = router;

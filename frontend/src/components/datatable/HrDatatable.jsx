@@ -16,9 +16,8 @@ const HrDatatable = ({title}) => {
       city: "",
       state: "",
       pincode: "",
-      ep_email: "4",
+      ep_email: "",
       password: "",
-      org_name: "",
       dept_id : "",
       grade_id : "",
       doj: ""

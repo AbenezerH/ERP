@@ -5,7 +5,8 @@ import { useState } from "react";
 const Addgrade = ({ inputs, title }) => {
   
     const [formData, setFormData] = useState({
-        grade_id: " ",
+        id:"",
+      grade_id: " ",
         grade_name: "", 
         basic_pay: "", 
         grade_pf: "", 
