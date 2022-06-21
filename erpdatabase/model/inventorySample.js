@@ -77,6 +77,23 @@ let unit_cost =
 ]
 
 
+
+let price =
+[
+    "71",
+    "810",
+    "22",
+    "56",
+    "382",
+    "654",
+    "362",
+    "425",
+    "562",
+    "42"
+]
+
+
+
 let least_critical_amount =
 [
     "37",
@@ -161,6 +178,7 @@ module.exports = {
     product_unit,
     product_quantity,
     unit_cost,
+    price,
     least_critical_amount,
     high_amount,
     created_at,
