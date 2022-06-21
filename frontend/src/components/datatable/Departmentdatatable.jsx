@@ -67,7 +67,7 @@ const Departmentdatatable = ({title}) => {
   return (
     <div className="datatable">
         <div className="datatableTitle">
-        Add Department {title}
+        Add {title}
         <Link to="/department/addDep" className="link">
           Add New
         </Link>
