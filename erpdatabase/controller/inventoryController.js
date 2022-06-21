@@ -34,7 +34,7 @@ const dbInventory = {
             
         } catch (error) {
             console.log(`error`, error);
-    res.status(500).json("server error!");
+            res.status(500).json("server error!");
         }
     },
     
@@ -79,7 +79,7 @@ const dbInventory = {
             
         } catch (error) {
             console.log(`error`, error);
-    res.status(500).json("server error!");
+            res.status(500).json("server error!");
         }
         
     },
@@ -99,7 +99,7 @@ const dbInventory = {
                     
                 } catch (error) {
                     console.log(`error`, error);
-    res.status(500).json("server error!");
+                    res.status(500).json("server error!");
                 }
             },
             
@@ -117,7 +117,7 @@ const dbInventory = {
                     
                 } catch (error) {
                     console.log(`error`, error);
-    res.status(500).json("server error!");
+                    res.status(500).json("server error!");
                 }
             },
             
@@ -149,7 +149,7 @@ const dbInventory = {
                     
                 } catch (error) {
                     console.log(`error`, error);
-    res.status(500).json("server error!");
+                    res.status(500).json("server error!");
                 }
     },
 
