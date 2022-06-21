@@ -76,7 +76,7 @@ const InventoryDatatable = ({title}) => {
     <div className="datatable">
       <div className="datatableTitle">
         Add New {title}
-        <Link to="/users/new" className="link">
+        <Link to="/products/InventoryNew" className="link">
           Add New
         </Link>
       </div>

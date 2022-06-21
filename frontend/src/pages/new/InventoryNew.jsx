@@ -5,10 +5,21 @@ import { useState } from "react";
 const AddDep = ({ inputs, title }) => {
   
     const [formData, setFormData] = useState({
-        id: "",
-        dept_id: " ",
-        dept_name: "", 
-        branch: "", 
+              id: "",
+              product_name: "",
+              product_description: "",
+              product_unit: "",
+              product_quantity: "",
+              unit_cost: "",
+              price: "",
+              least_critical_amount: "",
+              high_amount: "",
+              created_at: "",
+              updated_at: "",
+              expire_date: "",
+              category: "1",
+              brand: "1",
+              by: ""
       });
 
       
@@ -27,7 +38,7 @@ const AddDep = ({ inputs, title }) => {
       
       
       function adddep(event) {
-        fetch("http://localhost:5000/erpdatabase/hr/addDepartment", {
+        fetch("http://localhost:5000/erpdatabase/inventory/add", {
             method: "POST",
             body: JSON.stringify(formData),
             headers: {
@@ -37,7 +48,7 @@ const AddDep = ({ inputs, title }) => {
             .then(data => console.log("add " + data))
         .catch(err => console.log("error " + err))
       
-        console.log("Add dep")
+        console.log("Add inventory")
       
       }
 
@@ -63,7 +74,9 @@ const AddDep = ({ inputs, title }) => {
                     placeholder={input.placeholder} 
                     value={formData[input.type]}
                     name={input.name}
-                    onChange={fieldChangeHandler}/>
+                    onChange={fieldChangeHandler}
+                    required
+                    />
                 </div>
               ))}
               
