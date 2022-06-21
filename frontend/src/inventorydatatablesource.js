@@ -37,11 +37,7 @@ export const userColumns = [
     headerName: "Cost",
     width: 100,
   },
-  {
-    field: "price",
-    headerName: "Price",
-    width: 100,
-  },
+
   {
     field: "least_critical_amount",
     headerName: "Least Critical",
