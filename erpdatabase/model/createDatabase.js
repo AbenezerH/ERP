@@ -62,7 +62,7 @@ function createOrganizationTable(){
 function createDepartmentTable(){
     let dep =
         `CREATE TABLE IF NOT EXISTS department(
-          dept_id varchar(255),
+          dept_id int(11) AUTO_INCREMENT,
          dept_name varchar(255), 
          branch varchar(255), 
          primary key (dept_id))`;
@@ -75,10 +75,10 @@ function createDepartmentTable(){
 
 function createGradePayTable(){
     let gradepay =
-        `CREATE TABLE IF NOT EXISTS gradepay(grade_id varchar(255),
+        `CREATE TABLE IF NOT EXISTS gradepay(grade_id int(11) AUTO_INCREMENT,
          grade_name varchar(255), basic_pay int, 
-         grade_pf varchar(255), grade_bonus int, 
-         grade_ta varchar(255), grade_da varchar(255), 
+         grade_pf int(11), grade_bonus int, 
+         grade_ta int(11), grade_da int(11), 
          primary key (grade_id))`;
     
       connectOnce.query(gradepay, (err) => {
@@ -97,8 +97,8 @@ function createEmployeTable(){
              city varchar(255),
              state varchar(255), pincode numeric(6, 0), 
              ep_email varchar(255) unique, password varchar(255),
-               dept_id varchar(255), 
-              grade_id varchar(255), doj date, primary key(ep_email), 
+               dept_id int(11), 
+              grade_id int(11), doj date, primary key(ep_email), 
                foreign key (dept_id) references 
                department(dept_id) on delete set null, 
                foreign key (grade_id) references gradepay(grade_id) 
@@ -114,7 +114,7 @@ function createEmployeTable(){
 function createExtrasTable(){
     let extra =
       `CREATE TABLE IF NOT EXISTS extras(ex_type varchar(255),
-       ex_id varchar(255), ep_email varchar(255), primary key (ex_id))`;
+       ex_id int(11) AUTO_INCREMENT, ep_email varchar(255), primary key (ex_id))`;
     connectOnce.query(extra, (err) => {
       if (err) {
     
@@ -124,24 +124,10 @@ function createExtrasTable(){
 }
 
 
-function createIsGivenTable(){
-    let given =
-        `CREATE TABLE IF NOT EXISTS is_given( ex_id int(11) AUTO_INCREMENT
-        , amount int, ep_email varchar(255), 
-        primary key (ex_id, ep_email), foreign key(ep_email)
-         references employe(ep_email) on delete cascade, 
-         foreign key (ex_id) references extras(ex_id) on delete cascade)`;
-      connectOnce.query(given, (err) => {
-        if (err) {
-          throw err;
-        }
-      });
-}
-
 
 function createPayrollTable(){
     let payrol =
-    `CREATE TABLE IF NOT EXISTS payroll( transaction_id SERIAL, 
+    `CREATE TABLE IF NOT EXISTS payroll( transaction_id int(11) AUTO_INCREMENT, 
      month int, year int, gross_pay int, income_tax int, 
       ep_email varchar(255), ad_email varchar(255), primary key (transaction_id),
        foreign key(ep_email) references employe(ep_email) on delete set null, 
@@ -445,7 +431,6 @@ function createTables(){
     createEmployeTable()
     createExtrasTable()
 
-    createIsGivenTable()
     createPayrollTable()
     createBrandTable()
 

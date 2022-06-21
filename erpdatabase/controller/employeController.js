@@ -181,6 +181,22 @@ addDepartment: addDepartment = async (req, res) => {
     res.status(500).json("server error!");
     }
   },
+  deleteDepartment: deleteDepartment = async (req, res) => {
+    try {
+        let sql = `DELETE FROM department WHERE dept_id = "${req.params.dept_id}"`
+        
+        await adminCon.query(sql, (sqlErr, results) => {
+            if(sqlErr) console.log(sqlErr.message)
+
+            res.send(results)
+        })
+        
+    } catch (error) {
+        console.log(`error`, error);
+res.status(500).json("server error!");
+    }
+},
+
   addGrade: addGrade = async (req, res) => {
     try {
       const sql = `INSERT into gradepay(
@@ -244,6 +260,21 @@ addDepartment: addDepartment = async (req, res) => {
     res.status(500).json("server error!");
         }
       },
+      deleteGrade: deleteGrade = async (req, res) => {
+        try {
+            let sql = `DELETE FROM gradepay WHERE grade_id = "${req.params.grade_id}"`
+            
+            await adminCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+    
+                res.send(results)
+            })
+            
+        } catch (error) {
+            console.log(`error`, error);
+    res.status(500).json("server error!");
+        }
+    },
       addAdmin: addAdmin = async (req, res) => {
         try {
           const sql = `INSERT into admin(
@@ -314,6 +345,7 @@ addOrganisation: addOrganisation =  async (req, res) => {
     res.status(500).json("server error!");
   }
   },
+  
   addExtras: addExtras = async (req, res) => {
   try {
     const sql = `INSERT into extras(

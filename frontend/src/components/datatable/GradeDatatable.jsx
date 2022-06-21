@@ -8,7 +8,7 @@ const GradeDatatable = ({title}) => {
 
   const [data, setData] = useState([
     {
-        id: "",
+      id:"",
         grade_id: "",
         grade_name: "", 
         basic_pay: "", 
@@ -18,17 +18,12 @@ const GradeDatatable = ({title}) => {
         grade_da: "",
     }
   ]);
-  
+
   useEffect(() => {
     fetch("http://localhost:5000/erpdatabase/grade")
             .then(res => res.json())
                 .then(data => {
-                    setData(prevData => {
-                      return data.map(each => ({
-                        ...each,
-                        id: each.grade_id
-                      }))
-                    });
+                    setData(data);
                 })
             .catch(error => console.log(error))
   }, [])
