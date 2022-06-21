@@ -16,7 +16,7 @@ const Departmentdatatable = ({title}) => {
   ]);
   
   useEffect(() => {
-    fetch("http://localhost:5000//erpdatabase/Hr/getDepartments")
+    fetch("http://localhost:5000/erpdatabase/department")
             .then(res => res.json())
                 .then(data => {
                     setData(prevData => {
@@ -32,7 +32,7 @@ const Departmentdatatable = ({title}) => {
 
     // delete from the db
     // console.log(id)
-    fetch(`http://localhost:5000/erpdatabase/expense/delete/${dept_id}`, {
+    fetch(`http://localhost:5000/erpdatabase/department/delete/${dept_id}`, {
             method: "DELETE",
         }).then(res => res.json())
             .then(data => console.log("add " + data))
