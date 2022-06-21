@@ -44,6 +44,7 @@ import AddDep from './pages/new/AddDep';
 import Department from './pages/HR/Department';
 import Hrnew from './pages/new/Hrnew';
 import { empInputs, gradeInputs, depInputs } from "./Hrsource";
+import SingleUser from './pages/single/SingleUser';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -67,7 +68,7 @@ function App() {
           {/*  */}
             <Route path="/users">
               <Route index element={<Users />} />
-              <Route path=":userId" element={<Single />} />
+              <Route path=":userId" element={<SingleUser title={"User"}/>} />
               <Route
                 path="new"
                 element={<New inputs={userInputs} title="Add New User" />}
