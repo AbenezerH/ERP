@@ -20,7 +20,7 @@ const GradeDatatable = ({title}) => {
   ]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/erpdatabase/hr/getGrades")
+    fetch("http://localhost:5000/erpdatabase/grade")
             .then(res => res.json())
                 .then(data => {
                     setData(data);
@@ -29,6 +29,16 @@ const GradeDatatable = ({title}) => {
   }, [])
 
   const handleDelete = (id) => {
+
+    // delete from the db
+    // console.log(ep_email)
+    fetch(`http://localhost:5000/erpdatabase/grade/delete/${id}`, {
+            method: "DELETE",
+        }).then(res => res.json())
+            .then(data => console.log("add " + data))
+        .catch(err => console.log("error " + err))
+    
+    // delete from ui
     setData(data.filter((item) => item.id !== id));
   };
 
