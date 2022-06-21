@@ -22,13 +22,15 @@ import Asset from "./pages/asset/Asset";
 import Income from "./pages/income/Income";
 import Liability from "./pages/liability/Liability"
 import BrandCategory from "./pages/brandCategory/BrandCategory";
+import Brandnew from "./pages/brandCategory/Brandnew";
+import Catagorynew from "./pages/brandCategory/Catagorynew"
 //import MeasurementCategory from "./pages/measurementCategory/MeasurementCategory";
 import DamagedGood from "./pages/damagedgood/DamagedGood";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import InventoryNew from "./pages/new/InventoryNew";
 import { productInputs, userInputs } from "./formSource";
-import { inInputs } from "./Inventorysource";
+import { inInputs, brandInputs, categoryInputs } from "./Inventorysource";
 import { DarkModeContext } from "./context/darkModeContext";
 import { useContext } from "react";
 import "./style/dark.scss";
@@ -85,8 +87,12 @@ function App() {
               <Route index element={<BrandCategory />} />
               <Route path=":brandCategoryId" element={<Single />} />
               <Route
-                path="new"
-                element={<New inputs={productInputs} title="Add New Product" />}
+                path="brand"
+                element={<Brandnew inputs={brandInputs} title="Add New brand" />}
+              />
+               <Route
+                path="category"
+                element={<Catagorynew inputs={categoryInputs} title="Add New category" />}
               />
             </Route>
             <Route path="/damagedgood">

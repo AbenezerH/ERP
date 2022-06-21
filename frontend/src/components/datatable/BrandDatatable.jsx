@@ -83,7 +83,7 @@ const BrandDatatable = ({title}) => {
       <div className="branddatatable">
         <div className="branddatatableTitle">
           Add New {title}
-          <Link to="/users/new" className="link">
+          <Link to="/brandCategory/brand" className="link">
             Add New
           </Link>
         </div>
@@ -105,7 +105,7 @@ const BrandDatatable = ({title}) => {
       <div className="branddatatable">
         <div className="branddatatableTitle">
           Add New {title}
-          <Link to="/users/new" className="link">
+          <Link to="/brandCategory/category" className="link">
             Add New
           </Link>
         </div>

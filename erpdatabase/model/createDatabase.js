@@ -29,6 +29,7 @@ let db = mysql.createConnection({
 function createAdminTable(){
     let admin =
       `CREATE TABLE IF NOT EXISTS admin(
+        img LONGBLOB,
       companyName varchar(255),
       TIN_number int,
        username varchar(255), 
@@ -46,6 +47,7 @@ function createAdminTable(){
 function createOrganizationTable(){
     let org =
       `CREATE TABLE IF NOT EXISTS organisation(
+        img LONGBLOB,
         org_name varchar(255),
        ad_email varchar(255), 
        location varchar(255), 
@@ -78,7 +80,7 @@ function createGradePayTable(){
         `CREATE TABLE IF NOT EXISTS gradepay(grade_id int(11) AUTO_INCREMENT,
          grade_name varchar(255), basic_pay int, 
          grade_pf int(11), grade_bonus int, 
-         grade_ta int(11), grade_da int(11), 
+         grade_ta int, grade_da int, 
          primary key (grade_id))`;
     
       connectOnce.query(gradepay, (err) => {
@@ -90,7 +92,9 @@ function createGradePayTable(){
 
 function createEmployeTable(){
     let employe =
-        `CREATE TABLE IF NOT EXISTS employe(name varchar(255),
+        `CREATE TABLE IF NOT EXISTS employe(
+          img LONGBLOB,
+          name varchar(255),
         phonenumber varchar(255),
         dob date, 
         address varchar(255),
@@ -178,6 +182,7 @@ function createWarrantyTable(){
     let sqlWarranty =
     `CREATE TABLE IF NOT EXISTS warranty
     (id int(11) AUTO_INCREMENT,
+    img LONGBLOB,
     full_name varchar(50),
     phone_number int(11),
     serial_number varchar(20),
@@ -197,11 +202,12 @@ function createInventoryTable(){
     let sqlInventory =
       `CREATE TABLE IF NOT EXISTS inventory
       (id int(11) AUTO_INCREMENT,
+      img LONGBLOB,
       product_name varchar(50), 
       product_description varchar(1024), 
       product_unit varchar(10), 
       product_quantity double, 
-      unit_cost double, 
+      unit_cost double, price double, 
       least_critical_amount double, 
       high_amount double, 
       created_at datetime, 
@@ -227,6 +233,7 @@ function createSalesTable(){
     let sqlSales = 
       `CREATE TABLE IF NOT EXISTS sales
       (id int(11) AUTO_INCREMENT, 
+      img LONGBLOB,
       product_id int(11), 
       number_of_items double, 
       selling_price double, 
@@ -254,6 +261,7 @@ function createDamagedGoodTable(){
     let sqlDamagedGood =
       `CREATE TABLE IF NOT EXISTS damaged_good
       (id int(11) AUTO_INCREMENT,
+      img LONGBLOB,
       product_id int(11),
       quantity double,
       PRIMARY KEY (id),

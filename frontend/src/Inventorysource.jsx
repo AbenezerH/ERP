@@ -100,27 +100,22 @@ export const inInputs = [
       },
   ];
   
-  export const depInputs = [
+  export const brandInputs = [
     {
       id: 1,
-      label: "Department ID",
-      type: "number",
-      placeholder: "dept_id",
-      name: "dept_id",
-    },
-    {
-      id: 2,
-      label: "Department name",
+      label: "Name",
       type: "text",
-      placeholder: "dept_name",
-      name: "dept_name",
+      placeholder: "name",
+      name: "name",
     },
+  ];
+  export const categoryInputs = [
     {
-      id: 3,
-      label: "Branch",
+      id: 1,
+      label: "Name",
       type: "text",
-      placeholder: "branch",
-      name: "branch",
+      placeholder: "name",
+      name: "name",
     },
   ];
   export const extraInputs = [
