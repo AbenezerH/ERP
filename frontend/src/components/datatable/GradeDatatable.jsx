@@ -23,7 +23,12 @@ const GradeDatatable = ({title}) => {
     fetch("http://localhost:5000/erpdatabase/grade")
             .then(res => res.json())
                 .then(data => {
-                    setData(data);
+                    setData(prevData => {
+                      return data.map(each => ({
+                        ...each,
+                        id: each.grade_id
+                      }))
+                    });
                 })
             .catch(error => console.log(error))
   }, [])
