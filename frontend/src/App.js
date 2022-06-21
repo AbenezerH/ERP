@@ -43,6 +43,7 @@ import Department from './pages/HR/Department';
 import Hrnew from './pages/new/Hrnew';
 import { empInputs, gradeInputs, depInputs } from "./Hrsource";
 import SingleUser from './pages/single/SingleUser';
+import SingleProduct from './pages/single/SingleProduct';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -74,7 +75,7 @@ function App() {
             </Route>
             <Route path="/products">
               <Route index element={<Products />} />
-              <Route path=":productId" element={<Single />} />
+              <Route path=":productId" element={<SingleProduct title={"Product"}/>} />
               <Route
                 path="InventoryNew"
                 element={<InventoryNew inputs={inInputs} title="Add New Product" />}
