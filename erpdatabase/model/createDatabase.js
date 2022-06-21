@@ -201,7 +201,7 @@ function createInventoryTable(){
       product_description varchar(1024), 
       product_unit varchar(10), 
       product_quantity double, 
-      unit_cost double, price double, 
+      unit_cost double, 
       least_critical_amount double, 
       high_amount double, 
       created_at datetime, 
