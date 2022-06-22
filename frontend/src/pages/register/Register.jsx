@@ -36,6 +36,20 @@ function Register() {
           sendEmailVerification(auth.currentUser)   
           .then(() => {
             //code to sql database
+
+            console.log(auth.currentUser.email)
+            let obj = {ad_email: auth.currentUser.email}
+
+            fetch("http://localhost:5000/erpdatabase/admin/add", {
+              method: "POST",
+              body: JSON.stringify(obj),
+              headers: {
+                  "Content-type": "application/json; charset=UTF-8"
+                }
+              }).then(res => res.json())
+                  .then(data => console.log("add " + data))
+             .catch(err => console.log("error " + err))
+
             //create user with the given informatyion
             setTimeActive(true)
             navigate('/verify-email')
