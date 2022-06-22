@@ -3,8 +3,22 @@ import { DataGrid } from "@mui/x-data-grid";
 import { userColumns } from "../../inventorydatatablesource";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import {useAuthValue} from '../../AuthContext'
+
 
 const InventoryDatatable = ({title}) => {
+  const {currentUser} = useAuthValue()
+
+  const [role, setRole]= useState(0)
+
+  // useeffect
+  useEffect(() => {
+    fetch(`http://localhost:5000/erpdatabase/admin/${currentUser.email}`)
+      .then(res => res.json())
+        .then(data => {
+          setRole(data[0].role)
+        })
+  }, [])
 
   
   const [data, setData] = useState([
@@ -21,19 +35,22 @@ const InventoryDatatable = ({title}) => {
       created_at: "",
       updated_at: "",
       expire_date: "",
-      category: "1",
-      brand: "1",
+      category: "",
+      brand: "",
       by: ""
     }
   ]);
+
   
   useEffect(() => {
-    fetch("http://localhost:5000/erpdatabase/inventory")
+    if(role === 1 || role === 5 || role === 6| role === 7 || role === 9){
+      fetch("http://localhost:5000/erpdatabase/inventory")
             .then(res => res.json())
                 .then(data => {
                     setData(data);
                 })
             .catch(error => console.log(error))
+    }
   }, [])
 
   const handleDelete = (id) => {
