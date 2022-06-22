@@ -3,7 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
-const AddNew = ({ inputs, title }) => {
+const AddNews = ({ inputs, title }) => {
     const [file, setFile] = useState("");
     const [formData, setFormData] = useState({
         id: "",
@@ -101,4 +101,4 @@ const AddNew = ({ inputs, title }) => {
   );
 };
 
-export default AddNew;
+export default AddNews;

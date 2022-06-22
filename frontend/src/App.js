@@ -17,6 +17,7 @@ import Users from "./pages/users/Users";
 import Products from "./pages/products/Products";
 import FinanceReport from "./pages/financeReport/FinanceReport";
 import Sales from "./pages/sales/Sales";
+import AddNews from "./pages/sales/AddNews";
 import Expense from "./pages/expense/Expense";
 import Asset from "./pages/asset/Asset";
 import Income from "./pages/income/Income";
@@ -31,6 +32,7 @@ import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import InventoryNew from "./pages/new/InventoryNew";
 import { userInputs } from "./formSource";
+import { saleInputs } from "./Financeinput"
 import { inInputs, brandInputs, categoryInputs, damagedInputs, warantyInputs  } from "./Inventorysource";
 import { DarkModeContext } from "./context/darkModeContext";
 import { useContext } from "react";
@@ -122,8 +124,8 @@ function App() {
               <Route index element={<Sales />} />
               <Route path=":userId" element={<Single />} />
               <Route
-                path="new"
-                element={<New inputs={userInputs} title="Add New User" />}
+                path="add"
+                element={<AddNews inputs={saleInputs} title="Add New User" />}
               />
             </Route>
 
