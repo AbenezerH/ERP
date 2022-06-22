@@ -66,7 +66,7 @@ export const saleInputs = [
    
   ];
   
-  export const brandInputs = [
+  export const expenseInputs = [
     {
       id: 1,
       label: "Name",
@@ -74,30 +74,86 @@ export const saleInputs = [
       placeholder: "name",
       name: "name",
     },
-  ];
-  export const categoryInputs = [
     {
-      id: 1,
-      label: "Name",
-      type: "text",
-      placeholder: "name",
-      name: "name",
+      id: 2,
+      label: " created at ",
+      type: "date",
+      placeholder: "date",
+      name: "created_at",
     },
-  ];
-  export const damagedInputs = [
-    {  
-      id: 1,
-      label: " Product ID",
+    {
+      id: 3,
+      label: " Expense Type ",
+      type: "text",
+      placeholder: " type",
+      name: "ex_type",
+    },
+    {
+      id: 4,
+      label: " Amount ",
       type: "number",
-      placeholder: "id",
-      name: "product_id",
+      placeholder: "89.0",
+      name: "ex_amount",
+    },
+  ];
+  export const liabilityInputs = [
+    {
+      id: 1,
+      label: "Name",
+      type: "text",
+      placeholder: "name",
+      name: "name",
+    },
+    {
+      id: 2,
+      label: " Created At ",
+      type: "date",
+      placeholder: "date",
+      name: "created_at",
+    },
+    {
+      id: 3,
+      label: " Type ",
+      type: "text",
+      placeholder: "type",
+      name: "type",
+    },
+    {
+      id: 4,
+      label: " Amount ",
+      type: "number",
+      placeholder: "89.0",
+      name: "amount",
+    },
+  ];
+  export const incomeInputs = [
+    {
+      id: 1,
+      label: "type",
+      type: "text",
+      placeholder: "type",
+      name: "type",
     },
     {
       id: 2,
       label: "Quantity",
       type: "number",
-      placeholder: "1.0",
+      placeholder: "34.5",
       name: "quantity",
+    },
+    {
+      id: 3,
+      label: "Registered at",
+      type: "date",
+      placeholder: "date",
+      name: "created_at",
+    },
+    {
+      id: 4,
+      label: "Registered By",
+      type: "select",
+      placeholder: " other",
+      name: "registered_by",
     },
   ];
  

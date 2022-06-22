@@ -2,14 +2,13 @@ import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { useState } from "react";
-const Addexpense = ({ inputs, title }) => {
+const Addliability = ({ inputs, title }) => {
   
     const [formData, setFormData] = useState({
-        id: "",
         name: "",
         created_at: "",
-        ex_type: "",
-        ex_amount: ""
+        type: "",
+        amount: "",
       });
 
       
@@ -28,7 +27,7 @@ const Addexpense = ({ inputs, title }) => {
       
       
       function add(event) {
-        fetch("http://localhost:5000/erpdatabase/expense/add", {
+        fetch("http://localhost:5000/erpdatabase/liability/add", {
             method: "POST",
             body: JSON.stringify(formData),
             headers: {
@@ -38,7 +37,7 @@ const Addexpense = ({ inputs, title }) => {
             .then(data => console.log("add " + data))
         .catch(err => console.log("error " + err))
       
-        console.log("Add grade")
+        console.log("Add liability")
       
       }
 
@@ -77,4 +76,4 @@ const Addexpense = ({ inputs, title }) => {
   );
 };
 
-export default Addexpense;
+export default Addliability;

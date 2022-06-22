@@ -10,11 +10,10 @@ const LiabilityDatatable = ({title}) => {
   const [data, setData] = useState([
     {
       id: "",
-      name: "",
-      value: "",
-      created_at: "",
-      asset_type: "",
-      salvage_value: "",
+        name: "",
+        created_at: "",
+        type: "",
+        amount: "",
     }
   ]);
   
@@ -66,8 +65,8 @@ const LiabilityDatatable = ({title}) => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New {title}
-        <Link to="/users/new" className="link">
+        Add {title}
+        <Link to="/liability/add" className="link">
           Add New
         </Link>
       </div>

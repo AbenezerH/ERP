@@ -19,9 +19,12 @@ import FinanceReport from "./pages/financeReport/FinanceReport";
 import Sales from "./pages/sales/Sales";
 import AddNews from "./pages/sales/AddNews";
 import Expense from "./pages/expense/Expense";
+import Addexpense from "./pages/expense/Addexpense"
 import Asset from "./pages/asset/Asset";
 import Income from "./pages/income/Income";
+import Addincome from "./pages/income/Addincome"
 import Liability from "./pages/liability/Liability"
+import Addliability from "./pages/liability/Addliability"
 import BrandCategory from "./pages/brandCategory/BrandCategory";
 import Brandnew from "./pages/brandCategory/Brandnew";
 import Catagorynew from "./pages/brandCategory/Catagorynew"
@@ -32,7 +35,7 @@ import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import InventoryNew from "./pages/new/InventoryNew";
 import { userInputs } from "./formSource";
-import { saleInputs } from "./Financeinput"
+import { saleInputs, expenseInputs, liabilityInputs, incomeInputs } from "./Financeinput"
 import { inInputs, brandInputs, categoryInputs, damagedInputs, warantyInputs  } from "./Inventorysource";
 import { DarkModeContext } from "./context/darkModeContext";
 import { useContext } from "react";
@@ -137,8 +140,8 @@ function App() {
               <Route index element={<Expense />} />
               <Route path=":userId" element={<Single />} />
               <Route
-                path="new"
-                element={<New inputs={userInputs} title="Add New User" />}
+                path="add"
+                element={<Addexpense inputs={expenseInputs} title="Add New User" />}
               />
             </Route>
             <Route path="/asset">
@@ -154,8 +157,8 @@ function App() {
               <Route index element={<Income />} />
               <Route path=":userId" element={<Single />} />
               <Route
-                path="new"
-                element={<New inputs={userInputs} title="Add New User" />}
+                path="add"
+                element={<Addincome inputs={incomeInputs} title="Add New User" />}
               />
             </Route>
 
@@ -193,8 +196,8 @@ function App() {
               <Route index element={<Liability />} />
               <Route path=":userId" element={<Single />} />
               <Route
-                path="new"
-                element={<New inputs={userInputs} title="Add New User" />}
+                path="add"
+                element={<Addliability inputs={liabilityInputs} title="Add liability" />}
               />
             </Route>
             <Route path="/notifications">
