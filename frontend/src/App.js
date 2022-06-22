@@ -141,7 +141,7 @@ function App() {
               <Route path=":userId" element={<Single />} />
               <Route
                 path="add"
-                element={<Addexpense inputs={expenseInputs} title="Add New User" />}
+                element={<Addexpense inputs={expenseInputs} title="Add New Expense" />}
               />
             </Route>
             <Route path="/asset">
@@ -158,7 +158,7 @@ function App() {
               <Route path=":userId" element={<Single />} />
               <Route
                 path="add"
-                element={<Addincome inputs={incomeInputs} title="Add New User" />}
+                element={<Addincome inputs={incomeInputs} title="Add New Income" />}
               />
             </Route>
 
