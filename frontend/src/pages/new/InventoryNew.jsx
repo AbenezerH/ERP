@@ -2,7 +2,7 @@ import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { useEffect, useState } from "react";
-const AddDep = ({ inputs, title }) => {
+const AddInventory = ({ inputs, title }) => {
   
     const [formData, setFormData] = useState({
               id: "",
@@ -134,17 +134,17 @@ const AddDep = ({ inputs, title }) => {
                         input.name === "category" ? 
                           
                           catData.map((cat) => {
-                            return(<option key={cat.id} value={cat.id}>{cat.name}</option>)
+                            return(<option key={"category " + cat.id} value={cat.id}>{cat.name}</option>)
                           }) : 
 
                           input.name === "brand" ? 
                           
                             brandData.map(brand => {
-                              return(<option key={brand.id} value={brand.id}>{brand.name}</option>)
+                              return(<option key={"brand " + brand.id} value={brand.id}>{brand.name}</option>)
                             }) :
                           
                             inventoryData.map(inventory => {
-                              return(<option key={inventory.ep_email} value={inventory.ep_email}>{inventory.name}</option>)
+                              return(<option key={"inventory " + inventory.ep_email} value={inventory.ep_email}>{inventory.name}</option>)
                             })
                           
                         }
@@ -162,4 +162,4 @@ const AddDep = ({ inputs, title }) => {
   );
 };
 
-export default AddDep;
+export default AddInventory;
