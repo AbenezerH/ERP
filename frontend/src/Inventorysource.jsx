@@ -122,7 +122,7 @@ export const inInputs = [
     {  
       id: 1,
       label: " Product ID",
-      type: "number",
+      type: "select",
       placeholder: "id",
       name: "product_id",
     },
