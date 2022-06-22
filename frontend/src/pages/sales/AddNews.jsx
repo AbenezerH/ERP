@@ -7,10 +7,14 @@ const AddNews = ({ inputs, title }) => {
     const [file, setFile] = useState("");
     const [formData, setFormData] = useState({
         id: "",
-      full_name: "",
-      phone_number: "",
-      serial_number: "",
-      valid_until: ""
+        product_id: "",
+        number_of_items	: "",
+        selling_price: "",
+        warranty: "",
+        vat: "",
+        witholding_tax: "",
+        created_at: "",
+        sold_by: "",
       });
 
       
@@ -29,7 +33,7 @@ const AddNews = ({ inputs, title }) => {
       
       
       function add(event) {
-        fetch("http://localhost:5000/erpdatabase/warranty/add", {
+        fetch("http://localhost:5000/erpdatabase/sales/add", {
             method: "POST",
             body: JSON.stringify(formData),
             headers: {
@@ -39,7 +43,7 @@ const AddNews = ({ inputs, title }) => {
             .then(data => console.log("add " + data))
         .catch(err => console.log("error " + err))
       
-        console.log("Add dameged good")
+        console.log("Add sales")
       
       }
 

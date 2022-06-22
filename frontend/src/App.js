@@ -53,6 +53,8 @@ import Hrnew from './pages/new/Hrnew';
 import { empInputs, gradeInputs, depInputs } from "./Hrsource";
 import SingleUser from './pages/single/SingleUser';
 import SingleProduct from './pages/single/SingleProduct';
+import SingleWarranty from './pages/single/SingleWarranty';
+import SingleSales from './pages/single/SingleSales';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -107,15 +109,15 @@ function App() {
               <Route path=":id" element={<Single />} />
               <Route
                 path="damaged"
-                element={<Adddamaged inputs={damagedInputs} title="Add New Product" />}
+                element={<Adddamaged inputs={damagedInputs} title="Add New Damaged Good" />}
               />
             </Route>
             <Route path="/warranty">
               <Route index element={<Warranty />} />
-              <Route path=":warrantyId" element={<Single />} />
+              <Route path=":warrantyId" element={<SingleWarranty />} />
               <Route
                 path="add"
-                element={<AddNew  inputs={warantyInputs} title="Add New Product" />}
+                element={<AddNew  inputs={warantyInputs} title="Add New Warranty" />}
               />
             </Route>
 
@@ -125,10 +127,10 @@ function App() {
 
             <Route path="/sales">
               <Route index element={<Sales />} />
-              <Route path=":userId" element={<Single />} />
+              <Route path=":userId" element={<SingleSales />} />
               <Route
                 path="add"
-                element={<AddNews inputs={saleInputs} title="Add New User" />}
+                element={<AddNews inputs={saleInputs} title="Add New Sale" />}
               />
             </Route>
 

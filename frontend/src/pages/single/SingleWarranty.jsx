@@ -5,21 +5,22 @@ import Chart from "../../components/chart/Chart";
 import List from "../../components/table/Table";
 import { useState, useEffect } from "react";
 
-const SingleUser = ({title}) => {
+const SingleWarranty = ({title}) => {
 
   const [data, setData] = useState([
     {
-      companyName: "The Company",
-      TIN_number: "12345",
-      username: "Jane Doe",
-      ad_email: "Jane.Doe@gmail.com",
-      password: "abc"
+      id: "",
+      full_name: "",
+      phone_number: "",
+      serial_number: "",
+      valid_until: ""
     }
-  ])
+  ]);
+  
 
   useEffect(() => {
-    let identifier = window.location.pathname.slice(7)
-    fetch(`http://localhost:5000/erpdatabase/admin/${identifier}`)
+    let identifier = window.location.pathname.slice(10)
+    fetch(`http://localhost:5000/erpdatabase/warranty/${identifier}`)
             .then(res => res.json())
                 .then(data => {
                     setData(data);
@@ -46,30 +47,30 @@ const SingleUser = ({title}) => {
                 className="itemImg"
               />
               <div className="details">
-                <h1 className="itemTitle">{data[0].username}</h1>
+                <h1 className="itemTitle">{data[0].full_name}</h1>
                 <div className="detailItem">
-                  <span className="itemKey">Email:</span>
-                  <span className="itemValue">{data[0].ad_email}</span>
+                  <span className="itemKey">ID:</span>
+                  <span className="itemValue">{data[0].id}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">TIN Number:</span>
-                  <span className="itemValue">{data[0].TIN_number}</span>
+                  <span className="itemKey">Phone Number:</span>
+                  <span className="itemValue">{data[0].phone_number}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">Company Name:</span>
-                  <span className="itemValue">
-                    {data[0].companyName}
-                  </span>
+                  <span className="itemKey">Product Serial Number:</span>
+                  <span className="itemValue">{data[0].serial_number}</span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Warranty Valid Until:</span>
+                  <span className="itemValue">{data[0].valid_until}</span>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
   );
 };
 
-export default SingleUser;
+export default SingleWarranty;
