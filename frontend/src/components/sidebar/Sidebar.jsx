@@ -19,35 +19,35 @@ import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSyst
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
-import { useContext, useState  } from "react";
+import { useContext, useState, useEffect  } from "react";
 import Popup from '../popup/Popup';
 import { signOut } from 'firebase/auth'; 
 import { auth } from '../../firebase';
+import {useAuthValue} from '../../AuthContext'
+
+
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
- 
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  }
-  const { dispatch } = useContext(DarkModeContext);
-  return (
-    <div className="sidebar">
-      <div className="top">
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">ERP</span>
-        </Link>
-      </div>
-      <hr />
-      <div className="center">
-        <ul>
-          <p className="title">MAIN</p>
-          <Link to="/" style={{ textDecoration: "none" }}>
-          <li>
-            <DashboardIcon className="icon" />
-            <span>Dashboard</span>
-          </li>
-          </Link>
-          <p className="title">INVENTORY</p>
+
+  const {currentUser} = useAuthValue()
+
+  const [role, setRole]= useState(0)
+
+  // useeffect
+  useEffect(() => {
+    fetch(`http://localhost:5000/erpdatabase/admin/${currentUser.email}`)
+      .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          setRole(data[0].role)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+  }, [])
+
+  let inventory = <>
+    <p className="title">INVENTORY</p>
           <Link to="/products" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
@@ -72,7 +72,10 @@ const Sidebar = () => {
               <span>Warranty</span>
             </li>
           </Link>
-          <p className="title">FINANCE</p>
+  </>
+
+  let finance = <>
+    <p className="title">FINANCE</p>
           <Link to="/financereport" style={{ textDecoration: "none" }}>
               <li>
                 <AccountBalanceIcon className="icon" />
@@ -110,7 +113,10 @@ const Sidebar = () => {
                 <span>Asset</span>
               </li>
           </Link>
-          <p className="title">HUMAN RESOURCE</p>
+  </>
+
+  let hr = <>
+    <p className="title">HUMAN RESOURCE</p>
           <Link to="/addemployee" style={{ textDecoration: "none" }}>
             <li>
               <PeopleOutlineIcon className="icon" />
@@ -133,7 +139,61 @@ const Sidebar = () => {
             <span>Payroll</span>
           </li>
           </Link>
-          <p className="title">USEFUL & SERVICE</p>
+  </>
+
+  let sales = <>
+    <Link to="/sales" style={{ textDecoration: "none" }}>
+        <li>
+          <CreditCardIcon className="icon" />
+          <span>Sales</span>
+        </li>
+    </Link>
+    <Link to="/warranty" style={{ textDecoration: "none" }}>
+            <li>
+              <ColorLensIcon className="icon" />
+              <span>Warranty</span>
+            </li>
+          </Link>
+  </>
+
+  let invSales = <>
+    {inventory}
+    <Link to="/sales" style={{ textDecoration: "none" }}>
+        <li>
+          <CreditCardIcon className="icon" />
+          <span>Sales</span>
+        </li>
+    </Link>
+  </>
+
+  let invHr = <>
+    {inventory}
+    {hr}
+  </>
+
+  let invFinance = <>
+    {inventory}
+    {finance}
+  </>
+
+  let hrFinance = <>
+    {hr}
+    {finance}
+  </>
+
+  let all = <>
+    <p className="title">MAIN</p>
+          <Link to="/" style={{ textDecoration: "none" }}>
+          <li>
+            <DashboardIcon className="icon" />
+            <span>Dashboard</span>
+          </li>
+          
+          </Link>
+    {inventory}
+    {finance}
+    {hr}
+    <p className="title">USEFUL & SERVICE</p>
           <li>
             <InsertChartIcon className="icon" />
             <span>Stats</span>
@@ -155,6 +215,34 @@ const Sidebar = () => {
               <span>Users</span>
             </li>
           </Link>
+  </>
+ 
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
+  const { dispatch } = useContext(DarkModeContext);
+  return (
+    <div className="sidebar">
+      <div className="top">
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">ERP</span>
+        </Link>
+      </div>
+      <hr />
+      <div className="center">
+        <ul>
+          
+          {(role == 1) && inventory}
+          {(role == 2) && sales}
+          {(role == 3) && hr}
+          {(role == 4) && finance}
+          {(role == 5) && invSales}
+          {(role == 6) && invHr}
+          {(role == 7) && invFinance}
+          {(role == 8) && hrFinance}
+          {(role == 9) && all}
+          
+          <p className="title">USER</p>
           <Link to="/profile" style={{ textDecoration: "none" }}>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
