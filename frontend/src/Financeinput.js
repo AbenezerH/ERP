@@ -66,7 +66,7 @@ export const saleInputs = [
    
   ];
   
-  export const brandInputs = [
+  export const expenseInputs = [
     {
       id: 1,
       label: "Name",
@@ -74,14 +74,56 @@ export const saleInputs = [
       placeholder: "name",
       name: "name",
     },
+    {
+      id: 2,
+      label: " created at ",
+      type: "date",
+      placeholder: "date",
+      name: "created_at",
+    },
+    {
+      id: 3,
+      label: " Expense Type ",
+      type: "text",
+      placeholder: " type",
+      name: "ex_type",
+    },
+    {
+      id: 4,
+      label: " Expense Type ",
+      type: "number",
+      placeholder: "89.0",
+      name: "ex_amount",
+    },
   ];
-  export const categoryInputs = [
+  export const liabilityInputs = [
     {
       id: 1,
       label: "Name",
       type: "text",
       placeholder: "name",
       name: "name",
+    },
+    {
+      id: 2,
+      label: " Created At ",
+      type: "date",
+      placeholder: "date",
+      name: "created_at",
+    },
+    {
+      id: 3,
+      label: " Type ",
+      type: "text",
+      placeholder: "type",
+      name: "type",
+    },
+    {
+      id: 4,
+      label: " Amount ",
+      type: "number",
+      placeholder: "89.0",
+      name: "amount",
     },
   ];
   export const damagedInputs = [

@@ -58,7 +58,7 @@ const dbPayroll = {
             let sql = 
             `INSERT INTO payroll
             (month,
-                year,
+                years,
                 gross_pay,
                 income_tax,
                 ep_email,
