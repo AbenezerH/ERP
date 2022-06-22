@@ -7,21 +7,16 @@ import { useState, useEffect } from "react";
 const SalesDatatable = ({ title }) => {
   const [data, setData] = useState([
     {
-      id: "",
-      product_name: "",
-      product_description: "",
-      product_unit: "",
-      product_quantity: "",
-      unit_cost: "",
-      price: "",
-      least_critical_amount: "",
-      high_amount: "",
+      id: "", 
+      img: " ",
+      product_id: "", 
+      number_of_items: "", 
+      selling_price: "", 
+      warranty: " ", 
+      vat: "", 
+      witholding_tax: "", 
       created_at: "",
-      updated_at: "",
-      expire_date: "",
-      category: "1",
-      brand: "1",
-      by: "",
+      sold_by: ""
     },
   ]);
 
@@ -74,7 +69,7 @@ const SalesDatatable = ({ title }) => {
     <div className="datatable">
       <div className="datatableTitle">
         Add New {title}
-        <Link to="/users/new" className="link">
+        <Link to="/sales/add" className="link">
           Add New
         </Link>
       </div>

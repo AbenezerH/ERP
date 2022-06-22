@@ -122,11 +122,6 @@ const Sidebar = () => {
               <span>Add Grade</span>
             </li>
           </Link>
-          <Link to="/org" style={{ textDecoration: "none" }}>
-            <li>
-              <span>organization information</span>
-            </li>
-          </Link>
           <Link to="/department" style={{ textDecoration: "none" }}>
             <li>
               <span>Department</span>
