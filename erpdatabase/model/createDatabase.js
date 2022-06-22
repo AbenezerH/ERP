@@ -30,7 +30,8 @@ function createAdminTable(){
     let admin =
       `CREATE TABLE IF NOT EXISTS admin(
         img LONGBLOB,
-      companyName varchar(255),
+      accepted boolean,
+      role int,
       TIN_number int,
        username varchar(255), 
        ad_email varchar(255), 

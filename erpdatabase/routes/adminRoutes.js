@@ -9,8 +9,8 @@ router.get('/:id', adminController.dbAdmin.getAdmin)
 
 router.post('/add', adminController.dbAdmin.addAdmin)
 
-router.put('/update/:id', adminController.dbAdmin.updateItem)
+router.put('/update/:ad_email', adminController.dbAdmin.updateItem)
 
-router.delete('/delete/:id', adminController.dbAdmin.deleteItem)
+router.delete('/delete/:ad_email', adminController.dbAdmin.deleteItem)
 
 module.exports = router;
