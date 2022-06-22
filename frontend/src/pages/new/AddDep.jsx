@@ -5,8 +5,6 @@ import { useState } from "react";
 const AddDep = ({ inputs, title }) => {
   
     const [formData, setFormData] = useState({
-        id: "",
-        dept_id: " ",
         dept_name: "", 
         branch: "", 
       });
@@ -61,7 +59,7 @@ const AddDep = ({ inputs, title }) => {
                   <input 
                     type={input.type} 
                     placeholder={input.placeholder} 
-                    value={formData[input.type]}
+                    value={formData[input.name]}
                     name={input.name}
                     onChange={fieldChangeHandler}/>
                 </div>

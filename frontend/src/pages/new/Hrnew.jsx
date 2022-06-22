@@ -1,7 +1,7 @@
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 const Hrnew = ({ inputs, title }) => {
     const [formData, setFormData] = useState({
       name: "",
@@ -17,6 +17,55 @@ const Hrnew = ({ inputs, title }) => {
       grade_id: "1",
       doj: ""
       });
+      const [data, setData] = useState([
+        {
+          id:"",
+            grade_id: "",
+            grade_name: "", 
+            basic_pay: "", 
+            grade_pf: "", 
+            grade_bonus: "", 
+            grade_ta: "",
+            grade_da: "",
+        }
+      ]);
+      const [ddata, setDdata] = useState([
+        {
+            id: "",
+            dept_id: " ",
+            dept_name: "", 
+            branch: "", 
+        }
+      ]);
+      
+      useEffect(() => {
+        fetch("http://localhost:5000/erpdatabase/department")
+                .then(res => res.json())
+                    .then(data => {
+                      setDdata(prevData => {
+                          return data.map(each => ({
+                            ...each,
+                            id: each.dept_id
+                          }))
+                        });
+                    })
+                .catch(error => console.log(error))
+      }, [])
+    
+      useEffect(() => {
+        fetch("http://localhost:5000/erpdatabase/grade")
+                .then(res => res.json())
+                    .then(data => {
+                        setData(prevData => {
+                          return data.map(each => ({
+                            ...each,
+                            id: each.grade_id
+                          }))
+                        });
+                    })
+                .catch(error => console.log(error))
+      }, [])
+    
 
       
       function fieldChangeHandler(event){
@@ -63,12 +112,29 @@ const Hrnew = ({ inputs, title }) => {
             {inputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
-                  <input 
-                    type={input.type} 
-                    placeholder={input.placeholder} 
-                    value={formData[input.type]}
-                    name={input.name}
-                    onChange={fieldChangeHandler}/>
+                  {input.type !== "select" ? 
+                    <input 
+                      type={input.type}
+                      placeholder={input.placeholder}
+                      value={formData[input.type]}
+                      name={input.name}
+                      onChange={fieldChangeHandler}
+                      required
+                      /> : 
+                      <select value={formData[input.name]} name={input.name} onChange={fieldChangeHandler}>
+                        {
+                        input.name === "dept_id" ? 
+                          
+                          ddata.map((cat) => {
+                            return(<option key={cat.id} value={cat.dept_id}>{cat.dept_name}</option>)
+                          }) :
+                            data.map(brand => {
+                              return(<option key={brand.id} value={brand.grade_id}>{brand.grade_name}</option>)
+                            })
+                          
+                        }
+                      </select>
+                  }
                 </div>
               ))}
               

@@ -57,10 +57,10 @@ const dbDepartment = {
         try {
             let sql = 
             `INSERT INTO department
-            (dept_id,
+            (
                 dept_name,
                 branch) VALUES
-                ("${req.body.dept_id}",
+                (
                 "${req.body.dept_name}",
                 "${req.body.branch}")`
                 

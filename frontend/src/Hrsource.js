@@ -66,14 +66,14 @@ export const empInputs = [
     {
       id: 10,
       label: "department ID",
-      type: "number",
-      placeholder: "dept_id",
+      type: "select",
+      placeholder: " department",
       name: "dept_id",
     },
     {
       id: 11,
       label: "Grade ID",
-      type: "number",
+      type: "select",
       placeholder: "grade_id",
       name: "grade_id",
     },
@@ -89,20 +89,13 @@ export const empInputs = [
   export const depInputs = [
     {
       id: 1,
-      label: "Department ID",
-      type: "number",
-      placeholder: "dept_id",
-      name: "dept_id",
-    },
-    {
-      id: 2,
       label: "Department name",
       type: "text",
       placeholder: "dept_name",
       name: "dept_name",
     },
     {
-      id: 3,
+      id: 2,
       label: "Branch",
       type: "text",
       placeholder: "branch",

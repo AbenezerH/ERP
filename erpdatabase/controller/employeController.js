@@ -134,10 +134,9 @@ updateEmployeedata: updateEmployeedata = async (req, res) => {
 addDepartment: addDepartment = async (req, res) => {
   try {
     const sql = `INSERT into department(
-      dept_id,
       dept_name,
       branch)
-      VALUES( "${req.body.dept_name}", "${req.body.org_name}", "${req.body.branch}")`;
+      VALUES( "${req.body.dept_name}", "${req.body.branch}")`;
       await db.query(sql, (sqlErr, results) => {
         if(sqlErr) throw sqlErr
         
