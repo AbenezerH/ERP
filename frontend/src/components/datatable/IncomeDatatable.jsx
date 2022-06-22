@@ -66,7 +66,7 @@ const IncomeDatatable = ({title}) => {
     <div className="datatable">
       <div className="datatableTitle">
         Add New {title}
-        <Link to="/users/new" className="link">
+        <Link to="/income/add" className="link">
           Add New
         </Link>
       </div>

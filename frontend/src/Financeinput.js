@@ -90,7 +90,7 @@ export const saleInputs = [
     },
     {
       id: 4,
-      label: " Expense Type ",
+      label: " Amount ",
       type: "number",
       placeholder: "89.0",
       name: "ex_amount",
@@ -126,20 +126,34 @@ export const saleInputs = [
       name: "amount",
     },
   ];
-  export const damagedInputs = [
-    {  
+  export const incomeInputs = [
+    {
       id: 1,
-      label: " Product ID",
-      type: "number",
-      placeholder: "id",
-      name: "product_id",
+      label: "type",
+      type: "text",
+      placeholder: "type",
+      name: "type",
     },
     {
       id: 2,
       label: "Quantity",
       type: "number",
-      placeholder: "1.0",
+      placeholder: "34.5",
       name: "quantity",
+    },
+    {
+      id: 3,
+      label: "Registered at",
+      type: "date",
+      placeholder: "date",
+      name: "created_at",
+    },
+    {
+      id: 4,
+      label: "Registered By",
+      type: "select",
+      placeholder: " other",
+      name: "registered_by",
     },
   ];
  
