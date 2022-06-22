@@ -26,15 +26,17 @@ import Brandnew from "./pages/brandCategory/Brandnew";
 import Catagorynew from "./pages/brandCategory/Catagorynew"
 //import MeasurementCategory from "./pages/measurementCategory/MeasurementCategory";
 import DamagedGood from "./pages/damagedgood/DamagedGood";
+import Adddamaged from "./pages/damagedgood/Adddamaged";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import InventoryNew from "./pages/new/InventoryNew";
-import { productInputs, userInputs } from "./formSource";
-import { inInputs, brandInputs, categoryInputs } from "./Inventorysource";
+import { userInputs } from "./formSource";
+import { inInputs, brandInputs, categoryInputs, damagedInputs, warantyInputs  } from "./Inventorysource";
 import { DarkModeContext } from "./context/darkModeContext";
 import { useContext } from "react";
 import "./style/dark.scss";
 import Warranty from './pages/color/Warranty';
+import AddNew from './pages/color/AddNew';
 import Notification from './pages/notifications/Notification';
 import Employ from './pages/HR/Employ';
 import Grade from './pages/HR/Grade';
@@ -99,16 +101,16 @@ function App() {
               <Route index element={<DamagedGood />} />
               <Route path=":id" element={<Single />} />
               <Route
-                path="new"
-                element={<New inputs={productInputs} title="Add New Product" />}
+                path="damaged"
+                element={<Adddamaged inputs={damagedInputs} title="Add New Product" />}
               />
             </Route>
             <Route path="/warranty">
               <Route index element={<Warranty />} />
               <Route path=":warrantyId" element={<Single />} />
               <Route
-                path="new"
-                element={<New inputs={productInputs} title="Add New Product" />}
+                path="add"
+                element={<AddNew  inputs={warantyInputs} title="Add New Product" />}
               />
             </Route>
 

@@ -1,5 +1,5 @@
 
-export const inInputs = [
+export const saleInputs = [
     {
       id: 1,
       label: "ID",

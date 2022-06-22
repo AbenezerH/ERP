@@ -80,3 +80,27 @@ export const userColumns = [
   },
   
 ];
+export const damagedColumns = [
+  { field: "id", headerName: "ID", width: 60 },
+  {
+    field: "product_name",
+    headerName: "Product Name",
+    width: 160,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={url} alt="" />
+          {params.row.product_name}
+        </div>
+      );
+    },
+  },
+
+  {
+    field: "product_quantity",
+    headerName: "Quantity",
+    width: 80,
+  },
+  
+];
+

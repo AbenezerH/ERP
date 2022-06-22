@@ -64,7 +64,7 @@ const DamagedGoodDatatable = ({title}) => {
     <div className="datatable">
       <div className="datatableTitle">
         Add New {title}
-        <Link to="/users/new" className="link">
+        <Link to="/damagedgood/damaged" className="link">
           Add New
         </Link>
       </div>
