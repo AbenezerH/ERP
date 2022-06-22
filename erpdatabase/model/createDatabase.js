@@ -29,13 +29,14 @@ let db = mysql.createConnection({
 function createAdminTable(){
     let admin =
       `CREATE TABLE IF NOT EXISTS admin(
+        id varchar(255),
         img LONGBLOB,
-      companyName varchar(255),
       TIN_number int,
+      org_id varchar(255),
        username varchar(255), 
        ad_email varchar(255), 
        password varchar(255), 
-       primary key(ad_email))`;
+       primary key(id))`;
        
        connectOnce.query(admin, (err) => {
         if (err) {
@@ -47,19 +48,45 @@ function createAdminTable(){
 function createOrganizationTable(){
     let org =
       `CREATE TABLE IF NOT EXISTS organisation(
+        org_id varchar(255),
         img LONGBLOB,
         org_name varchar(255),
-       ad_email varchar(255), 
+        id varchar(255), 
        location varchar(255), 
        contact_number varchar(255), 
        paid_leave_limit date, encashed_leave_limit date,
-        primary key(org_name)) `;
+        primary key(org_id),  foreign key (id) references admin(id) 
+        on delete set null) `;
     connectOnce.query(org, (err) => {
       if (err) {
         throw err;
       }
     });
 }
+function createEmployeTable(){
+  let employe =
+      `CREATE TABLE IF NOT EXISTS employe(
+        img LONGBLOB,
+        name varchar(255),
+      phonenumber varchar(255),
+      dob date, 
+      address varchar(255),
+           city varchar(255),
+           state varchar(255), pincode numeric(6, 0), 
+           ep_email varchar(255) unique, password varchar(255),
+             dept_id int(11), 
+            grade_id int(11), doj date, primary key(ep_email), 
+             foreign key (dept_id) references 
+             department(dept_id) on delete set null, 
+             foreign key (grade_id) references gradepay(grade_id) 
+             on delete set null)`;
+    connectOnce.query(employe, (err) => {
+      if (err) {
+        throw err;
+      }
+    });
+}
+
 
 function createDepartmentTable(){
     let dep =
@@ -90,30 +117,6 @@ function createGradePayTable(){
       });
 }
 
-function createEmployeTable(){
-    let employe =
-        `CREATE TABLE IF NOT EXISTS employe(
-          img LONGBLOB,
-          name varchar(255),
-        phonenumber varchar(255),
-        dob date, 
-        address varchar(255),
-             city varchar(255),
-             state varchar(255), pincode numeric(6, 0), 
-             ep_email varchar(255) unique, password varchar(255),
-               dept_id int(11), 
-              grade_id int(11), doj date, primary key(ep_email), 
-               foreign key (dept_id) references 
-               department(dept_id) on delete set null, 
-               foreign key (grade_id) references gradepay(grade_id) 
-               on delete set null)`;
-      connectOnce.query(employe, (err) => {
-        if (err) {
-          throw err;
-        }
-      });
-}
-
 
 function createExtrasTable(){
     let extra =
@@ -133,9 +136,9 @@ function createPayrollTable(){
     let payrol =
     `CREATE TABLE IF NOT EXISTS payroll( transaction_id int(11) AUTO_INCREMENT, 
      month int, year int, gross_pay int, income_tax int, 
-      ep_email varchar(255), ad_email varchar(255), primary key (transaction_id),
+      ep_email varchar(255), id varchar(255), primary key (transaction_id),
        foreign key(ep_email) references employe(ep_email) on delete set null, 
-       foreign key(ad_email) references admin(ad_email) on delete set null)`;
+       foreign key(id) references admin(id) on delete set null)`;
     connectOnce.query(payrol, (err) => {
     if (err) {
       throw err;
