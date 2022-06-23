@@ -3,6 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Chart from "../../components/chart/Chart";
 import List from "../../components/table/Table";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const SingleSale = ({title}) => {
@@ -40,9 +41,9 @@ const SingleSale = ({title}) => {
     }
   ]);
   
+  let identifier = window.location.pathname.slice(7)
 
   useEffect(() => {
-    let identifier = window.location.pathname.slice(7)
     fetch(`http://localhost:5000/erpdatabase/sales/${identifier}`)
             .then(res => res.json())
                 .then(data => {
@@ -71,7 +72,9 @@ const SingleSale = ({title}) => {
         <Navbar />
         <div className="top">
           <div className="left">
+          <Link to={`/sales/update/${identifier}`} style={{ textDecoration: "none" }}>
             <div className="editButton">Edit</div>
+          </Link>
             <h1 className="title">{title} Information</h1>
             <div className="item">
               <img

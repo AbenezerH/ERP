@@ -58,16 +58,13 @@ const dbAdmin = {
         try {
             let sql = 
             `INSERT INTO admin
-            (companyName,
-                username,
-                TIN_number,
+            (
                 ad_email,
-                password) VALUES
-                ("${req.body.companyName}",
-                "${req.body.username}",
-                "${req.body.TIN_number}",
+                role,
+                accepted) VALUES(
                 "${req.body.ad_email}",
-                "${req.body.password}")`
+                0,
+                false)`
                 
                 await adminCon.query(sql, (sqlErr, results) => {
                     if(sqlErr) console.log(sqlErr.message)
@@ -85,22 +82,22 @@ const dbAdmin = {
             try {
                 let sql = 
                 `UPDATE admin SET
-                companyName = "${req.body.companyName}",
-                username = "${req.body.username}",
-                TIN_number = "${req.body.TIN_number}",
-                ad_email = "${req.body.ad_email}",
-                password = "${req.body.password}"
-                WHERE ad_email = "${req.params.id}"`
+                accepted = "${req.body.accepted}",
+                role = "${req.body.role}",
+                ad_email = "${req.body.ad_email}"
+                WHERE ad_email = "${req.params.ad_email}"`
                 
                 await adminCon.query(sql, (sqlErr, results) => {
                     if(sqlErr) console.log(sqlErr.message)
+
+                    console.log(sql)
                     
                     res.send(results)
                 })
                 
             } catch (error) {
                 console.log(`error`, error);
-    res.status(500).json("server error!");
+                res.status(500).json("server error!");
             }
         },
         

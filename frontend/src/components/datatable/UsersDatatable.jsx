@@ -10,7 +10,6 @@ const UserDatatable = ({title}) => {
   const [data, setData] = useState([
     {
       id: "",
-      companyName: "",
       TIN_number: "",
       username: "",
       ad_email: "",
@@ -71,10 +70,7 @@ const UserDatatable = ({title}) => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New {title}
-        <Link to="/users/new" className="link">
-          Add New
-        </Link>
+        {title}
       </div>
       <DataGrid
         className="datagrid"

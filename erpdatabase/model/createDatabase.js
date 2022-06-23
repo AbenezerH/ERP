@@ -31,6 +31,8 @@ function createAdminTable(){
       `CREATE TABLE IF NOT EXISTS admin(
         id varchar(255),
         img LONGBLOB,
+      accepted boolean,
+      role int,
       TIN_number int,
       org_id varchar(255),
        username varchar(255), 

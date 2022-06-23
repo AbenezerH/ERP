@@ -17,8 +17,8 @@ const SingleUser = ({title}) => {
     }
   ])
 
+  let identifier = window.location.pathname.slice(7)
   useEffect(() => {
-    let identifier = window.location.pathname.slice(7)
     fetch(`http://localhost:5000/erpdatabase/admin/${identifier}`)
             .then(res => res.json())
                 .then(data => {
@@ -27,6 +27,52 @@ const SingleUser = ({title}) => {
                 })
             .catch(error => console.log(error))
   }, [])
+
+  const [fdata, setFdata] = useState({
+    accepted: "",
+    role: "",
+    ad_email: ""
+  })
+
+  useEffect(() => {
+    setFdata((prev) => {
+
+      return{
+      ad_email: identifier,
+      accepted: data[0].accepted,
+      role: data[0].role
+      }
+    })
+  }, [data])
+
+  function handle(event){
+    let target = event.target
+    const {name, value} = target
+
+    setFdata(prevData => {
+      return {
+          ...prevData,
+          [name]: value
+      }
+    })
+
+  }
+
+  function change(event){
+    fetch(`http://localhost:5000/erpdatabase/admin/update/${identifier}`, {
+            method: "PUT",
+            body: JSON.stringify(fdata),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then(res => res.json())
+            .then(data => console.log("Admin " + data))
+        .catch(err => console.log("error " + err))
+      
+        console.log(fdata)
+
+        window.location.reload()
+  }
 
   // console.log(data)
 
@@ -46,21 +92,37 @@ const SingleUser = ({title}) => {
                 className="itemImg"
               />
               <div className="details">
-                <h1 className="itemTitle">{data[0].username}</h1>
+                <h1 className="itemTitle">{identifier}</h1>
                 <div className="detailItem">
-                  <span className="itemKey">Email:</span>
-                  <span className="itemValue">{data[0].ad_email}</span>
+                  <div className="itemKey"><label htmlFor="role">Role</label></div>
+                  <div className="itemValue">
+                  <select id="role" name="role" onChange={handle} value={fdata.role}>
+                    <option value="0">No previlage</option>
+                    <option value="1">Inventory previlage</option>
+                    <option value="2">Sales previlage</option>
+                    <option value="3">HR previlage</option>
+                    <option value="4">Finance previlage</option>
+                    <option value="5">Inventory - sales</option>
+                    <option value="6">Inventory - HR</option>
+                    <option value="7">Inventory - Finance</option>
+                    <option value="8">HR - Finance</option>
+                    <option value="9">All previlage</option>
+                  </select>
+
+                  </div>
+
                 </div>
-                <div className="detailItem">
-                  <span className="itemKey">TIN Number:</span>
-                  <span className="itemValue">{data[0].TIN_number}</span>
+
+                <div className="itemKey"><label htmlFor="status">Status</label></div>
+                <div className="itemValue">
+                  <select id="status" name="accepted" onChange={handle} value={fdata.accepted}>
+                    <option value="1">Accepted</option>
+                    <option value="0">Not Accepted</option>
+                  </select>
+
                 </div>
-                <div className="detailItem">
-                  <span className="itemKey">Company Name:</span>
-                  <span className="itemValue">
-                    {data[0].companyName}
-                  </span>
-                </div>
+
+                  <button type="submit" className="itemKey" onClick={change}>change</button>
               </div>
             </div>
           </div>
