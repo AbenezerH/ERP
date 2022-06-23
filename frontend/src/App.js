@@ -21,6 +21,7 @@ import AddNews from "./pages/sales/AddNews";
 import Expense from "./pages/expense/Expense";
 import Addexpense from "./pages/expense/Addexpense"
 import Asset from "./pages/asset/Asset";
+import Addasset from "./pages/asset/Addasset";
 import Income from "./pages/income/Income";
 import Addincome from "./pages/income/Addincome"
 import Liability from "./pages/liability/Liability"
@@ -35,7 +36,7 @@ import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import InventoryNew from "./pages/new/InventoryNew";
 import { userInputs } from "./formSource";
-import { saleInputs, expenseInputs, liabilityInputs, incomeInputs } from "./Financeinput"
+import { saleInputs, expenseInputs, liabilityInputs, incomeInputs, assetInputs } from "./Financeinput"
 import { inInputs, brandInputs, categoryInputs, damagedInputs, warantyInputs  } from "./Inventorysource";
 import { DarkModeContext } from "./context/darkModeContext";
 import { useContext } from "react";
@@ -133,7 +134,7 @@ function App() {
                 element={<AddNews inputs={saleInputs} title="Add New Sale" />}
               />
             </Route>
-
+          
             <Route path="/expense">
               <Route index element={<Expense />} />
               <Route path=":userId" element={<Single />} />
@@ -146,8 +147,8 @@ function App() {
               <Route index element={<Asset />} />
               <Route path=":userId" element={<Single />} />
               <Route
-                path="new"
-                element={<New inputs={userInputs} title="Add New User" />}
+                path="add"
+                element={<Addasset inputs={assetInputs} title="Add New User" />}
               />
             </Route>
 

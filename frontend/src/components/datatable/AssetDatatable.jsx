@@ -66,8 +66,8 @@ const AssetDatatable = ({title}) => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New {title}
-        <Link to="/users/new" className="link">
+        Add {title}
+        <Link to="/asset/add" className="link">
           Add New
         </Link>
       </div>
