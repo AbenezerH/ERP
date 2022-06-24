@@ -9,6 +9,7 @@ import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import PriceChangeIcon from '@mui/icons-material/PriceChange';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import ScheduleIcon from '@mui/icons-material/Schedule';
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import PaymentsIcon from '@mui/icons-material/Payments';
 import InsertChartIcon from "@mui/icons-material/InsertChart";
@@ -94,7 +95,7 @@ const Sidebar = () => {
           </Link>
           <Link to="/attendance" style={{ textDecoration: "none" }}>
           <li>
-            <AccountBalanceWalletIcon className="icon" />
+            <ScheduleIcon className="icon" />
             <span>Attendance</span>
           </li>
           </Link>
