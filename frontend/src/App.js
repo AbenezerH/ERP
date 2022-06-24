@@ -49,6 +49,8 @@ import Grade from './pages/HR/Grade';
 import Payrol from './pages/HR/Payrol';
 import Addgrade from './pages/new/Addgrade';
 import AddDep from './pages/new/AddDep';
+import InsertAttendance from './pages/new/InsertAttendance';
+import Attendance from './pages/HR/Attendance';
 import Department from './pages/HR/Department';
 import Hrnew from './pages/new/Hrnew';
 import { empInputs, gradeInputs, depInputs } from "./Hrsource";
@@ -56,6 +58,7 @@ import SingleUser from './pages/single/SingleUser';
 import SingleProduct from './pages/single/SingleProduct';
 import SingleWarranty from './pages/single/SingleWarranty';
 import SingleSales from './pages/single/SingleSales';
+import SingleAttendance from './pages/single/SingleAttendance';
 import UpdateSales from './pages/sales/UpdateSales';
 
 function App() {
@@ -187,6 +190,14 @@ function App() {
                 element={<AddDep inputs={depInputs} title="New department" />}
               />
             </Route>
+            <Route path="/attendance">
+              <Route index element={<Attendance />} />
+              <Route path=":id" element={<SingleAttendance />} />
+              <Route
+                path="addDep"
+                element={<InsertAttendance inputs={depInputs} title="New Attendance" />}
+                />
+              </Route>
             <Route path="/payrol">
               <Route index element={<Payrol />} />
               <Route path=":userId" element={<Single />} />

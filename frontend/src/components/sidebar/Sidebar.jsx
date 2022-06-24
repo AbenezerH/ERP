@@ -92,6 +92,12 @@ const Sidebar = () => {
               <span>Department</span>
             </li>
           </Link>
+          <Link to="/attendance" style={{ textDecoration: "none" }}>
+          <li>
+            <AccountBalanceWalletIcon className="icon" />
+            <span>Attendance</span>
+          </li>
+          </Link>
           <Link to="/payrol" style={{ textDecoration: "none" }}>
           <li>
             <AccountBalanceWalletIcon className="icon" />
