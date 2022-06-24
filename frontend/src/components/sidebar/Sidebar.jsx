@@ -42,7 +42,7 @@ const Sidebar = () => {
     fetch(`http://localhost:5000/erpdatabase/admin/${currentUser.email}`)
       .then(res => res.json())
         .then(data => {
-          console.log(data)
+          //console.log(data)
           setRole(data[0].role)
         })
         .catch(error => {

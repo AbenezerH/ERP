@@ -5,6 +5,8 @@ const attendanceController = require('../controller/attendanceController')
 
 router.get('/', attendanceController.dbAttendance.getAllAttendance)
 
+router.get('/right', attendanceController.dbAttendance.getRightAttendance)
+
 router.get('/join/:date', attendanceController.dbAttendance.getJoinAttendance)
 
 router.get('/:date', attendanceController.dbAttendance.getAttendance)

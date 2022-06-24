@@ -155,6 +155,33 @@ const dbAttendance = {
             res.status(500).json("server error")
         }
     },
+    getRightAttendance: getRightAttendance = async (req, res) => {
+        try {
+            let sql = `SELECT attendance.date, 
+            attendance.emp_id, 
+            attendance.present, 
+            attendance.time_start, 
+            attendance.time_end, 
+            employe.ep_email, 
+            employe.name 
+            FROM attendance 
+            RIGHT JOIN 
+            employe ON 
+            attendance.emp_id=employe.ep_email GROUP BY employe.ep_email
+            HAVING COUNT(employe.ep_email) > 0 
+            `
+
+            await attendCon.query(sql, (sqlErr, results) => {
+                if(sqlErr) console.log(sqlErr.message)
+                console.log(sql)
+
+                res.send(results)
+            })
+        } catch (error) {
+            console.log("error" + error)
+            res.status(500).json("server error")
+        }
+    },
 
 }
 
