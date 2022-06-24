@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2022 at 03:46 AM
+-- Generation Time: Jun 24, 2022 at 03:48 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -111,6 +111,22 @@ CREATE TABLE `organisation` (
   `encashed_leave_limit` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payroll`
+--
+
+CREATE TABLE `payroll` (
+  `transaction_id` int(11) NOT NULL,
+  `month` int(11) DEFAULT NULL,
+  `year` int(11) DEFAULT NULL,
+  `gross_pay` int(11) DEFAULT NULL,
+  `income_tax` int(11) DEFAULT NULL,
+  `ep_email` varchar(255) DEFAULT NULL,
+  `id` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -151,6 +167,14 @@ ALTER TABLE `organisation`
   ADD KEY `id` (`id`);
 
 --
+-- Indexes for table `payroll`
+--
+ALTER TABLE `payroll`
+  ADD PRIMARY KEY (`transaction_id`),
+  ADD KEY `ep_email` (`ep_email`),
+  ADD KEY `id` (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -161,6 +185,12 @@ ALTER TABLE `department`
   MODIFY `dept_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `payroll`
+--
+ALTER TABLE `payroll`
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -169,6 +199,13 @@ ALTER TABLE `department`
 --
 ALTER TABLE `attendance`
   ADD CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`emp_id`) REFERENCES `employe` (`ep_email`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `payroll`
+--
+ALTER TABLE `payroll`
+  ADD CONSTRAINT `payroll_ibfk_1` FOREIGN KEY (`ep_email`) REFERENCES `employe` (`ep_email`) ON DELETE SET NULL,
+  ADD CONSTRAINT `payroll_ibfk_2` FOREIGN KEY (`id`) REFERENCES `admin` (`id`) ON DELETE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
