@@ -25,6 +25,9 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 import {useAuthValue} from '../../AuthContext'
 
+import AddCommentIcon from '@mui/icons-material/AddComment';
+import ApartmentIcon from '@mui/icons-material/Apartment';
+
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -125,11 +128,13 @@ const Sidebar = () => {
           </Link>
           <Link to="/grade" style={{ textDecoration: "none" }}>
             <li>
+              <AddCommentIcon className="icon"/>
               <span>Add Grade</span>
             </li>
           </Link>
           <Link to="/department" style={{ textDecoration: "none" }}>
             <li>
+            <ApartmentIcon className="icon"/>
               <span>Department</span>
             </li>
           </Link>
