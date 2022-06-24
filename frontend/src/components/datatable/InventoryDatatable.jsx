@@ -18,7 +18,10 @@ const InventoryDatatable = ({title}) => {
         .then(data => {
           setRole(data[0].role)
         })
-  }, [])
+        .catch(err => {
+          console.log(err)
+        })
+  }, [currentUser.email])
 
   
   const [data, setData] = useState([
@@ -43,7 +46,7 @@ const InventoryDatatable = ({title}) => {
 
   
   useEffect(() => {
-    if(role === 1 || role === 5 || role === 6| role === 7 || role === 9){
+    if(true){
       fetch("http://localhost:5000/erpdatabase/inventory")
             .then(res => res.json())
                 .then(data => {
