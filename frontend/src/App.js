@@ -193,7 +193,7 @@ function App() {
             </Route>
             <Route path="/attendance">
               <Route index element={<Attendance />} />
-              <Route path=":id" element={<SingleAttendance />} />
+             <Route path=":id" element={<SingleAttendance />} />
               <Route
                 path="InsertAttendance"
                 element={<InsertAttendance inputs={depInputs} title="New Attendance" />}
