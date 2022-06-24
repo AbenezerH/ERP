@@ -7,7 +7,7 @@ const brandCon = mysql.createConnection({
   
     password: "",
 
-    database: "ERPdatabase",
+    database: "hr"
 })
 
  function sqlConn(){

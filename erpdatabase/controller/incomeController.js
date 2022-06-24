@@ -7,7 +7,7 @@ const incomeCon = mysql.createConnection({
   
     password: "",
 
-    database: "ERPdatabase",
+    database: "hr"
 })
 
  function sqlConn(){

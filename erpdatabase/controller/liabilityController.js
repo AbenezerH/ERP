@@ -7,7 +7,7 @@ const liabilityCon = mysql.createConnection({
   
     password: "",
 
-    database: "ERPdatabase",
+    database: "hr"
 })
 
  function sqlConn(){

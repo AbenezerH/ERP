@@ -7,7 +7,7 @@ const adminCon = mysql.createConnection({
   
     password: "",
 
-    database: "ERPdatabase",
+    database: "hr"
 })
 
  function sqlConn(){

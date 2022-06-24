@@ -7,7 +7,7 @@ const categoryCon = mysql.createConnection({
   
     password: "",
 
-    database: "ERPdatabase",
+    database: "hr"
 })
 
  function sqlConn(){
