@@ -60,6 +60,7 @@ import SingleWarranty from './pages/single/SingleWarranty';
 import SingleSales from './pages/single/SingleSales';
 import SingleAttendance from './pages/single/SingleAttendance';
 import UpdateSales from './pages/sales/UpdateSales';
+import SingleDepartment from './pages/single/SingleDepartment';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -184,7 +185,7 @@ function App() {
             </Route>
             <Route path="/department">
               <Route index element={<Department />} />
-              <Route path=":userId" element={<Single />} />
+              <Route path=":id" element={<SingleDepartment />} />
               <Route
                 path="addDep"
                 element={<AddDep inputs={depInputs} title="New department" />}
@@ -194,7 +195,7 @@ function App() {
               <Route index element={<Attendance />} />
               <Route path=":id" element={<SingleAttendance />} />
               <Route
-                path="addDep"
+                path="InsertAttendance"
                 element={<InsertAttendance inputs={depInputs} title="New Attendance" />}
                 />
               </Route>

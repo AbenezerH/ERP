@@ -163,6 +163,20 @@ addDepartment: addDepartment = async (req, res) => {
     res.status(500).json("server error!");
     }
   },
+  getDepartmentItem: getDepartmentItem =  async (req, res) => {
+    try {
+      const sql = `SELECT * from department WHERE dept_id = "${req.params.dept_id}"`;
+      await db.query(sql, (sqlErr, results) => {
+        if(sqlErr) console.log(sqlErr.message)
+        
+        res.send(results)
+      })
+              
+    } catch (error) {
+        console.log(`error`, error);
+    res.status(500).json("server error!");
+    }
+  },
   getDepartmentid: getDepartmentid = async (req, res) => {
     try {
       const comments = await db.query('Select dept_id from department');

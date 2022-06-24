@@ -3,8 +3,8 @@ const express = require('express')
 const router = express.Router()
 
 router.get("/allEmployee", User.dbHR.getAllEmployees);
-router.get("/:ep_email", User.dbHR.getEmployeeProfile);
 router.get("/getDepartments", User.dbHR.getDepartments);
+router.get("/getDepartment/:dept_id", User.dbHR.getDepartmentItem);
 router.get("/getDepartmentid", User.dbHR.getDepartmentid);
 router.get("/getGrades", User.dbHR.getGrades);
 router.get("/getGradeid", User.dbHR.getGradeid);
@@ -26,5 +26,6 @@ router.put("/updateEmployeeData", User.dbHR.updateEmployeedata);
 router.delete("/delete/:ep_email", User.dbHR.deleteEmployee);
 router.delete("/delete/:dept_id", User.dbHR. deleteDepartment);
 router.delete("/delete/:grade_id", User.dbHR.deleteGrade);
+router.get("/:ep_email", User.dbHR.getEmployeeProfile);
 
 module.exports = router;
