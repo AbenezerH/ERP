@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2022 at 03:48 AM
+-- Generation Time: Jun 24, 2022 at 09:51 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -72,6 +72,14 @@ CREATE TABLE `department` (
   `branch` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `department`
+--
+
+INSERT INTO `department` (`dept_id`, `dept_name`, `branch`) VALUES
+(1, 'other', 'other'),
+(3, 'software', 'AASTU');
+
 -- --------------------------------------------------------
 
 --
@@ -94,6 +102,38 @@ CREATE TABLE `employe` (
   `doj` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `employe`
+--
+
+INSERT INTO `employe` (`img`, `name`, `phonenumber`, `dob`, `address`, `city`, `state`, `pincode`, `ep_email`, `password`, `dept_id`, `grade_id`, `doj`) VALUES
+(NULL, 'abenezer hailu balcha', '0954850875', '2000-07-01', 'Kolfe Keraniyo', 'Addis Ababa', 'Addis Ababa', '1234', 'abeneaben@gmail.com', '123456789', 1, 1, '2015-06-01'),
+(NULL, 'Amarech Tafere', '0911223344', '2000-01-01', 'Akaki kality', 'addis ababa', 'addis ababa', '987', 'amarech@gmail.com', '111222333', 2, 2, '2022-06-17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gradepay`
+--
+
+CREATE TABLE `gradepay` (
+  `grade_id` int(11) NOT NULL,
+  `grade_name` varchar(255) DEFAULT NULL,
+  `basic_pay` int(11) DEFAULT NULL,
+  `grade_pf` int(11) DEFAULT NULL,
+  `grade_bonus` int(11) DEFAULT NULL,
+  `grade_ta` int(11) DEFAULT NULL,
+  `grade_da` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `gradepay`
+--
+
+INSERT INTO `gradepay` (`grade_id`, `grade_name`, `basic_pay`, `grade_pf`, `grade_bonus`, `grade_ta`, `grade_da`) VALUES
+(1, 'other', 0, 0, 0, 0, 0),
+(2, 'sales', 2000, 1, 100, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -106,10 +146,15 @@ CREATE TABLE `organisation` (
   `org_name` varchar(255) DEFAULT NULL,
   `id` varchar(255) DEFAULT NULL,
   `location` varchar(255) DEFAULT NULL,
-  `contact_number` varchar(255) DEFAULT NULL,
-  `paid_leave_limit` date DEFAULT NULL,
-  `encashed_leave_limit` date DEFAULT NULL
+  `contact_number` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `organisation`
+--
+
+INSERT INTO `organisation` (`org_id`, `img`, `org_name`, `id`, `location`, `contact_number`) VALUES
+('org-1-aastu', NULL, 'Addis Ababa Science and Technology University', '1', 'Akaki Kality', '0115678945');
 
 -- --------------------------------------------------------
 
@@ -160,6 +205,12 @@ ALTER TABLE `employe`
   ADD KEY `grade_id` (`grade_id`);
 
 --
+-- Indexes for table `gradepay`
+--
+ALTER TABLE `gradepay`
+  ADD PRIMARY KEY (`grade_id`);
+
+--
 -- Indexes for table `organisation`
 --
 ALTER TABLE `organisation`
@@ -182,7 +233,13 @@ ALTER TABLE `payroll`
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `dept_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `dept_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `gradepay`
+--
+ALTER TABLE `gradepay`
+  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `payroll`
