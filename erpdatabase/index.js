@@ -18,6 +18,7 @@ const expenseRoute = require('./routes/expenseRoutes')
 const assetRoute = require('./routes/assetRoutes')
 const damagedGoodRoute = require('./routes/damagedGoodRoutes')
 const payrollRoute = require('./routes/payrollRoutes')
+const attendanceRoute = require('./routes/attendanceRoutes')
 
 dbCreator.createDatabase()
 
@@ -35,6 +36,7 @@ app.use('/erpdatabase/hr', hrRoute)
 app.use('/erpdatabase/inventory', inventoryRoute)
 app.use('/erpdatabase/grade', gradeRoute)
 
+app.use('/erpdatabase/attendance', attendanceRoute)
 app.use('/erpdatabase/department', departmentRoute)
 
 app.use('/erpdatabase/brand', brandRoute)
