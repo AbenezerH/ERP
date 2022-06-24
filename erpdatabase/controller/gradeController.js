@@ -13,7 +13,7 @@ const gradeCon = mysql.createConnection({
  function sqlConn(){
     
      gradeCon.connect(conErr => {
-        if(conErr) throw conErr
+        if(conErr) console.log(conErr)
     })
 }
 

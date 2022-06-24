@@ -13,7 +13,7 @@ const liabilityCon = mysql.createConnection({
  function sqlConn(){
     
      liabilityCon.connect(conErr => {
-        if(conErr) throw conErr
+        if(conErr) console.log(conErr)
     })
 }
 

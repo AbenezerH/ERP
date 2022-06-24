@@ -11,10 +11,14 @@ const inventoryCon = mysql.createConnection({
 })
 
  function sqlConn(){
-    
-     inventoryCon.connect(conErr => {
-        if(conErr) throw conErr
-    })
+    try {
+        
+        inventoryCon.connect(conErr => {
+           if(conErr) console.log(conErr)
+       })
+    } catch (error) {
+        
+    }
 }
 
 const dbInventory = {
@@ -27,7 +31,7 @@ const dbInventory = {
             let sql = `SELECT * FROM inventory`
             
             await inventoryCon.query(sql, (sqlErr, results) => {
-                if(sqlErr) throw sqlErr
+                if(sqlErr) console.log(sqlErr)
                 
                 res.send(results)
             })   
@@ -75,7 +79,7 @@ const dbInventory = {
                     )`
                     
                     await inventoryCon.query(sql, (sqlErr, results) => {
-                        if(sqlErr) throw sqlErr
+                        if(sqlErr) console.log(sqlErr)
                         
                         console.log(sql)
                         res.send(results)
@@ -96,7 +100,7 @@ const dbInventory = {
                     let sql = `SELECT * FROM inventory WHERE id = ${req.params.id}`
                     
                     await inventoryCon.query(sql, (sqlErr, results) => {
-                        if(sqlErr) throw sqlErr
+                        if(sqlErr) console.log(sqlErr)
                         
                         res.send(results)
                     })

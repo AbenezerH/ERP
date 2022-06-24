@@ -11,10 +11,16 @@ const adminCon = mysql.createConnection({
 })
 
  function sqlConn(){
+
+    try {
+        
+        adminCon.connect(conErr => {
+           if(conErr) console.log(conErr)
+       })
+    } catch (error) {
+        
+    }
     
-     adminCon.connect(conErr => {
-        if(conErr) throw conErr
-    })
 }
 
 const dbAdmin = {

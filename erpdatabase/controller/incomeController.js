@@ -13,7 +13,7 @@ const incomeCon = mysql.createConnection({
  function sqlConn(){
     
      incomeCon.connect(conErr => {
-        if(conErr) throw conErr
+        if(conErr) console.log(conErr)
     })
 }
 

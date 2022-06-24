@@ -13,7 +13,7 @@ const payrollCon = mysql.createConnection({
  function sqlConn(){
     
      payrollCon.connect(conErr => {
-        if(conErr) throw conErr
+        if(conErr) console.log(conErr)
     })
 }
 

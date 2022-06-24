@@ -13,7 +13,7 @@ const brandCon = mysql.createConnection({
  function sqlConn(){
     
      brandCon.connect(conErr => {
-        if(conErr) throw conErr
+        if(conErr) console.log(conErr)
     })
 }
 

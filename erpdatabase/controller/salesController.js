@@ -13,7 +13,7 @@ const salesCon = mysql.createConnection({
  function sqlConn(){
     
      salesCon.connect(conErr => {
-        if(conErr) throw conErr
+        if(conErr) console.log(conErr)
     })
 }
 

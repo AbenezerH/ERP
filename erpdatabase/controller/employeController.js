@@ -13,7 +13,7 @@ const db = mysql.createConnection({
  function sqlConn(){
     
      db.connect(conErr => {
-        if(conErr) throw conErr
+        if(conErr) console.log(conErr)
     })
 }
 
@@ -47,7 +47,7 @@ addEmployee: addEmployee =  async (req, res) => {
       "${req.body.doj}"
       )`;
       await db.query(sql, (sqlErr, results) => {
-        if(sqlErr) throw sqlErr
+        if(sqlErr) console.log(sqlErr)
         
         console.log(sql)
         res.send(results)
@@ -138,7 +138,7 @@ addDepartment: addDepartment = async (req, res) => {
       branch)
       VALUES( "${req.body.dept_name}", "${req.body.branch}")`;
       await db.query(sql, (sqlErr, results) => {
-        if(sqlErr) throw sqlErr
+        if(sqlErr) console.log(sqlErr)
         
         console.log(sql)
         res.send(results)
@@ -216,7 +216,7 @@ res.status(500).json("server error!");
           "${req.body.grade_ta}",
           "${req.body.grade_da}")`;
           await db.query(sql, (sqlErr, results) => {
-            if(sqlErr) throw sqlErr
+            if(sqlErr) console.log(sqlErr)
             
             console.log(sql)
             res.send(results)
@@ -290,7 +290,7 @@ res.status(500).json("server error!");
               "${req.body.ad_email}",
               "${req.body. password}")`;
               await db.query(sql, (sqlErr, results) => {
-                if(sqlErr) throw sqlErr
+                if(sqlErr) console.log(sqlErr)
                 
                 console.log(sql)
                 res.send(results)
@@ -333,7 +333,7 @@ addOrganisation: addOrganisation =  async (req, res) => {
       "${req.body.encashed_leave_limit}")`
       
       await db.query(sql, (sqlErr, results) => {
-        if(sqlErr) throw sqlErr
+        if(sqlErr) console.log(sqlErr)
         
         console.log(sql)
         res.send(results)
@@ -356,7 +356,7 @@ addOrganisation: addOrganisation =  async (req, res) => {
       "${req.body.ep_mail}"
       )`;
       await db.query(sql, (sqlErr, results) => {
-        if(sqlErr) throw sqlErr
+        if(sqlErr) console.log(sqlErr)
         
         console.log(sql)
         res.send(results)
@@ -391,7 +391,7 @@ addOrganisation: addOrganisation =  async (req, res) => {
         ep_email)
         values( "${req.body.ex_id}","${req.body.amount}","${req.body.email}")`
         await db.query(sql, (sqlErr, results) => {
-          if(sqlErr) throw sqlErr
+          if(sqlErr) console.log(sqlErr)
           
           console.log(sql)
           res.send(results)

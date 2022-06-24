@@ -13,7 +13,7 @@ const assetCon = mysql.createConnection({
  function sqlConn(){
     
      assetCon.connect(conErr => {
-        if(conErr) throw conErr
+        if(conErr) console.log(conErr)
     })
 }
 

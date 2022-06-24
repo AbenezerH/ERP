@@ -13,7 +13,7 @@ const warrantyCon = mysql.createConnection({
  function sqlConn(){
     
      warrantyCon.connect(conErr => {
-        if(conErr) throw conErr
+        if(conErr) console.log(conErr)
     })
 }
 

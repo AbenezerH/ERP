@@ -13,7 +13,7 @@ const categoryCon = mysql.createConnection({
  function sqlConn(){
     
      categoryCon.connect(conErr => {
-        if(conErr) throw conErr
+        if(conErr) console.log(conErr)
     })
 }
 

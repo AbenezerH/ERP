@@ -11,10 +11,16 @@ const damagedGoodCon = mysql.createConnection({
 })
 
  function sqlConn(){
+
+    try {
+        
+        damagedGoodCon.connect(conErr => {
+           if(conErr) console.log(conErr)
+       })
+    } catch (error) {
+        
+    }
     
-     damagedGoodCon.connect(conErr => {
-        if(conErr) throw conErr
-    })
 }
 
 const dbDamagedGood = {

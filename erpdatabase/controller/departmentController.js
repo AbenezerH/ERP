@@ -13,7 +13,7 @@ const departmentCon = mysql.createConnection({
  function sqlConn(){
     
      departmentCon.connect(conErr => {
-        if(conErr) throw conErr
+        if(conErr) console.log(conErr)
     })
 }
 
