@@ -195,8 +195,8 @@ function App() {
               <Route index element={<Attendance />} />
               <Route path=":id" element={<SingleAttendance />} />
               <Route
-                path="InsertAttendance"
-                element={<InsertAttendance inputs={depInputs} title="New Attendance" />}
+                path="insertattendance"
+                element={<InsertAttendance inputs={depInputs} title="Attendance" />}
                 />
               </Route>
             <Route path="/payrol">
