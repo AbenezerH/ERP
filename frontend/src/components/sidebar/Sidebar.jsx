@@ -47,79 +47,33 @@ const Sidebar = () => {
         .catch(error => {
           console.log(error)
         })
-  }, [])
+  }, [currentUser.email])
 
-  let inventory = <>
-    <p className="title">INVENTORY</p>
-          <Link to="/products" style={{ textDecoration: "none" }}>
-            <li>
-              <StoreIcon className="icon" />
-              <span>Products</span>
-            </li>
-          </Link>
-          <Link to="/brandCategory" style={{ textDecoration: "none" }}>
-            <li>
-              <SettingsSystemDaydreamOutlinedIcon className="icon" />
-              <span>Brand Category</span>
-            </li>
-          </Link>
-          <Link to="/damagedgood" style={{ textDecoration: "none" }}>
-            <li>
-              <StoreIcon className="icon" />
-              <span>Damaged Good</span>
-            </li>
-          </Link>
-          <Link to="/warranty" style={{ textDecoration: "none" }}>
-            <li>
-              <ColorLensIcon className="icon" />
-              <span>Warranty</span>
-            </li>
-          </Link>
-  </>
 
-  let finance = <>
-    <p className="title">FINANCE</p>
-          <Link to="/financereport" style={{ textDecoration: "none" }}>
-              <li>
-                <AccountBalanceIcon className="icon" />
-                <span>Finance report</span>
-              </li>
-          </Link>
+ 
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
+  const { dispatch } = useContext(DarkModeContext);
+  return (
+    <div className="sidebar">
+      <div className="top">
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">ERP</span>
+        </Link>
+      </div>
+      <hr />
+      <div className="center">
+        <ul>
+        <p className="title">MAIN</p>
+          <Link to="/" style={{ textDecoration: "none" }}>
+          <li>
+            <DashboardIcon className="icon" />
+            <span>Dashboard</span>
+          </li>
           
-          <Link to="/sales" style={{ textDecoration: "none" }}>
-              <li>
-                <CreditCardIcon className="icon" />
-                <span>Sales</span>
-              </li>
           </Link>
-          <Link to="/expense" style={{ textDecoration: "none" }}>
-              <li>
-                <PaymentsIcon className="icon" />
-                <span>Expense</span>
-              </li>
-          </Link>
-          <Link to="/liability" style={{ textDecoration: "none" }}>
-              <li>
-                <PriceChangeIcon className="icon" />
-                <span>Liability</span>
-              </li>
-            </Link>
-          <Link to="/income" style={{ textDecoration: "none" }}>
-            <li>
-              <AttachMoneyIcon className="icon" />
-              <span>Income</span>
-            </li>
-            </Link>
-          <Link to="/asset" style={{ textDecoration: "none" }}>
-              <li>
-                <CurrencyExchangeIcon className="icon" />
-                <span>Asset</span>
-              </li>
-          </Link>
-  </>
 
-  let hr = <>
-    <p className="title">HUMAN RESOURCE</p>
           <Link to="/addemployee" style={{ textDecoration: "none" }}>
             <li>
               <PeopleOutlineIcon className="icon" />
@@ -144,60 +98,6 @@ const Sidebar = () => {
             <span>Payroll</span>
           </li>
           </Link>
-  </>
-
-  let sales = <>
-    <Link to="/sales" style={{ textDecoration: "none" }}>
-        <li>
-          <CreditCardIcon className="icon" />
-          <span>Sales</span>
-        </li>
-    </Link>
-    <Link to="/warranty" style={{ textDecoration: "none" }}>
-            <li>
-              <ColorLensIcon className="icon" />
-              <span>Warranty</span>
-            </li>
-          </Link>
-  </>
-
-  let invSales = <>
-    {inventory}
-    <Link to="/sales" style={{ textDecoration: "none" }}>
-        <li>
-          <CreditCardIcon className="icon" />
-          <span>Sales</span>
-        </li>
-    </Link>
-  </>
-
-  let invHr = <>
-    {inventory}
-    {hr}
-  </>
-
-  let invFinance = <>
-    {inventory}
-    {finance}
-  </>
-
-  let hrFinance = <>
-    {hr}
-    {finance}
-  </>
-
-  let all = <>
-    <p className="title">MAIN</p>
-          <Link to="/" style={{ textDecoration: "none" }}>
-          <li>
-            <DashboardIcon className="icon" />
-            <span>Dashboard</span>
-          </li>
-          
-          </Link>
-    {inventory}
-    {finance}
-    {hr}
     <p className="title">USEFUL & SERVICE</p>
           <li>
             <InsertChartIcon className="icon" />
@@ -220,34 +120,6 @@ const Sidebar = () => {
               <span>Users</span>
             </li>
           </Link>
-  </>
- 
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  }
-  const { dispatch } = useContext(DarkModeContext);
-  return (
-    <div className="sidebar">
-      <div className="top">
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">ERP</span>
-        </Link>
-      </div>
-      <hr />
-      <div className="center">
-        <ul>
-          
-          {(role == 1) && inventory}
-          {(role == 2) && sales}
-          {(role == 3) && hr}
-          {(role == 4) && finance}
-          {(role == 5) && invSales}
-          {(role == 6) && invHr}
-          {(role == 7) && invFinance}
-          {(role == 8) && hrFinance}
-          {(role == 9) && all}
-          
-          <p className="title">USER</p>
           <Link to="/profile" style={{ textDecoration: "none" }}>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
