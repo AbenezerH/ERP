@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 router.get("/allEmployee", User.dbHR.getAllEmployees);
+router.get("/employee/:ep_email", User.dbHR.getAnEmployee);
 router.get("/getDepartments", User.dbHR.getDepartments);
 router.get("/getDepartment/:dept_id", User.dbHR.getDepartmentItem);
 router.get("/getDepartmentid", User.dbHR.getDepartmentid);
