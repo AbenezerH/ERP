@@ -130,37 +130,6 @@ const AttendanceDatatable = ({title}) => {
 
   
 
-
-  const handleDelete = (id) => {
-
-    // delete from the db
-    // console.log(id)
-    fetch(`http://localhost:5000/erpdatabase/attendance/delete/${id}`, {
-            method: "DELETE",
-        }).then(res => res.json())
-            .then(data => console.log("add " + data))
-        .catch(err => console.log("error " + err))
-
-    // delete from the ui
-    setAttData(attData.filter((item) => item.id !== id));
-  };
-
-  const actionColumn = [
-    {
-      field: "action",
-      headerName: "Action",
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
-          </div>
-        );
-      },
-    },
-  ];
   return (
     <div className="datatable">
       <div className="datatableTitle">
@@ -175,7 +144,7 @@ const AttendanceDatatable = ({title}) => {
       <DataGrid
         className="datagrid"
         rows={attData}
-        columns={userColumns.concat(actionColumn)}
+        columns={userColumns}
         pageSize={9}
         rowsPerPageOptions={[9]}
       />
