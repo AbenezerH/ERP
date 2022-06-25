@@ -246,3 +246,82 @@ export const empInputs = [
       },
   ];
   
+  export const dedInputs = [
+    {
+      id: 1,
+      label: "Provident Fund",
+      type: "number",
+      placeholder: "pf",
+      name: "grade_pf",
+    },
+    {
+      id: 2,
+      label: "Tax",
+      type: "number",
+      placeholder: "0.15",
+      name: "tax",
+    },
+    {
+      id: 3,
+      label: "other",
+      type: "number",
+      placeholder: "other",
+      name: "other",
+    },
+   
+  ];
+  export const eInputs = [
+    {
+      id: 1,
+      label: "Employ Type ",
+      type: "select",
+      placeholder: "parmanent",
+      name: "emp_type",
+    },
+    {
+      id: 2,
+      label: "Employee",
+      type: "select",
+      placeholder: "employee",
+      name: "name",
+    },
+    
+  ];
+  
+  export const Inputs = [
+    {
+      id: 1,
+      label: "House rent allowance",
+      type: "number",
+      placeholder: " ",
+      name: "rent",
+    },
+    {
+      id: 2,
+      label: "Medical Allowance",
+      type: "number",
+      placeholder: " ",
+      name: "medical_allowance",
+    },
+    {
+      id: 3,
+      label: "Fuel allowance",
+      type: "number",
+      placeholder: "allwance for fuel",
+      name: "fuel_allow",
+    },
+    {
+      id: 4,
+      label: "Phonebill Allowance",
+      type: "number",
+      placeholder: " phone bill",
+      name: "phone_bill",
+    },
+    {
+      id: 5,
+      label: "Bonus",
+      type: "number",
+      placeholder: " Bonus",
+      name: "grade_bonus",
+    },
+  ];

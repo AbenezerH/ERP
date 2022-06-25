@@ -34,6 +34,8 @@ import DamagedGood from "./pages/damagedgood/DamagedGood";
 import Adddamaged from "./pages/damagedgood/Adddamaged";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
+import Allowance from "./pages/new/Allowance";
+import Deduction from "./pages/new/Deduction";
 import InventoryNew from "./pages/new/InventoryNew";
 import { userInputs } from "./formSource";
 import { saleInputs, expenseInputs, liabilityInputs, incomeInputs, assetInputs } from "./Financeinput"
@@ -53,7 +55,7 @@ import InsertAttendance from './pages/new/InsertAttendance';
 import Attendance from './pages/HR/Attendance';
 import Department from './pages/HR/Department';
 import Hrnew from './pages/new/Hrnew';
-import { empInputs, gradeInputs, depInputs } from "./Hrsource";
+import { empInputs, gradeInputs, depInputs, Inputs, dedInputs } from "./Hrsource";
 import SingleUser from './pages/single/SingleUser';
 import SingleProduct from './pages/single/SingleProduct';
 import SingleWarranty from './pages/single/SingleWarranty';
@@ -195,15 +197,19 @@ function App() {
               <Route index element={<Attendance />} />
               <Route path=":id" element={<SingleAttendance />} />
               <Route
-                path="insertattendance"
-                element={<InsertAttendance inputs={depInputs} title="Attendance" />}
+                path="InsertAttendance"
+                element={<InsertAttendance inputs={depInputs} title="New Attendance" />}
                 />
               </Route>
             <Route path="/payrol">
               <Route index element={<Payrol />} />
               <Route path=":userId" element={<Single />} />
             </Route>
-
+            <Route path="/salary">
+              <Route index element={<Allowance inputs={Inputs}/>} />
+              <Route index element={<Deduction inputs={dedInputs}/>} />
+              <Route path=":userId" element={<Single />} />
+            </Route>
 
             <Route path="/liability">
               <Route index element={<Liability />} />
