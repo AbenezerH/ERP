@@ -6,7 +6,7 @@ const Addgrade = ({ inputs, title }) => {
   
     const [formData, setFormData] = useState({
         id:"",
-      grade_id: " ",
+        grade_id: " ",
         grade_name: "", 
         basic_pay: "", 
         grade_pf: "", 
@@ -31,21 +31,33 @@ const Addgrade = ({ inputs, title }) => {
       
       
       function addgrade(event) {
-        fetch("http://localhost:5000/erpdatabase/hr/addGrade", {
-            method: "POST",
-            body: JSON.stringify(formData),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        }).then(res => res.json())
-            .then(data => console.log("add " + data))
-        .catch(err => console.log("error " + err))
-      
-        console.log("Add grade")
+        event.preventDefault()
+
+        let keys = Object.keys(formData)
+
+        if(keys.every((key) => formData[key].length !== 0)){
+
+          fetch("http://localhost:5000/erpdatabase/hr/addGrade", {
+              method: "POST",
+              body: JSON.stringify(formData),
+              headers: {
+                  "Content-type": "application/json; charset=UTF-8"
+              }
+          }).then(res => res.json())
+              .then(data => console.log("add " + data))
+          .catch(err => console.log("error " + err))
+        
+          console.log("Add grade")
+          window.location.href = '/grade';
+        }
+
+        else{
+          console.log("Empty Field")
+        }
       
       }
 
-      console.log(formData)
+      // console.log(formData)
       
       
   return (

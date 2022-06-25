@@ -195,13 +195,7 @@ export const empInputs = [
   ];
 
   export const gradeInputs = [
-    {
-      id: 1,
-      label: "Grade ID",
-      type: "text",
-      placeholder: "ID",
-      name: "grade_id",
-    },
+
     {
       id: 2,
       label: "Grade Name",
