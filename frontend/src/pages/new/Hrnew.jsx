@@ -134,6 +134,7 @@ const Hrnew = ({ inputs, title }) => {
 
           else{
             console.log("email must be unique")
+            document.getElementById("ep_email").focus()
           }
             
         }
