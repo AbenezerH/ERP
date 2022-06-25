@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2022 at 09:51 AM
+-- Generation Time: Jun 25, 2022 at 03:09 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -60,6 +60,17 @@ CREATE TABLE `attendance` (
   `time_end` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `attendance`
+--
+
+INSERT INTO `attendance` (`date`, `emp_id`, `present`, `time_start`, `time_end`) VALUES
+('2022-05-04', 'amarech@gmail.com', 1, '2022-06-06 00:41:25', '2022-06-09 06:25:17'),
+('2022-06-23', 'abeneaben@gmail.com', 0, '2022-06-23 13:42:47', '2022-06-24 16:42:47'),
+('2022-06-24', 'abeneaben@gmail.com', 0, '2022-06-24 09:48:18', '2022-06-24 09:48:18'),
+('2022-06-24', 'amarech@gmail.com', 1, '2022-06-24 09:56:49', '2022-06-24 09:56:49'),
+('2022-06-25', 'amarech@gmail.com', 1, '2022-06-24 02:43:43', '2022-06-24 15:43:43');
+
 -- --------------------------------------------------------
 
 --
@@ -108,6 +119,7 @@ CREATE TABLE `employe` (
 
 INSERT INTO `employe` (`img`, `name`, `phonenumber`, `dob`, `address`, `city`, `state`, `pincode`, `ep_email`, `password`, `dept_id`, `grade_id`, `doj`) VALUES
 (NULL, 'abenezer hailu balcha', '0954850875', '2000-07-01', 'Kolfe Keraniyo', 'Addis Ababa', 'Addis Ababa', '1234', 'abeneaben@gmail.com', '123456789', 1, 1, '2015-06-01'),
+(NULL, 'Abenezer Hailu', '0923456787', '2000-07-01', 'kolfe keraniyo', 'addis ababa', 'addis ababa', '123', 'abenezer.hailu00@gmail.com', '1234567890', 1, 1, '2022-06-05'),
 (NULL, 'Amarech Tafere', '0911223344', '2000-01-01', 'Akaki kality', 'addis ababa', 'addis ababa', '987', 'amarech@gmail.com', '111222333', 2, 2, '2022-06-17');
 
 -- --------------------------------------------------------
