@@ -72,9 +72,25 @@ addEmployee: addEmployee =  async (req, res) => {
     res.status(500).json("server error!");
   }
 },
+
 getAllEmployees: getAllEmployees = async (req, res) => {
   try {
     const query = `SELECT * from employe`;
+    await db.query(query, (sqlErr, results) => {
+      if(sqlErr) console.log(sqlErr.message)
+      
+      res.send(results)
+    })
+            
+  } catch (error) {
+      console.log(`error`, error);
+    res.status(500).json("server error!");
+  }
+},
+
+getAnEmployee: getAnEmployee = async (req, res) => {
+  try {
+    const query = `SELECT * from employe WHERE ep_email = "${req.params.ep_email}"`;
     await db.query(query, (sqlErr, results) => {
       if(sqlErr) console.log(sqlErr.message)
       

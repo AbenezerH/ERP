@@ -63,6 +63,7 @@ import SingleSales from './pages/single/SingleSales';
 import SingleAttendance from './pages/single/SingleAttendance';
 import UpdateSales from './pages/sales/UpdateSales';
 import SingleDepartment from './pages/single/SingleDepartment';
+import SingleEmployee from './pages/single/singleEmployee';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -171,7 +172,7 @@ function App() {
 
             <Route path="/addemployee">
               <Route index element={<Employ />} />
-              <Route path=":userId" element={<Single />} />
+              <Route path=":userId" element={<SingleEmployee />} />
               <Route
                 path="hrnew"
                 element={<Hrnew inputs={empInputs} title="New employee" />}

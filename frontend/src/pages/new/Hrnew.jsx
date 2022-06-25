@@ -2,6 +2,7 @@ import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { useState, useEffect } from "react";
+
 const Hrnew = ({ inputs, title }) => {
     const [formData, setFormData] = useState({
       name: "",
@@ -17,6 +18,20 @@ const Hrnew = ({ inputs, title }) => {
       grade_id: "1",
       doj: ""
       });
+    const [empData, setEmpData] = useState([{
+      name: "",
+      phonenumber: "",
+      dob: "",
+      address: "",
+      city: "",
+      state: "",
+      pincode: "",
+      ep_email: "",
+      password: "",
+      dept_id: "",
+      grade_id: "",
+      doj: ""
+      }]);
       const [data, setData] = useState([
         {
           id:"",
@@ -38,6 +53,15 @@ const Hrnew = ({ inputs, title }) => {
         }
       ]);
       
+      useEffect(() => {
+        fetch("http://localhost:5000/erpdatabase/hr/allemployee")
+                .then(res => res.json())
+                    .then(data => {
+                      setEmpData(data);
+                    })
+                .catch(error => console.log(error))
+      }, [])
+
       useEffect(() => {
         fetch("http://localhost:5000/erpdatabase/department")
                 .then(res => res.json())
@@ -83,18 +107,40 @@ const Hrnew = ({ inputs, title }) => {
       
       
       function addemp(event) {
-        fetch("http://localhost:5000/erpdatabase/hr/addEmployee", {
-            method: "POST",
-            body: JSON.stringify(formData),
-            headers: {
+        event.preventDefault()
+
+        let keys = Object.keys(formData)
+
+        if(keys.every((key) => formData[key].length !== 0)){
+
+          if(!empData.some(emp => emp.ep_email == formData.ep_email)){
+            
+            
+            fetch("http://localhost:5000/erpdatabase/hr/addEmployee", {
+              method: "POST",
+              body: JSON.stringify(formData),
+              headers: {
                 "Content-type": "application/json; charset=UTF-8"
-            }
-        }).then(res => res.json())
-            .then(data => console.log("add " + data))
-        .catch(err => console.log("error " + err))
-      
-        console.log("Add employ")
-      
+              }
+            }).then(res => res.json())
+                .then(data => console.log("add " + data))
+            .catch(err => console.log("error " + err))
+            
+            console.log("Add employee")
+
+            window.location.href = '/addemployee';
+            
+          }
+
+          else{
+            console.log("email must be unique")
+          }
+            
+        }
+
+        else{
+          console.log("Empty field")
+        }
       }
       
       
@@ -114,6 +160,7 @@ const Hrnew = ({ inputs, title }) => {
                   <label>{input.label}</label>
                   {input.type !== "select" ? 
                     <input 
+                      id={input.name}
                       type={input.type}
                       placeholder={input.placeholder}
                       value={formData[input.type]}
