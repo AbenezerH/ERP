@@ -5,7 +5,9 @@ const attendanceController = require('../controller/attendanceController')
 
 router.get('/', attendanceController.dbAttendance.getAllAttendance)
 
-router.get('/right', attendanceController.dbAttendance.getRightAttendance)
+router.get('/right/:date', attendanceController.dbAttendance.getRightAttendance)
+
+router.get('/right/:min/:max', attendanceController.dbAttendance.getRangeAttendance)
 
 router.get('/join/:date', attendanceController.dbAttendance.getJoinAttendance)
 

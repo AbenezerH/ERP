@@ -47,7 +47,7 @@ export default function InsertAttendance({ inputs, title }){
                 .catch(error => console.log(error)) */
         
         
-        fetch(`http://localhost:5000/erpdatabase/attendance/join/${theDate}`)
+        fetch(`http://localhost:5000/erpdatabase/attendance/right/${theDate}`)
                 .then(res => res.json())
                     .then(data => {
                         setAttend(prevAttend => {
@@ -63,20 +63,6 @@ export default function InsertAttendance({ inputs, title }){
 
       //console.log(attend + "\n" + theDate)
     
-      const handleDelete = (ep_email) => {
-    
-        // delete from the db
-        // console.log(ep_email)
-        fetch(`http://localhost:5000/erpdatabase/attendance/delete/${ep_email}`, {
-                method: "DELETE",
-            }).then(res => res.json())
-                .then(data => console.log("delete " + data))
-            .catch(err => console.log("error " + err))
-        
-        // delete from ui
-        setAttend(attend.filter((item) => item.ep_email !== ep_email));
-      };
-    
 
       const actionColumn = [
         {
@@ -89,12 +75,6 @@ export default function InsertAttendance({ inputs, title }){
                 <Link to={`/attendance/${params.row.ep_email}`} style={{ textDecoration: "none" }}>
                   <div className="viewButton">View</div>
                 </Link>
-                <div
-                  className="deleteButton"
-                  onClick={() => handleDelete(params.row.ep_email)}
-                >
-                  Delete
-                </div>
               </div>
             );
           },
