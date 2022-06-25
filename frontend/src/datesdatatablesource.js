@@ -2,7 +2,7 @@ const url = "https://media.istockphoto.com/vectors/person-gray-photo-placeholder
 
 let header = []
 
-for(let i = 1; i <= 30; i++){
+for(let i = 1; i <= 31; i++){
     header.push(
         {
             field: i.toString(),
