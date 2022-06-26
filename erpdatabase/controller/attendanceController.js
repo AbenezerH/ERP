@@ -111,6 +111,31 @@ const dbAttendance = {
                 res.status(500).json("server error!");
             }
         },
+
+        updateUsing: updateUsing = async (req, res) => {
+            try {
+                let sql = 
+                `UPDATE attendance SET
+                date = "${req.body.date}",
+                emp_id = "${req.body.emp_id}",
+                present = "${req.body.present}",
+                time_start = "${req.body.time_start}",
+                time_end = "${req.body.time_end}"
+                WHERE date = "${req.params.date}" AND emp_id = "${req.params.ep_email}"`
+                
+                await attendCon.query(sql, (sqlErr, results) => {
+                    if(sqlErr) console.log(sqlErr.message)
+
+                    console.log(sql)
+                    
+                    res.send(results)
+                })
+                
+            } catch (error) {
+                console.log(`error`, error);
+                res.status(500).json("server error!");
+            }
+        },
         
         deleteItem: deleteItem = async (req, res) => {
             try {
@@ -167,7 +192,7 @@ const dbAttendance = {
             FROM attendance 
             RIGHT JOIN 
             employe ON 
-            attendance.emp_id=employe.ep_email WHERE date = "${req.params.date}" OR date IS NULL GROUP BY employe.ep_email
+            attendance.emp_id=employe.ep_email GROUP BY employe.ep_email
             HAVING COUNT(employe.ep_email) > 0 
             `
 

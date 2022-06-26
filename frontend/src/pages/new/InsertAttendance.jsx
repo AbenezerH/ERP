@@ -34,19 +34,7 @@ export default function InsertAttendance({ inputs, title }){
       ])
       
       useEffect(() => {
-/*         fetch("http://localhost:5000/erpdatabase/hr/allemployee")
-                .then(res => res.json())
-                    .then(data => {
-                        setData(prevData => {
-                          return data.map(each => ({
-                            ...each,
-                            id: each.ep_email
-                          }))
-                        });
-                    })
-                .catch(error => console.log(error)) */
-        
-        
+             
         fetch(`http://localhost:5000/erpdatabase/attendance/right/${theDate}`)
                 .then(res => res.json())
                     .then(data => {
@@ -62,6 +50,117 @@ export default function InsertAttendance({ inputs, title }){
       }, [theDate])
 
       //console.log(attend + "\n" + theDate)
+
+      function togglePresent(event, theId){
+        console.log(attend.emp_id + " " + attend.present + " " + attend.date)
+
+        if(attend.emp_id && attend.present && attend.date){
+          setAttend(prev => {
+
+            return prev.map(each => {
+              if(each.ep_email == theId){
+                // console.log(each.ep_email)
+                return {
+                  ...each, 
+                  present: each.present == 1? 0: 1,
+                  date: theDate,
+                  emp_id: theId,
+                  status: each.present == 1? "Absent": "Present"
+                }
+              } 
+              
+              else {
+                return each
+              }
+            })
+            
+          })
+          let theSend = []
+  
+          attend.map(each => {
+            if(each.ep_email == theId){
+              theSend.push(each)
+            }
+          })
+  
+          fetch(`http://localhost:5000/erpdatabase/attendance/update/${theDate}/${theId}`, {
+                method: "PUT",
+                body: JSON.stringify(theSend),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            }).then(res => res.json())
+                .then(data => console.log("update " + data))
+            .catch(err => console.log("error " + err))
+  
+          console.log(attend)
+        }
+
+        else{
+          setAttend(prev => {
+
+            return prev.map(each => {
+              if(each.ep_email == theId){
+                // console.log(each.ep_email)
+                return {
+                  ...each, 
+                  present: each.present == 1? 0: 1,
+                  date: theDate,
+                  emp_id: theId,
+                  status: each.present == 1? "Absent": "Present"
+                }
+              } 
+              
+              else {
+                return each
+              }
+            })
+            
+          })
+          let theSend
+  
+          attend.map(each => {
+            if(each.ep_email == theId){
+              theSend= {
+                emp_id: each.ep_email,
+                date: theDate,
+                present: !each.present,
+                time_start: "2022-06-23T07:42:47.000Z",
+                time_end: "2022-06-23T07:42:47.000Z"
+              }
+            }
+          })
+          console.log(theSend)
+
+          fetch(`http://localhost:5000/erpdatabase/attendance/add`, {
+                method: "POST",
+                body: JSON.stringify(theSend),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            }).then(res => res.json())
+                .then(data => console.log("add " + data))
+            .catch(err => console.log("error " + err))
+  
+
+            fetch(`http://localhost:5000/erpdatabase/attendance/update/${theDate}/${theId}`, {
+                method: "PUT",
+                body: JSON.stringify(theSend),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            }).then(res => res.json())
+                .then(data => console.log("update " + data))
+            .catch(err => console.log("error " + err))
+  
+          console.log(attend)
+          console.log(attend)
+
+
+        }
+
+
+      }
     
 
       const actionColumn = [
@@ -72,9 +171,7 @@ export default function InsertAttendance({ inputs, title }){
           renderCell: (params) => {
             return (
               <div className="cellAction">
-                <Link to={`/attendance/${params.row.ep_email}`} style={{ textDecoration: "none" }}>
-                  <div className="viewButton">View</div>
-                </Link>
+                  <div className="viewButton" onClick={(event) => togglePresent(event, params.row.ep_email)}>Change</div>
               </div>
             );
           },
@@ -92,6 +189,7 @@ export default function InsertAttendance({ inputs, title }){
                     <div className="datatableTitle">
                         <input type="date" name="date" value={theDate} onChange={dateChange}></input>
                     </div>
+                    {/* {console.log(attend)} */}
                     <DataGrid
                         className="datagrid"
                         rows={attend}

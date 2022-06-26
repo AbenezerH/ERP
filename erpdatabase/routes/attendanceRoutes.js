@@ -17,6 +17,8 @@ router.post('/add', attendanceController.dbAttendance.addAttendance)
 
 router.put('/update/:date', attendanceController.dbAttendance.updateItem)
 
+router.put('/update/:date/:ep_email', attendanceController.dbAttendance.updateUsing)
+
 router.delete('/delete/:date', attendanceController.dbAttendance.deleteItem)
 
 module.exports = router;

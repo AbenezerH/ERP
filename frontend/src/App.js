@@ -64,6 +64,8 @@ import SingleAttendance from './pages/single/SingleAttendance';
 import UpdateSales from './pages/sales/UpdateSales';
 import SingleDepartment from './pages/single/SingleDepartment';
 import SingleEmployee from './pages/single/singleEmployee';
+import Leave from './pages/HR/Leave';
+
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -200,6 +202,14 @@ function App() {
               <Route
                 path="InsertAttendance"
                 element={<InsertAttendance inputs={depInputs} title="New Attendance" />}
+                />
+              </Route>
+            <Route path="/leave">
+              <Route index element={<Leave />} />
+              <Route path=":id" element={<SingleAttendance />} />
+              <Route
+                path="InsertLeave"
+                element={<InsertAttendance inputs={depInputs} title="New Leave" />}
                 />
               </Route>
             <Route path="/payrol">
