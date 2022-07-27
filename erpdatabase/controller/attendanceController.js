@@ -71,13 +71,15 @@ const dbAttendance = {
             time_end) VALUES(
             "${req.body.date}",
             "${req.body.emp_id}",
-            "${req.body.present}",
+            ${req.body.present},
             "${req.body.time_start}",
             "${req.body.time_end}")`
                 
                 await attendCon.query(sql, (sqlErr, results) => {
                     if(sqlErr) console.log(sqlErr.message)
                     
+                    console.log(sql)
+
                     res.send(results)
                 })
             
@@ -93,7 +95,7 @@ const dbAttendance = {
                 `UPDATE attendance SET
                 date = "${req.body.date}",
                 emp_id = "${req.body.emp_id}",
-                present = "${req.body.present}",
+                present = ${req.body.present},
                 time_start = "${req.body.time_start}",
                 time_end = "${req.body.time_end}"
                 WHERE date = "${req.params.date}"`
@@ -116,11 +118,7 @@ const dbAttendance = {
             try {
                 let sql = 
                 `UPDATE attendance SET
-                date = "${req.body.date}",
-                emp_id = "${req.body.emp_id}",
-                present = "${req.body.present}",
-                time_start = "${req.body.time_start}",
-                time_end = "${req.body.time_end}"
+                present = ${req.body.present}
                 WHERE date = "${req.params.date}" AND emp_id = "${req.params.ep_email}"`
                 
                 await attendCon.query(sql, (sqlErr, results) => {
@@ -183,17 +181,17 @@ const dbAttendance = {
     getRightAttendance: getRightAttendance = async (req, res) => {
         try {
             let sql = `SELECT attendance.date, 
-            attendance.emp_id, 
-            attendance.present, 
-            attendance.time_start, 
-            attendance.time_end, 
-            employe.ep_email, 
-            employe.name 
-            FROM attendance 
-            RIGHT JOIN 
-            employe ON 
-            attendance.emp_id=employe.ep_email GROUP BY employe.ep_email
-            HAVING COUNT(employe.ep_email) > 0 
+            attendance.emp_id,
+            attendance.present,
+            attendance.time_start,
+            attendance.time_end,
+            employe.ep_email,
+            employe.name
+            FROM attendance
+            RIGHT JOIN
+            employe ON
+            attendance.emp_id=employe.ep_email AND date='${req.params.date}'
+            GROUP BY employe.ep_email
             `
 
             await attendCon.query(sql, (sqlErr, results) => {

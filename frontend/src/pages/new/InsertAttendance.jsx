@@ -3,7 +3,6 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns } from "../../attendancedatatablesource";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export default function InsertAttendance({ inputs, title }){
@@ -39,33 +38,37 @@ export default function InsertAttendance({ inputs, title }){
                 .then(res => res.json())
                     .then(data => {
                         setAttend(prevAttend => {
-                          return data.map(each => ({
+                          return data.map((each, ind) => ({
                             ...each,
+                            id: ind,
                             status: each.present === 1 ? "Present": "Absent",
-                            id: each.ep_email
+                            
                           }))
                         });
                     })
                 .catch(error => console.log(error))
       }, [theDate])
 
-      //console.log(attend + "\n" + theDate)
-
+      console.log(attend)
+      
       function togglePresent(event, theId){
-        console.log(attend.emp_id + " " + attend.present + " " + attend.date)
-
-        if(attend.emp_id && attend.present && attend.date){
+        // console.log(attend.map(each => JSON.stringify(each)) + "\n" + theDate)
+        
+        console.log(attend[theId].emp_id !== null)
+        
+        
+        if(attend[theId].emp_id !== null){
           setAttend(prev => {
 
             return prev.map(each => {
-              if(each.ep_email == theId){
+              if(each.id == theId){
                 // console.log(each.ep_email)
                 return {
                   ...each, 
                   present: each.present == 1? 0: 1,
                   date: theDate,
-                  emp_id: theId,
-                  status: each.present == 1? "Absent": "Present"
+                  emp_id: attend[theId].ep_email,
+                  status: each.present == 1? "Absent" : "Present"
                 }
               } 
               
@@ -78,12 +81,18 @@ export default function InsertAttendance({ inputs, title }){
           let theSend = []
   
           attend.map(each => {
-            if(each.ep_email == theId){
-              theSend.push(each)
+            if(each.id == theId){
+              theSend= {
+                emp_id: each.ep_email,
+                date: theDate,
+                present: !each.present
+              }
             }
           })
+
+          console.log(theSend)
   
-          fetch(`http://localhost:5000/erpdatabase/attendance/update/${theDate}/${theId}`, {
+          fetch(`http://localhost:5000/erpdatabase/attendance/update/${theDate}/${attend[theId].ep_email}`, {
                 method: "PUT",
                 body: JSON.stringify(theSend),
                 headers: {
@@ -96,18 +105,18 @@ export default function InsertAttendance({ inputs, title }){
           console.log(attend)
         }
 
-        else{
+        else {
           setAttend(prev => {
 
             return prev.map(each => {
-              if(each.ep_email == theId){
+              if(each.id == theId){
                 // console.log(each.ep_email)
                 return {
                   ...each, 
-                  present: each.present == 1? 0: 1,
+                  present: each.present == null? 1: 0,
                   date: theDate,
-                  emp_id: theId,
-                  status: each.present == 1? "Absent": "Present"
+                  emp_id: attend[theId].ep_email,
+                  status: each.present == 1? "Absent" : "Present"
                 }
               } 
               
@@ -120,7 +129,7 @@ export default function InsertAttendance({ inputs, title }){
           let theSend
   
           attend.map(each => {
-            if(each.ep_email == theId){
+            if(each.id == theId){
               theSend= {
                 emp_id: each.ep_email,
                 date: theDate,
@@ -143,18 +152,10 @@ export default function InsertAttendance({ inputs, title }){
             .catch(err => console.log("error " + err))
   
 
-            fetch(`http://localhost:5000/erpdatabase/attendance/update/${theDate}/${theId}`, {
-                method: "PUT",
-                body: JSON.stringify(theSend),
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-            }).then(res => res.json())
-                .then(data => console.log("update " + data))
-            .catch(err => console.log("error " + err))
+            
   
           console.log(attend)
-          console.log(attend)
+          // console.log(attend)
 
 
         }
@@ -171,7 +172,7 @@ export default function InsertAttendance({ inputs, title }){
           renderCell: (params) => {
             return (
               <div className="cellAction">
-                  <div className="viewButton" onClick={(event) => togglePresent(event, params.row.ep_email)}>Change</div>
+                  <div className="viewButton" onClick={(event) => togglePresent(event, params.row.id)}>Change</div>
               </div>
             );
           },
@@ -196,7 +197,6 @@ export default function InsertAttendance({ inputs, title }){
                         columns={userColumns.concat(actionColumn)}
                         pageSize={100}
                         rowsPerPageOptions={[100]}
-                        checkboxSelection
                     />
                 </div>
             </div>

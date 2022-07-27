@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2022 at 03:09 AM
+-- Generation Time: Jun 27, 2022 at 03:16 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -44,7 +44,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `img`, `accepted`, `role`, `TIN_number`, `org_id`, `username`, `ad_email`, `password`) VALUES
-('1', NULL, NULL, 9, NULL, NULL, NULL, 'abenezer.hailu00@gmail.com', NULL);
+('1', NULL, 0, 1, NULL, NULL, NULL, 'abenezer.hailu00@gmail.com', NULL);
 
 -- --------------------------------------------------------
 
@@ -65,11 +65,72 @@ CREATE TABLE `attendance` (
 --
 
 INSERT INTO `attendance` (`date`, `emp_id`, `present`, `time_start`, `time_end`) VALUES
+('2022-01-10', 'abeneaben@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-01-10', 'abenezer.hailu00@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-01-10', 'amarech@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-01-10', 'ret@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-01-10', 'zulu@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-01-10', 'zuma@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
 ('2022-05-04', 'amarech@gmail.com', 1, '2022-06-06 00:41:25', '2022-06-09 06:25:17'),
+('2022-06-01', 'abeneaben@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-01', 'abenezer.hailu00@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-01', 'amarech@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-01', 'ben@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-01', 'qwwe@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-01', 'ret@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-01', 'zulu@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-01', 'zuma@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-03', 'abeneaben@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-03', 'abenezer.hailu00@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-03', 'amarech@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-03', 'ben@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-03', 'qwwe@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-03', 'ret@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-03', 'zulu@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-03', 'zuma@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-09', 'abeneaben@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-09', 'amarech@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-09', 'ben@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-09', 'ret@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-09', 'zuma@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-21', 'abeneaben@gmail.com', 0, '2022-06-23 07:42:47', '2022-06-24 10:42:47'),
 ('2022-06-23', 'abeneaben@gmail.com', 0, '2022-06-23 13:42:47', '2022-06-24 16:42:47'),
-('2022-06-24', 'abeneaben@gmail.com', 0, '2022-06-24 09:48:18', '2022-06-24 09:48:18'),
+('2022-06-24', 'abeneaben@gmail.com', 1, '2022-02-01 22:08:53', '2022-02-01 22:10:53'),
 ('2022-06-24', 'amarech@gmail.com', 1, '2022-06-24 09:56:49', '2022-06-24 09:56:49'),
-('2022-06-25', 'amarech@gmail.com', 1, '2022-06-24 02:43:43', '2022-06-24 15:43:43');
+('2022-06-25', 'abeneaben@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-25', 'abenezer.hailu00@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-25', 'amarech@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-25', 'ret@gmail.com', 1, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-25', 'zulu@gmail.com', 1, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-25', 'zuma@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-26', 'amarech@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-26', 'ret@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-29', 'amarech@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-29', 'ret@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-29', 'zulu@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-29', 'zuma@gmail.com', 1, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-06-30', 'abeneaben@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-07-03', 'abeneaben@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-07-03', 'abenezer.hailu00@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-07-03', 'ret@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-07-08', 'amarech@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-07-10', 'abeneaben@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-07-10', 'amarech@gmail.com', 1, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-07-10', 'ret@gmail.com', 1, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-07-10', 'zulu@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-07-10', 'zuma@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-07-31', 'abeneaben@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-07-31', 'abenezer.hailu00@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-07-31', 'amarech@gmail.com', 1, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-07-31', 'ret@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-07-31', 'zulu@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-07-31', 'zuma@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-08-24', 'abeneaben@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-08-24', 'abenezer.hailu00@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-08-24', 'amarech@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-08-24', 'ret@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-08-24', 'zulu@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47'),
+('2022-08-24', 'zuma@gmail.com', 0, '2022-06-23 04:42:47', '2022-06-23 04:42:47');
 
 -- --------------------------------------------------------
 
@@ -89,7 +150,9 @@ CREATE TABLE `department` (
 
 INSERT INTO `department` (`dept_id`, `dept_name`, `branch`) VALUES
 (1, 'other', 'other'),
-(3, 'software', 'AASTU');
+(3, 'software', 'AASTU'),
+(4, 'werty', 'wer'),
+(5, 'qw', 'qw');
 
 -- --------------------------------------------------------
 
@@ -120,7 +183,12 @@ CREATE TABLE `employe` (
 INSERT INTO `employe` (`img`, `name`, `phonenumber`, `dob`, `address`, `city`, `state`, `pincode`, `ep_email`, `password`, `dept_id`, `grade_id`, `doj`) VALUES
 (NULL, 'abenezer hailu balcha', '0954850875', '2000-07-01', 'Kolfe Keraniyo', 'Addis Ababa', 'Addis Ababa', '1234', 'abeneaben@gmail.com', '123456789', 1, 1, '2015-06-01'),
 (NULL, 'Abenezer Hailu', '0923456787', '2000-07-01', 'kolfe keraniyo', 'addis ababa', 'addis ababa', '123', 'abenezer.hailu00@gmail.com', '1234567890', 1, 1, '2022-06-05'),
-(NULL, 'Amarech Tafere', '0911223344', '2000-01-01', 'Akaki kality', 'addis ababa', 'addis ababa', '987', 'amarech@gmail.com', '111222333', 2, 2, '2022-06-17');
+(NULL, 'Amarech Tafere', '0911223344', '2000-01-01', 'Akaki kality', 'addis ababa', 'addis ababa', '987', 'amarech@gmail.com', '111222333', 2, 2, '2022-06-17'),
+(NULL, 'qqwe', '234', '2022-06-11', 'qwer', 'qwer', 'er', '123', 'ben@gmail.com', '111111111', 3, 2, '2022-06-10'),
+(NULL, 'wert', '4567', '2022-06-11', 'qwe', 'wert', 'sdf', '3456', 'qwwe@gmail.com', '111111111', 3, 2, '2022-06-14'),
+(NULL, 'sdf', '12345', '2022-06-11', 'sdf', 'sdf', 'sdf', '1', 'ret@gmail.com', '12', 5, 2, '2022-06-23'),
+(NULL, 'zero', '234', '2022-06-05', 'sdf', 'dsf', 'sdf', '124', 'zulu@gmail.com', '000', 4, 2, '2022-06-22'),
+(NULL, 'tytyj', '8976578', '2021-11-30', 'dfgtyu', 'jhgc', 'uytd', '3456', 'zuma@gmail.com', '2222', 3, 2, '2020-07-21');
 
 -- --------------------------------------------------------
 
@@ -144,7 +212,8 @@ CREATE TABLE `gradepay` (
 
 INSERT INTO `gradepay` (`grade_id`, `grade_name`, `basic_pay`, `grade_pf`, `grade_bonus`, `grade_ta`, `grade_da`) VALUES
 (1, 'other', 0, 0, 0, 0, 0),
-(2, 'sales', 2000, 1, 100, 0, 0);
+(2, 'sales', 2000, 1, 100, 0, 0),
+(3, 'Manager', 5000, 4, 400, 800, 0);
 
 -- --------------------------------------------------------
 
@@ -192,7 +261,8 @@ CREATE TABLE `payroll` (
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `ad_email` (`ad_email`);
 
 --
 -- Indexes for table `attendance`
@@ -245,13 +315,13 @@ ALTER TABLE `payroll`
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `dept_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `dept_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `gradepay`
 --
 ALTER TABLE `gradepay`
-  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `payroll`
@@ -262,6 +332,12 @@ ALTER TABLE `payroll`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`ad_email`) REFERENCES `employe` (`ep_email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `attendance`
