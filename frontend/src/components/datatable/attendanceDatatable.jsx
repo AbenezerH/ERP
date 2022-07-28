@@ -30,7 +30,7 @@ const AttendanceDatatable = ({title}) => {
 
   const [attData, setAttData] = useState([
     {
-      id: "",
+      id: "1",
       date: "",
       name: "",
       emp_id: "",
@@ -54,16 +54,16 @@ const AttendanceDatatable = ({title}) => {
       y%4 === 0? setDays(28): setDays(29)
     }
 
-
   }, [theDate])
 
+  
   function getAllIndexes(arr, val) {
     var indexes = [], i;
 
     for(i = 0; i < arr.length; i++){
 
       // console.log(arr[i].date.slice(8,10))
-        if (arr[i].ep_email === val){
+        if (arr[i].ep_email === val && arr[i].present == 1){
 
           indexes.push({
             ...arr[i],
@@ -97,9 +97,10 @@ const AttendanceDatatable = ({title}) => {
                   
                   allEmployee = data.map(each => each.ep_email).filter((item, i, arr) => arr.indexOf(item) === i)
 
+                  // console.log(allEmployee)
                   setAttData(prev => {
                     // console.log(allEmployee.map(each => getAllIndexes(prev, each)))
-                    return (allEmployee.map(each => getAllIndexes(prev, each)))
+                    return (allEmployee.map(each => getAllIndexes(prev, each)).filter(fele => fele.length ))
 
                     // console.log(allEmployee)
                   })
@@ -112,7 +113,9 @@ const AttendanceDatatable = ({title}) => {
                       let temp
                       
                       for(let i = 0; i < keys.length; i++){
-                        temp = {...temp, ...each[keys[i]]}
+                        // if(each[keys[i]].present === 1){
+                          temp = {...temp, ...each[keys[i]]}
+                        // }
                       }
                       
                       // console.log(temp)
@@ -122,13 +125,14 @@ const AttendanceDatatable = ({title}) => {
                     })
                   })
 
-                  //console.log(attData)
+                  // console.log(attData)
 
                 })
             .catch(error => console.log(error))
-  }, [theDate])
+    }, [theDate])
 
   
+  // console.log(attData)
 
   return (
     <div className="datatable">

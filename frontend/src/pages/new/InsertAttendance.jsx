@@ -49,12 +49,12 @@ export default function InsertAttendance({ inputs, title }){
                 .catch(error => console.log(error))
       }, [theDate])
 
-      console.log(attend)
+      // console.log(attend)
       
       function togglePresent(event, theId){
         // console.log(attend.map(each => JSON.stringify(each)) + "\n" + theDate)
         
-        console.log(attend[theId].emp_id !== null)
+        // console.log(attend[theId].emp_id !== null)
         
         
         if(attend[theId].emp_id !== null){
@@ -90,7 +90,7 @@ export default function InsertAttendance({ inputs, title }){
             }
           })
 
-          console.log(theSend)
+          // console.log(theSend)
   
           fetch(`http://localhost:5000/erpdatabase/attendance/update/${theDate}/${attend[theId].ep_email}`, {
                 method: "PUT",
@@ -102,7 +102,7 @@ export default function InsertAttendance({ inputs, title }){
                 .then(data => console.log("update " + data))
             .catch(err => console.log("error " + err))
   
-          console.log(attend)
+          // console.log(attend)
         }
 
         else {
@@ -139,7 +139,7 @@ export default function InsertAttendance({ inputs, title }){
               }
             }
           })
-          console.log(theSend)
+          // console.log(theSend)
 
           fetch(`http://localhost:5000/erpdatabase/attendance/add`, {
                 method: "POST",
@@ -154,7 +154,7 @@ export default function InsertAttendance({ inputs, title }){
 
             
   
-          console.log(attend)
+          // console.log(attend)
           // console.log(attend)
 
 
